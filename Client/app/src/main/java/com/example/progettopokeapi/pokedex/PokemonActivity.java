@@ -184,7 +184,7 @@ public class PokemonActivity extends AppCompatActivity {
 
 
 
-        switch (typeText) {
+        switch (typeText.getText().toString()) {
             case "normal":
                 pokemonImageView.setBackgroundColor(Color.parseColor("#ff0000"));
                 break;
