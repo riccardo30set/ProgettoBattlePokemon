@@ -39,7 +39,7 @@ public class SettingActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.Rooms:
-                        Toast.makeText(getApplicationContext(),"Errore inessitente",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Errore inesitente",Toast.LENGTH_LONG).show();
                         return true;
                     case R.id.settings:
                         return true;
