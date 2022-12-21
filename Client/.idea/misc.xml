@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/drawable/charizard.xml" value="0.3725" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2805" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1845" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/drawable/lista.xml" value="0.3725" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/drawable/persone.xml" value="0.3725" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/drawable/settings.xml" value="0.232" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/activity_list.xml" value="0.4" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/activity_main.xml" value="0.28935185185185186" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/activity_main2.xml" value="0.2658514492753623" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/activity_pokemon.xml" value="0.4" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/fragment_list.xml" value="0.18693009118541035" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/fragment_prova.xml" value="0.18693009118541035" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/layout/stile_lista_pokemon.xml" value="0.2" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/menu/bottom_navmenu.xml" value="0.4" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/menu/bottom_navmenu_search.xml" value="0.38333333333333336" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/menu/menu.xml" value="0.3421875" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2095" />
+        <entry key="..\:/Users/Riccardo D'Esposito/AndroidStudioProjects/PokeAPI/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2095" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2795" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/activity_list.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/activity_main.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/activity_partita_locale.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/activity_partita_online.xml" value="0.4" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/activity_pokemon.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/activity_setting.xml" value="0.4" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/PokeAPI/app/src/main/res/layout/stile_lista_pokemon.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_list.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_pokemon.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/stile_lista_pokemon.xml" value="0.33" />
+        <entry key="..\:/Users/Riccardo D'Esposito/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/menu/menu.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/USER/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_list.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/USER/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_pokemon.xml" value="0.4" />
+        <entry key="..\:/Users/USER/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/stile_lista_pokemon.xml" value="0.12760416666666666" />
+        <entry key="..\:/Users/mareal/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/activity_pokemon.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mareal/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/layout/stile_lista_pokemon.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mareal/Desktop/ProgettoPokeAPI/PokeAPI/app/src/main/res/menu/menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

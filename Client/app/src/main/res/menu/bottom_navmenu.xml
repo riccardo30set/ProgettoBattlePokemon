@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
+
+
+    <item
+        android:title="Home"
+        android:icon="@navigation/home"
+        android:id="@+id/home" />
+    <item
+        android:id="@+id/pokedex"
+        android:icon="@navigation/lista"
+        android:title="Pokedex" />
+    <item
+        android:id="@+id/Rooms"
+        android:icon="@navigation/persone"
+        android:title="Rooms" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@navigation/settings"
+        android:title="Settings" />
+</menu>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProgettoPokeAPI</string>
+    <string name="ListActivity">Pokedex</string>
+    <string name="PokemonActivity">Informazioni nomePokemon</string>
+    <string name="ListiActivity"> </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
