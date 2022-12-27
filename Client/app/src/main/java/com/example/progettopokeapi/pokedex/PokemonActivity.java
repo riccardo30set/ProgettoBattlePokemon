@@ -133,75 +133,75 @@ public class PokemonActivity extends AppCompatActivity {
                                         }
                                         switch (primoTipo) {
                                             case "normal":
-                                                color.getPaint().setColor(Color.parseColor("#80A8A77A"));
+                                                color.getPaint().setColor(Color.parseColor("#90A8A77A"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "fire":
-                                                color.getPaint().setColor(Color.parseColor("#80EE8130"));
+                                                color.getPaint().setColor(Color.parseColor("#90EE8130"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "water":
-                                                color.getPaint().setColor(Color.parseColor("#806390F0"));
+                                                color.getPaint().setColor(Color.parseColor("#906390F0"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "electric":
-                                                color.getPaint().setColor(Color.parseColor("#80F7D02C"));
+                                                color.getPaint().setColor(Color.parseColor("#90F7D02C"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "grass":
-                                                color.getPaint().setColor(Color.parseColor("#807AC74C"));
+                                                color.getPaint().setColor(Color.parseColor("#907AC74C"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "ice":
-                                                color.getPaint().setColor(Color.parseColor("#8096D9D6"));
+                                                color.getPaint().setColor(Color.parseColor("#9096D9D6"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "fighting":
-                                                color.getPaint().setColor(Color.parseColor("#80C22E28"));
+                                                color.getPaint().setColor(Color.parseColor("#90C22E28"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "poison":
-                                                color.getPaint().setColor(Color.parseColor("#80A33EA1"));
+                                                color.getPaint().setColor(Color.parseColor("#90A33EA1"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "ground":
-                                                color.getPaint().setColor(Color.parseColor("#80E2BF65"));
+                                                color.getPaint().setColor(Color.parseColor("#90E2BF65"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "flying":
-                                                color.getPaint().setColor(Color.parseColor("#80A98FF3"));
+                                                color.getPaint().setColor(Color.parseColor("#90A98FF3"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "psychic":
-                                                color.getPaint().setColor(Color.parseColor("#80F95587"));
+                                                color.getPaint().setColor(Color.parseColor("#90F95587"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "bug":
-                                                color.getPaint().setColor(Color.parseColor("#80A6B91A"));
+                                                color.getPaint().setColor(Color.parseColor("#90A6B91A"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "rock":
-                                                color.getPaint().setColor(Color.parseColor("#80B6A136"));
+                                                color.getPaint().setColor(Color.parseColor("#90B6A136"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "ghost":
-                                                color.getPaint().setColor(Color.parseColor("#80735797"));
+                                                color.getPaint().setColor(Color.parseColor("#90735797"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "dragon":
-                                                color.getPaint().setColor(Color.parseColor("#806F35FC"));
+                                                color.getPaint().setColor(Color.parseColor("#906F35FC"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "dark":
-                                                color.getPaint().setColor(Color.parseColor("#80705746"));
+                                                color.getPaint().setColor(Color.parseColor("#90705746"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "steel":
-                                                color.getPaint().setColor(Color.parseColor("#80B7B7CE"));
+                                                color.getPaint().setColor(Color.parseColor("#90B7B7CE"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "fairy":
-                                                color.getPaint().setColor(Color.parseColor("#80D685AD"));
+                                                color.getPaint().setColor(Color.parseColor("#90D685AD"));
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             default:
@@ -209,6 +209,8 @@ public class PokemonActivity extends AppCompatActivity {
                                         }
 
                                     }
+
+
 
                                     typeText1.setText(primoTipo);
                                     typeText2.setText(types);
@@ -232,23 +234,7 @@ public class PokemonActivity extends AppCompatActivity {
     }
 
 
-    private int getTypeIndex(String type) {
-        switch (type) {
-            case "normal": return 0;
-            case "fire": return 1;
-            case "water": return 2;
-            case "grass": return 3;
-            case "electric": return 4;
-            case "psychic": return 5;
-            case "bug": return 6;
-            case "rock": return 7;
-            case "ghost": return 8;
-            case "dragon": return 9;
-            case "dark": return 10;
-            case "steel": return 11;
-            default: return -1; // Invalid type
-        }
-    }
+
 
     public void onClickImage(View view){
         ImageView imgPokemon=(ImageView) view;
