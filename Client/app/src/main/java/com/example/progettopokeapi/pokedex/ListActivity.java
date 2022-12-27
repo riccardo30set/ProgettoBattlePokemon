@@ -118,6 +118,10 @@ public class ListActivity extends AppCompatActivity {
 
         listaPokemon.setAdapter(lAdapter);
 
+
+        listaPokemon.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+
         Intent intent = new Intent(this, PokemonActivity.class);
 
         listaPokemon.setOnItemClickListener(new AdapterView.OnItemClickListener() {

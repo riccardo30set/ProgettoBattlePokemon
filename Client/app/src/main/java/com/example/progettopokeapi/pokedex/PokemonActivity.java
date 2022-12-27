@@ -7,6 +7,8 @@ package com.example.progettopokeapi.pokedex;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,8 +52,11 @@ public class PokemonActivity extends AppCompatActivity {
         ProgressBar specialAttackProgressBar=findViewById(R.id.specialAttackprogressBar);
         ProgressBar specialDefenseProgressBar=findViewById(R.id.specialDefenseprogressBar);
         ProgressBar speedProgressBar=findViewById(R.id.speedProgressBar);
-        TextView descriptionText=findViewById(R.id.descriptionText);
-        TextView typeText=findViewById(R.id.typeText);
+        TextView typeText1=findViewById(R.id.typeText);
+        TextView typeText2=findViewById(R.id.typeText2);
+
+        TextView nomePokemon=findViewById(R.id.txtPokemonName);
+
         TextView hpText=findViewById(R.id.hpText);
         TextView attackText=findViewById(R.id.attackText);
         TextView specialAttackText=findViewById(R.id.specialAttackText);
@@ -74,6 +79,7 @@ public class PokemonActivity extends AppCompatActivity {
         String pokemonName=intent.getStringExtra("pokemonName");
 
         setTitle(pokemonName);
+        nomePokemon.setText(pokemonName);
 
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest
                 (Request.Method.GET, url,null,
@@ -106,16 +112,106 @@ public class PokemonActivity extends AppCompatActivity {
                                     speedText.setText(speedText.getText().toString()+arrayStats[indexSpeed]);
                                     speedProgressBar.setProgress(arrayStats[indexSpeed]);
 
+
+
+
                                     JSONArray arrayTypes=response.getJSONArray("types");
                                     String types="";
-                                    for (int i=0;i<arrayTypes.length();i++){
 
+
+                                    float radius = 24.0f;
+                                    ShapeDrawable color  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
+
+                                    String primoTipo=null;
+
+                                    for (int i=0;i<arrayTypes.length();i++){
                                         String type=arrayTypes.getJSONObject(i).getJSONObject("type").getString("name");
-                                        types+=type+",";
+
+                                        types=type;
+                                        if(i==0){
+                                            primoTipo=type;
+                                        }
+                                        switch (primoTipo) {
+                                            case "normal":
+                                                color.getPaint().setColor(Color.parseColor("#80A8A77A"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "fire":
+                                                color.getPaint().setColor(Color.parseColor("#80EE8130"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "water":
+                                                color.getPaint().setColor(Color.parseColor("#806390F0"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "electric":
+                                                color.getPaint().setColor(Color.parseColor("#80F7D02C"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "grass":
+                                                color.getPaint().setColor(Color.parseColor("#807AC74C"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "ice":
+                                                color.getPaint().setColor(Color.parseColor("#8096D9D6"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "fighting":
+                                                color.getPaint().setColor(Color.parseColor("#80C22E28"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "poison":
+                                                color.getPaint().setColor(Color.parseColor("#80A33EA1"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "ground":
+                                                color.getPaint().setColor(Color.parseColor("#80E2BF65"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "flying":
+                                                color.getPaint().setColor(Color.parseColor("#80A98FF3"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "psychic":
+                                                color.getPaint().setColor(Color.parseColor("#80F95587"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "bug":
+                                                color.getPaint().setColor(Color.parseColor("#80A6B91A"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "rock":
+                                                color.getPaint().setColor(Color.parseColor("#80B6A136"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "ghost":
+                                                color.getPaint().setColor(Color.parseColor("#80735797"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "dragon":
+                                                color.getPaint().setColor(Color.parseColor("#806F35FC"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "dark":
+                                                color.getPaint().setColor(Color.parseColor("#80705746"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "steel":
+                                                color.getPaint().setColor(Color.parseColor("#80B7B7CE"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            case "fairy":
+                                                color.getPaint().setColor(Color.parseColor("#80D685AD"));
+                                                pokemonImageView.setBackground(color);
+                                                break;
+                                            default:
+                                                break; // Invalid type
+                                        }
 
                                     }
-                                    types=types.substring(0,types.length()-1);
-                                    typeText.setText(types);
+
+                                    typeText1.setText(primoTipo);
+                                    typeText2.setText(types);
 
                                     //scherzo fadda ti amo uwuwuwuwu
 
@@ -131,100 +227,6 @@ public class PokemonActivity extends AppCompatActivity {
 
                 });
         queue.add(jsonObjectRequest);
-        String urlDescription="https://pokeapi.co/api/v2/pokemon-species/"+pokemonId;
-        JsonObjectRequest jsonObjectRequestDescription= new JsonObjectRequest
-                (Request.Method.GET, urlDescription,null,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    //['flavor_text_entries'][variabile]['version']['name'] versione gioco "sword"
-                                    //['flavor_text_entries'][variabile]['language']['name'] lingua "en"
-
-
-
-                                    boolean correctDescription=false;
-                                    int i=0;
-                                    String secondDescription="";
-                                   while(!correctDescription && i<response.getJSONArray("flavor_text_entries").length() ){
-                                       String value= String.valueOf(i);
-                                       Log.d("giro", value);
-                                       String gen=response.getJSONArray("flavor_text_entries").getJSONObject(i).getJSONObject("version").getString("name");
-                                        String lang=response.getJSONArray("flavor_text_entries").getJSONObject(i).getJSONObject("language").getString("name");
-                                        Log.d("lang",lang);
-                                        Log.d("gen",gen);
-                                        if (lang.equals("en")){
-                                            secondDescription=response.getJSONArray("flavor_text_entries").getJSONObject(i).getString("flavor_text");
-                                            if ((gen.equals("shield") || gen.equals("sword")) ){
-                                                correctDescription=true;
-                                                descriptionText.setText(response.getJSONArray("flavor_text_entries").getJSONObject(i).getString("flavor_text"));
-                                            }
-                                        }
-                                        i++;
-                                    }
-                                   if (descriptionText.getText().equals("...")){
-                                       descriptionText.setText(secondDescription);
-                                   }
-
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    descriptionText.setText("error");
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        descriptionText.setText("error");
-                    }
-
-                });
-        queue.add(jsonObjectRequestDescription);
-
-
-
-
-        switch (typeText.getText().toString()) {
-            case "normal":
-                pokemonImageView.setBackgroundColor(Color.parseColor("#ff0000"));
-                break;
-            case "fire":
-
-                break;
-            case "water":
-
-                break;
-            case "grass":
-
-                break;
-            case "electric":
-
-                break;
-            case "psychic":
-
-                break;
-            case "bug":
-
-                break;
-            case "rock":
-
-                break;
-            case "ghost":
-
-                break;
-            case "dragon":
-
-                break;
-            case "dark":
-
-                break;
-            case "steel":
-
-                break;
-            default:
-                break; // Invalid type
-        }
-        pokemonImageView.setBackgroundColor(Color.parseColor("#ff0000"));
 
 
     }

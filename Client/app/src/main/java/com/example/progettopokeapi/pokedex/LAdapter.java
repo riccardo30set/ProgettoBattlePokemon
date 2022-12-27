@@ -20,6 +20,7 @@ public class LAdapter extends BaseAdapter {
     LayoutInflater inflater;
     List<ModelPokemon> modelPokemonList;
     ArrayList<ModelPokemon> arrayList;
+
     public LAdapter(Context mContext, List<ModelPokemon> modelPokemonList) {
         context = mContext;
         this.modelPokemonList = modelPokemonList;
@@ -73,6 +74,8 @@ public class LAdapter extends BaseAdapter {
 
         return view;
     }
+
+
     public void filter(String chatTxt){
         chatTxt=chatTxt.toLowerCase(Locale.getDefault());
         modelPokemonList.clear();
