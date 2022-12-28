@@ -86,7 +86,7 @@ public class SettingActivity extends AppCompatActivity {
         ImageView imgAccount=findViewById(R.id.accountImgView);
         Bitmap imageAccount= BitmapFactory.decodeStream(fis);
         imgAccount.setImageBitmap(imageAccount);*/
-        nameInput.setOnFocusChangeListener();
+        //nameInput.setOnFocusChangeListener();
         nameInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
