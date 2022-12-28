@@ -14,12 +14,15 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".PartitaLocaleActivity"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".PartitaOnlineActivity"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".SettingActivity"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".pokedex.ListActivity"

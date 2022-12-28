@@ -4,6 +4,7 @@
 
 package com.example.progettopokeapi.pokedex;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -99,20 +101,47 @@ public class PokemonActivity extends AppCompatActivity {
                                         arrayStats[i]=response.getJSONArray("stats").getJSONObject(i).getInt("base_stat");
                                     }
 
-                                    hpText.setText(hpText.getText().toString()+arrayStats[indexHp]);
+                                    hpText.setText(hpText.getText().toString()+arrayStats[indexHp]+"/255");
                                     hpProgressBar.setProgress(arrayStats[indexHp]);
-                                    attackText.setText(attackText.getText().toString()+arrayStats[indexAttack]);
+                                    ObjectAnimator hpAnimation = ObjectAnimator.ofInt(hpProgressBar, "progress", 0, arrayStats[indexHp]);
+                                    hpAnimation.setDuration(1500);
+                                    hpAnimation.setInterpolator(new LinearInterpolator());
+                                    hpAnimation.start();
+
+                                    attackText.setText(attackText.getText().toString()+arrayStats[indexAttack]+"/255");
                                     attackProgressBar.setProgress(arrayStats[indexAttack]);
-                                    defenseText.setText(defenseText.getText().toString()+arrayStats[indexDefense]);
+                                    ObjectAnimator AttackAnimation = ObjectAnimator.ofInt(attackProgressBar, "progress", 0, arrayStats[indexAttack]);
+                                    AttackAnimation.setDuration(1500);
+                                   AttackAnimation.setInterpolator(new LinearInterpolator());
+                                   AttackAnimation.start();
+
+                                    defenseText.setText(defenseText.getText().toString()+arrayStats[indexDefense]+"/255");
                                     defenseProgressBar.setProgress(arrayStats[indexDefense]);
-                                    specialAttackText.setText(specialAttackText.getText().toString()+arrayStats[indexSpecialAttack]);
+                                    ObjectAnimator defenseAnimation = ObjectAnimator.ofInt(defenseProgressBar, "progress", 0, arrayStats[indexDefense]);
+                                    defenseAnimation.setDuration(1500);
+                                    defenseAnimation.setInterpolator(new LinearInterpolator());
+                                    defenseAnimation.start();
+
+                                    specialAttackText.setText(specialAttackText.getText().toString()+arrayStats[indexSpecialAttack]+"/255");
                                     specialAttackProgressBar.setProgress(arrayStats[indexSpecialAttack]);
+                                    ObjectAnimator specialAttackAnimation = ObjectAnimator.ofInt(specialAttackProgressBar, "progress", 0, arrayStats[indexSpecialAttack]);
+                                    specialAttackAnimation.setDuration(1500);
+                                    specialAttackAnimation.setInterpolator(new LinearInterpolator());
+                                    specialAttackAnimation.start();
+
+                                    specialDefenseText.setText(specialDefenseText.getText().toString()+arrayStats[indexSpecialDefense]+"/255");
                                     specialDefenseProgressBar.setProgress(arrayStats[indexSpecialDefense]);
-                                    specialDefenseText.setText(specialDefenseText.getText().toString()+arrayStats[indexSpecialDefense]);
-                                    speedText.setText(speedText.getText().toString()+arrayStats[indexSpeed]);
+                                    ObjectAnimator specialDefenseAnimation = ObjectAnimator.ofInt(specialDefenseProgressBar, "progress", 0, arrayStats[indexSpecialDefense]);
+                                    specialDefenseAnimation.setDuration(1500);
+                                    specialDefenseAnimation.setInterpolator(new LinearInterpolator());
+                                    specialDefenseAnimation.start();
+
+                                    speedText.setText(speedText.getText().toString()+arrayStats[indexSpeed]+"/255");
                                     speedProgressBar.setProgress(arrayStats[indexSpeed]);
-
-
+                                    ObjectAnimator speedAnimation = ObjectAnimator.ofInt(speedProgressBar, "progress", 0, arrayStats[indexSpeed]);
+                                    speedAnimation.setDuration(1500);
+                                    speedAnimation.setInterpolator(new LinearInterpolator());
+                                    speedAnimation.start();
 
 
                                     JSONArray arrayTypes=response.getJSONArray("types");
@@ -135,78 +164,178 @@ public class PokemonActivity extends AppCompatActivity {
                                             case "normal":
                                                 color.getPaint().setColor(Color.parseColor("#90A8A77A"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "fire":
                                                 color.getPaint().setColor(Color.parseColor("#90EE8130"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "water":
                                                 color.getPaint().setColor(Color.parseColor("#906390F0"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "electric":
                                                 color.getPaint().setColor(Color.parseColor("#90F7D02C"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "grass":
                                                 color.getPaint().setColor(Color.parseColor("#907AC74C"));
+                                                typeText1.setBackground(color);
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "ice":
                                                 color.getPaint().setColor(Color.parseColor("#9096D9D6"));
+                                                typeText1.setBackground(color);
                                                 pokemonImageView.setBackground(color);
                                                 break;
                                             case "fighting":
                                                 color.getPaint().setColor(Color.parseColor("#90C22E28"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "poison":
                                                 color.getPaint().setColor(Color.parseColor("#90A33EA1"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "ground":
                                                 color.getPaint().setColor(Color.parseColor("#90E2BF65"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "flying":
                                                 color.getPaint().setColor(Color.parseColor("#90A98FF3"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "psychic":
                                                 color.getPaint().setColor(Color.parseColor("#90F95587"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "bug":
                                                 color.getPaint().setColor(Color.parseColor("#90A6B91A"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "rock":
                                                 color.getPaint().setColor(Color.parseColor("#90B6A136"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "ghost":
                                                 color.getPaint().setColor(Color.parseColor("#90735797"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "dragon":
                                                 color.getPaint().setColor(Color.parseColor("#906F35FC"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "dark":
                                                 color.getPaint().setColor(Color.parseColor("#90705746"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "steel":
                                                 color.getPaint().setColor(Color.parseColor("#90B7B7CE"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             case "fairy":
                                                 color.getPaint().setColor(Color.parseColor("#90D685AD"));
                                                 pokemonImageView.setBackground(color);
+                                                typeText1.setBackground(color);
                                                 break;
                                             default:
                                                 break; // Invalid type
                                         }
+
+
+                                        switch (type) {
+                                            case "normal":
+                                                color.getPaint().setColor(Color.parseColor("#90A8A77A"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "fire":
+                                                color.getPaint().setColor(Color.parseColor("#90EE8130"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "water":
+                                                color.getPaint().setColor(Color.parseColor("#906390F0"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "electric":
+                                                color.getPaint().setColor(Color.parseColor("#90F7D02C"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "grass":
+                                                color.getPaint().setColor(Color.parseColor("#907AC74C"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "ice":
+                                                color.getPaint().setColor(Color.parseColor("#9096D9D6"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "fighting":
+                                                color.getPaint().setColor(Color.parseColor("#90C22E28"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "poison":
+                                                color.getPaint().setColor(Color.parseColor("#90A33EA1"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "ground":
+                                                color.getPaint().setColor(Color.parseColor("#90E2BF65"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "flying":
+                                                color.getPaint().setColor(Color.parseColor("#90A98FF3"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "psychic":
+                                                color.getPaint().setColor(Color.parseColor("#90F95587"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "bug":
+                                                color.getPaint().setColor(Color.parseColor("#90A6B91A"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "rock":
+                                                color.getPaint().setColor(Color.parseColor("#90B6A136"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "ghost":
+                                                color.getPaint().setColor(Color.parseColor("#90735797"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "dragon":
+                                                color.getPaint().setColor(Color.parseColor("#906F35FC"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "dark":
+                                                color.getPaint().setColor(Color.parseColor("#90705746"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "steel":
+                                                color.getPaint().setColor(Color.parseColor("#90B7B7CE"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            case "fairy":
+                                                color.getPaint().setColor(Color.parseColor("#90D685AD"));
+                                                typeText2.setBackground(color);
+                                                break;
+                                            default:
+                                                break; // Invalid type
+                                        }
+
 
                                     }
 
@@ -214,6 +343,8 @@ public class PokemonActivity extends AppCompatActivity {
 
                                     typeText1.setText(primoTipo);
                                     typeText2.setText(types);
+
+
 
                                     //scherzo fadda ti amo uwuwuwuwu
 
