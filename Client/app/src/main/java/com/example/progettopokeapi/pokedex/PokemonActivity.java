@@ -54,7 +54,7 @@ public class PokemonActivity extends AppCompatActivity {
         ProgressBar speedProgressBar=findViewById(R.id.speedProgressBar);
         TextView typeText1=findViewById(R.id.typeText);
         TextView typeText2=findViewById(R.id.typeText2);
-
+        TextView descriptionText=findViewById(R.id.descriptionText);
         TextView nomePokemon=findViewById(R.id.txtPokemonName);
 
         TextView hpText=findViewById(R.id.hpText);
@@ -119,7 +119,7 @@ public class PokemonActivity extends AppCompatActivity {
                                     String types="";
 
 
-                                    float radius = 24.0f;
+                                    float radius = 40.0f;
                                     ShapeDrawable color  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
 
                                     String primoTipo=null;
@@ -224,12 +224,61 @@ public class PokemonActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
                         setTitle("error");
                     }
 
                 });
         queue.add(jsonObjectRequest);
+        String urlDescription="https://pokeapi.co/api/v2/pokemon-species/"+pokemonId;
+        JsonObjectRequest jsonObjectRequestDescription= new JsonObjectRequest
+                (Request.Method.GET, urlDescription,null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    //['flavor_text_entries'][variabile]['version']['name'] versione gioco "sword"
+                                    //['flavor_text_entries'][variabile]['language']['name'] lingua "en"
 
+
+
+                                    boolean correctDescription=false;
+                                    int i=0;
+                                    String secondDescription="";
+                                    while(!correctDescription && i<response.getJSONArray("flavor_text_entries").length() ){
+                                        String value= String.valueOf(i);
+                                        Log.d("giro", value);
+                                        String gen=response.getJSONArray("flavor_text_entries").getJSONObject(i).getJSONObject("version").getString("name");
+                                        String lang=response.getJSONArray("flavor_text_entries").getJSONObject(i).getJSONObject("language").getString("name");
+                                        Log.d("lang",lang);
+                                        Log.d("gen",gen);
+                                        if (lang.equals("en")){
+                                            secondDescription=response.getJSONArray("flavor_text_entries").getJSONObject(i).getString("flavor_text");
+                                            if ((gen.equals("shield") || gen.equals("sword")) ){
+                                                correctDescription=true;
+                                                descriptionText.setText(response.getJSONArray("flavor_text_entries").getJSONObject(i).getString("flavor_text"));
+                                            }
+                                        }
+                                        i++;
+                                    }
+                                    if (descriptionText.getText().equals("...")){
+                                        descriptionText.setText(secondDescription);
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    descriptionText.setText("error");
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        descriptionText.setText("error");
+                    }
+
+                });
+        queue.add(jsonObjectRequestDescription);
 
     }
 
