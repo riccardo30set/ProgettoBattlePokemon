@@ -1,5 +1,6 @@
 package com.example.progettopokeapi;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +11,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,6 +29,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SettingActivity extends AppCompatActivity {
+    boolean objectClicked=false;
+    EditText nameInput;
 
 
     BottomNavigationView nav;
@@ -64,17 +70,44 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
         Context context=this;
+        Activity activity=(Activity) context;
         //si ricerca il nome utente dell'account nella cartella shared_prefs
         //SharedPreferences
-        EditText nameInput=findViewById(R.id.accountNameInput);
+        nameInput=findViewById(R.id.accountNameInput);
         SharedPreferences shared_prefs=context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=shared_prefs.edit();
-        if(!shared_prefs.contains("nameAccount")){
-            editor.putString("nameAccount","bro");
+
+        if(shared_prefs.getString("nameAccount","").equals("")){
+            editor.putString("nameAccount","user");
             editor.apply();
         }
         String name=shared_prefs.getString("nameAccount","ThereIsNoNameInSharedPrefs");
         nameInput.setText(name);
+
+        nameInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    editor.putString("nameAccount", String.valueOf(nameInput.getText()));
+                    editor.apply();
+                    Toast toast=Toast.makeText(context, "E' stato modificato il nome dell'account", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
+                    Toast toast=Toast.makeText(context, "Puoi modificare il nome", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+        });
+
+        FrameLayout layout = (FrameLayout) findViewById(R.id.frameLayout);
+        layout.setZ(1);
+        nameInput.setZ(2);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nameInput.clearFocus();
+            }
+        });
 
         //si ricerca nello storage interno dell'applicazione l'immagine del profilo;
         /*FileInputStream fis=null;
@@ -87,25 +120,9 @@ public class SettingActivity extends AppCompatActivity {
         Bitmap imageAccount= BitmapFactory.decodeStream(fis);
         imgAccount.setImageBitmap(imageAccount);*/
         //nameInput.setOnFocusChangeListener();
-        nameInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-               /* editor.putString("nameAccount", String.valueOf(nameInput.getText()));
-                editor.apply();
-                Toast toast=Toast.makeText(context, "E' stato modificato il nome dell'account", Toast.LENGTH_SHORT);
-                toast.show();*/
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
 
     }
