@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -61,11 +63,11 @@ public class SettingActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        Context context=this;
         //si ricerca il nome utente dell'account nella cartella shared_prefs
         //SharedPreferences
         EditText nameInput=findViewById(R.id.accountNameInput);
-        SharedPreferences shared_prefs=this.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        SharedPreferences shared_prefs=context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=shared_prefs.edit();
         if(!shared_prefs.contains("nameAccount")){
             editor.putString("nameAccount","bro");
@@ -73,6 +75,7 @@ public class SettingActivity extends AppCompatActivity {
         }
         String name=shared_prefs.getString("nameAccount","ThereIsNoNameInSharedPrefs");
         nameInput.setText(name);
+
         //si ricerca nello storage interno dell'applicazione l'immagine del profilo;
         /*FileInputStream fis=null;
         try { //try-catch che verifica l'esistenza del file inerente all'immagine del profilo
@@ -83,6 +86,27 @@ public class SettingActivity extends AppCompatActivity {
         ImageView imgAccount=findViewById(R.id.accountImgView);
         Bitmap imageAccount= BitmapFactory.decodeStream(fis);
         imgAccount.setImageBitmap(imageAccount);*/
+        nameInput.setOnFocusChangeListener();
+        nameInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               /* editor.putString("nameAccount", String.valueOf(nameInput.getText()));
+                editor.apply();
+                Toast toast=Toast.makeText(context, "E' stato modificato il nome dell'account", Toast.LENGTH_SHORT);
+                toast.show();*/
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
     }
 }
