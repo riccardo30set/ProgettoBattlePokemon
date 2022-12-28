@@ -22,262 +22,26 @@
             android:onClick="onClickImage"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="195dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="488dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="Base Stats:"
-            android:textAlignment="center"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.44"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/hpText"
-            android:layout_width="41dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="568dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="PS: "
-            android:textAlignment="center"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.094"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/attackText"
-            android:layout_width="46dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="616dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="ATK: "
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="20dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.092"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/defenseProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="273dp"
-            android:layout_height="30dp"
-            android:progressDrawable="@navigation/custom_progress_bar"
-
-            android:layout_marginTop="660dp"
-            android:max="255"
-            android:progressBackgroundTint="@color/colorDifense"
-            android:progressTint="@color/secondColorDifense"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/speedText"
-            android:layout_width="49dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="704dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="SPEED: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/specialAttackprogressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="273dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="744dp"
-            android:max="255"
-            android:progressBackgroundTint="@color/colorSpecialAttack"
-            android:progressDrawable="@navigation/custom_progress_bar"
-            android:progressTint="@color/secondColorSpecialAttack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/specialDefenseprogressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="273dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="788dp"
-            android:max="255"
-            android:progressBackgroundTint="@color/colorSpecialDifense"
-            android:progressDrawable="@navigation/custom_progress_bar"
-            android:progressTint="@color/secondColorSpecialDifense"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/specialDefenseText"
-            android:layout_width="53dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="788dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="SP.DEF: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/specialAttackText"
-            android:layout_width="54dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="744dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="SP.ATK: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/speedProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="273dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="704dp"
-            android:max="255"
-            android:progressBackgroundTint="@color/colorSpeed"
-            android:progressDrawable="@navigation/custom_progress_bar"
-            android:progressTint="@color/secondColorSpeed"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/defenseText"
-            android:layout_width="46dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="664dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="DEF: "
-            android:textAlignment="center"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.092"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/hpProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@navigation/custom_progress_bar"
-            android:layout_width="273dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="568dp"
-            android:max="255"
-            android:progressBackgroundTint="@color/colorHP"
-            android:progressTint="@color/secondColorHP"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/attackProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@navigation/custom_progress_bar"
-
-            android:layout_width="273dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="612dp"
-            android:max="255"
-            android:progressBackgroundTint="@color/colorAttack"
-            android:progressTint="@color/secondColorAttack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtPokemonName"
-            android:layout_width="343dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="292dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="..."
-            android:textAlignment="center"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#000000"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/typeText2"
-            android:layout_width="97dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="356dp"
+            android:layout_width="98dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="360dp"
             android:fontFamily="@font/pokemon_pixel_font"
             android:text="..."
             android:textAlignment="center"
-
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="#000000"
+            android:textDirection="firstStrong"
             android:textSize="24sp"
+            app:autoSizeTextType="none"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.813"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/weightTextView"
-            android:layout_width="60dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="404dp"
-            android:fontFamily="@font/pokemon_pixel_font"
-
-            android:text="0"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#000000"
-            android:textSize="24sp"
-
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.719"
+            app:layout_constraintHorizontal_bias="0.888"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -286,7 +50,6 @@
             android:layout_width="51dp"
             android:layout_height="21dp"
             android:layout_marginTop="404dp"
-
             android:fontFamily="@font/pokemon_pixel_font"
             android:text="0"
             android:textAlignment="center"
@@ -295,26 +58,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintHorizontal_bias="0.309"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/typeText"
-            android:layout_width="100dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="356dp"
-            android:autoText="true"
-            android:fontFamily="@font/pokemon_pixel_font"
-            android:text="..."
-
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -324,10 +68,27 @@
             android:layout_height="42dp"
             android:layout_marginTop="428dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.307"
+            app:layout_constraintHorizontal_bias="0.277"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/height" />
+            app:srcCompat="@navigation/height" />
+
+        <TextView
+            android:id="@+id/weightTextView"
+            android:layout_width="53dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="400dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="0"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.718"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -335,31 +96,388 @@
             android:layout_height="45dp"
             android:layout_marginTop="428dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.713"
+            app:layout_constraintHorizontal_bias="0.708"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/weight" />
+            app:srcCompat="@navigation/weight" />
+
+        <TextView
+            android:id="@+id/txtPokemonName"
+            android:layout_width="343dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="292dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="..."
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#000000"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/typeText"
+            android:layout_width="98dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="360dp"
+            android:autoText="true"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="..."
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.101"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="195dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="488dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="Base Stats:"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+        <ProgressBar
+            android:id="@+id/defenseProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="273dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="640dp"
+            android:max="255"
+            android:progressBackgroundTint="@color/colorDifense"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:progressTint="@color/secondColorDifense"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/defenseText"
+            android:textSize="22dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/defenseProgressBar"
+            android:layout_alignTop="@+id/defenseProgressBar"
+            android:layout_alignRight="@+id/defenseProgressBar"
+            android:layout_alignBottom="@+id/defenseProgressBar"
+            android:gravity="center"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/defenseProgressBar"
+            app:layout_constraintEnd_toEndOf="@+id/defenseProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/defenseProgressBar"
+            app:layout_constraintTop_toTopOf="@+id/defenseProgressBar"
+            app:layout_constraintVertical_bias="0.58"/>
+
+
+        <TextView
+            android:id="@+id/speed"
+            android:layout_width="49dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="684dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="SPEED: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/speedProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="273dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="684dp"
+            android:max="255"
+            android:progressBackgroundTint="@color/colorSpeed"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:progressTint="@color/secondColorSpeed"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/speedText"
+            android:textSize="22dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/speedProgressBar"
+            android:layout_alignTop="@+id/speedProgressBar"
+            android:layout_alignRight="@+id/speedProgressBar"
+            android:layout_alignBottom="@+id/speedProgressBar"
+            android:gravity="center"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/speedProgressBar"
+            app:layout_constraintEnd_toEndOf="@+id/speedProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/speedProgressBar"
+            app:layout_constraintTop_toTopOf="@+id/speedProgressBar"
+            app:layout_constraintVertical_bias="0.58"/>
+
+
+
+        <TextView
+            android:id="@+id/specialAttack"
+            android:layout_width="54dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="724dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="SP.ATK: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hp"
+            android:layout_width="41dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="548dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="PS: "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/specialDefenseprogressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="273dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="768dp"
+            android:max="255"
+            android:progressBackgroundTint="@color/colorSpecialDifense"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:progressTint="@color/secondColorSpecialDifense"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/specialDefenseText"
+            android:textSize="22dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/specialDefenseprogressBar"
+            android:layout_alignTop="@+id/specialDefenseprogressBar"
+            android:layout_alignRight="@+id/specialDefenseprogressBar"
+            android:layout_alignBottom="@+id/specialDefenseprogressBar"
+            android:gravity="center"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/specialDefenseprogressBar"
+            app:layout_constraintEnd_toEndOf="@+id/specialDefenseprogressBar"
+            app:layout_constraintStart_toStartOf="@+id/specialDefenseprogressBar"
+            app:layout_constraintTop_toTopOf="@+id/specialDefenseprogressBar"
+            app:layout_constraintVertical_bias="0.58"/>
+
+        <TextView
+            android:id="@+id/specialDefense"
+            android:layout_width="53dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="768dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="SP.DEF: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/attack"
+            android:layout_width="46dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="596dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="ATK: "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/attackProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="273dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="592dp"
+            android:max="255"
+            android:progressBackgroundTint="@color/colorAttack"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:progressTint="@color/secondColorAttack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/attackText"
+            android:textSize="22dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/attackProgressBar"
+            android:layout_alignTop="@+id/attackProgressBar"
+            android:layout_alignRight="@+id/attackProgressBar"
+            android:layout_alignBottom="@+id/attackProgressBar"
+            android:gravity="center"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/attackProgressBar"
+            app:layout_constraintEnd_toEndOf="@+id/attackProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/attackProgressBar"
+            app:layout_constraintTop_toTopOf="@+id/attackProgressBar"
+            app:layout_constraintVertical_bias="0.58"
+            tools:ignore="MissingConstraints" />
+
+
+
+        <ProgressBar
+            android:id="@+id/specialAttackprogressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="273dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="724dp"
+            android:max="255"
+            android:progressBackgroundTint="@color/colorSpecialAttack"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:progressTint="@color/secondColorSpecialAttack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/specialAttackText"
+            android:textSize="22dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/specialAttackprogressBar"
+            android:layout_alignTop="@+id/specialAttackprogressBar"
+            android:layout_alignRight="@+id/specialAttackprogressBar"
+            android:layout_alignBottom="@+id/specialAttackprogressBar"
+            android:gravity="center"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/specialAttackprogressBar"
+            app:layout_constraintEnd_toEndOf="@+id/specialAttackprogressBar"
+            app:layout_constraintStart_toStartOf="@+id/specialAttackprogressBar"
+            app:layout_constraintTop_toTopOf="@+id/specialAttackprogressBar"
+            app:layout_constraintVertical_bias="0.58"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/defense"
+            android:layout_width="46dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="644dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="DEF: "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+        <ProgressBar
+            android:id="@+id/hpProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="273dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="548dp"
+            android:max="255"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:progress="24"
+            android:progressBackgroundTint="@color/colorHP"
+            android:progressTint="@color/secondColorHP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/hpText"
+            android:textSize="22dp"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/hpProgressBar"
+            android:layout_alignTop="@+id/hpProgressBar"
+            android:layout_alignRight="@+id/hpProgressBar"
+            android:layout_alignBottom="@+id/hpProgressBar"
+            android:gravity="center"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/hpProgressBar"
+            app:layout_constraintEnd_toEndOf="@+id/hpProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/hpProgressBar"
+            app:layout_constraintTop_toTopOf="@+id/hpProgressBar"
+            app:layout_constraintVertical_bias="0.58"
+            tools:ignore="MissingConstraints" />
+
 
         <TextView
             android:id="@+id/descriptionText"
-            android:layout_width="386dp"
-            android:layout_height="228dp"
-            android:layout_marginTop="1068dp"
+            android:layout_width="371dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="872dp"
             android:autoText="false"
             android:fontFamily="@font/pokemon_pixel_font"
             android:text="..."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="30dp"
+            android:textSize="24sp"
+            app:autoSizeTextType="none"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.407"
+            app:layout_constraintHorizontal_bias="0.379"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="221dp"
-            android:layout_height="44dp"
+            android:layout_width="291dp"
+            android:layout_height="47dp"
             android:fontFamily="@font/pokemon_pixel_font"
             android:text="Description"
             android:textAlignment="center"
@@ -367,9 +485,10 @@
             android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.795" />
+            app:layout_constraintVertical_bias="0.862" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
