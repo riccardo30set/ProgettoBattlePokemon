@@ -164,95 +164,91 @@ public class PokemonActivity extends AppCompatActivity {
                                             case "normal":
                                                 color.getPaint().setColor(Color.parseColor("#90A8A77A"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
                                                 break;
                                             case "fire":
                                                 color.getPaint().setColor(Color.parseColor("#90EE8130"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
 
                                                 break;
                                             case "water":
                                                 color.getPaint().setColor(Color.parseColor("#906390F0"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
 
                                                 break;
                                             case "electric":
                                                 color.getPaint().setColor(Color.parseColor("#90F7D02C"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
 
                                                 break;
                                             case "grass":
                                                 color.getPaint().setColor(Color.parseColor("#907AC74C"));
                                                 typeText1.setBackground(color);
-                                                pokemonImageView.setBackground(color);
+
                                                 break;
                                             case "ice":
                                                 color.getPaint().setColor(Color.parseColor("#9096D9D6"));
                                                 typeText1.setBackground(color);
-                                                pokemonImageView.setBackground(color);
+
                                                 break;
                                             case "fighting":
                                                 color.getPaint().setColor(Color.parseColor("#90C22E28"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "poison":
                                                 color.getPaint().setColor(Color.parseColor("#90A33EA1"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "ground":
                                                 color.getPaint().setColor(Color.parseColor("#90E2BF65"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
-                                                break;
+                                                ;
                                             case "flying":
                                                 color.getPaint().setColor(Color.parseColor("#90A98FF3"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "psychic":
                                                 color.getPaint().setColor(Color.parseColor("#90F95587"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
                                                 break;
                                             case "bug":
                                                 color.getPaint().setColor(Color.parseColor("#90A6B91A"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
                                                 break;
                                             case "rock":
                                                 color.getPaint().setColor(Color.parseColor("#90B6A136"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "ghost":
                                                 color.getPaint().setColor(Color.parseColor("#90735797"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "dragon":
                                                 color.getPaint().setColor(Color.parseColor("#906F35FC"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "dark":
                                                 color.getPaint().setColor(Color.parseColor("#90705746"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "steel":
                                                 color.getPaint().setColor(Color.parseColor("#90B7B7CE"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             case "fairy":
                                                 color.getPaint().setColor(Color.parseColor("#90D685AD"));
                                                 pokemonImageView.setBackground(color);
-                                                typeText1.setBackground(color);
+
                                                 break;
                                             default:
                                                 break; // Invalid type
