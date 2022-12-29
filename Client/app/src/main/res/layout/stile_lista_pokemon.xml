@@ -18,7 +18,6 @@
             android:id="@+id/imgPokemon"
             android:layout_width="87dp"
             android:layout_height="65dp"
-            android:background="@navigation/round_cornerpokemon"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="3dp"
             tools:layout_editor_absoluteY="-6dp" />
