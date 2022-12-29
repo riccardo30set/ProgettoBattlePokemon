@@ -29,10 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SettingActivity extends AppCompatActivity {
-    boolean objectClicked=false;
     EditText nameInput;
-
-
     BottomNavigationView nav;
 
     //activity volta alla modifica e/o visione dei dati dell'account del client, questi dati verranno
