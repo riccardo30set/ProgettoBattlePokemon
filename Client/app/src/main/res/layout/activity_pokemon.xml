@@ -152,8 +152,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
         <ProgressBar
             android:id="@+id/defenseProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -165,7 +163,7 @@
             android:progressDrawable="@drawable/custom_progress_bar"
             android:progressTint="@color/secondColorDifense"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintHorizontal_bias="0.702"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

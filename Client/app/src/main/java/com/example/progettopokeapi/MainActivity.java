@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.progettopokeapi.partite.PartitaOnlineActivity;
 import com.example.progettopokeapi.pokedex.ListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
