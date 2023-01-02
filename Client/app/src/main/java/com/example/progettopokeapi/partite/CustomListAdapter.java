@@ -6,62 +6,72 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.progettopokeapi.R;
-
+import com.example.progettopokeapi.pokedex.ModelPokemon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomListAdapter extends ArrayAdapter<String> {
-    private final Activity context;
-    private final String[] itemName;
-    private final Integer[] imgId;
-    int count=0;
-    List<ModelPokemonCheck> selectedItems = new ArrayList<>();
+public class CustomListAdapter extends ArrayAdapter<ModelPokemonCheck> {
 
-    public CustomListAdapter(Activity context, String[] itemName, Integer[] imgId) {
-        super(context, R.layout.stile_alert, itemName);
+    private Activity context;
+    List<ModelPokemon> modelPokemonList;
+    List<ModelPokemonCheck> selectedItems = new ArrayList<>();
+    int count=0;
+
+    public CustomListAdapter(Activity context,List<ModelPokemonCheck> objects) {
+        super(context, R.layout.stile_alert, objects);
         this.context = context;
-        this.itemName = itemName;
-        this.imgId = imgId;
+        this.modelPokemonList = modelPokemonList;
+
     }
 
     public View getView(int position, View view, ViewGroup parent) {
+
+        ViewHolder viewHolder;
+        final View risultato;
+
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.stile_lista, null, true);
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.txtNomePokemon);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.imgPokemon);
-        CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.idCheck);
 
-        txtTitle.setText(itemName[position]);
-        imageView.setImageResource(imgId[position]);
-        imageView.setTag(imgId[position]);
-
-        // Aggiungi una checkbox a ciascun elemento della lista e crea una lista di oggetti Item per tenere traccia degli elementi selezionati
+        if(view==null){
+            viewHolder=new ViewHolder(view);
 
 
-        checkBox.setOnClickListener(new View.OnClickListener() {
+            risultato=view;
+
+            view.setTag(viewHolder);
+            view=inflater.inflate(R.layout.stile_lista_pokemon, null);
+            viewHolder.imageView=(ImageView) rowView.findViewById(R.id.imgPokemon);
+            viewHolder.textView=(TextView)view.findViewById(R.id.txtNomePokemon);
+            viewHolder.check=(CheckBox)view.findViewById(R.id.idCheck);
+
+        }else{
+            viewHolder=(ViewHolder)view.getTag();
+        }
+        viewHolder.textView.setText(modelPokemonList.get(position).getName());
+        viewHolder.imageView.setImageResource(modelPokemonList.get(position).getImg());
+        viewHolder.imageView.setTag(modelPokemonList.get(position));
+
+        // Aggiungi una checkbox a ciascun elemento della lista e crea una lista di oggetti Item per tenere traccia degli elementi selezionatiù
+
+        viewHolder.check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 count++;
 
-                if (checkBox.isChecked()) {
+                if (viewHolder.check.isChecked()) {
                     // Aggiungi l'elemento alla lista degli elementi selezionati
-                    selectedItems.add(new ModelPokemonCheck(txtTitle.getText().toString(), (int) imageView.getTag()));
+                    selectedItems.add(new ModelPokemonCheck(viewHolder.textView.getText().toString(), (int) viewHolder.imageView.getTag()));
                 } else {
                     // Rimuovi l'elemento dalla lista degli elementi selezionati
-                    selectedItems.remove(new ModelPokemonCheck(txtTitle.getText().toString(), (int) imageView.getTag()));
+                    selectedItems.remove(new ModelPokemonCheck(viewHolder.textView.getText().toString(), (int) viewHolder.imageView.getTag()));
                 }
 
 
@@ -101,7 +111,24 @@ public class CustomListAdapter extends ArrayAdapter<String> {
             }
         });
 
+
+
+
+
         return rowView;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView textView;
+        public ImageView imageView;
+        public CheckBox check;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            imageView=itemView.findViewById(R.id.imgPokemon);
+            textView=itemView.findViewById(R.id.txtNomePokemon);
+            check=itemView.findViewById(R.id.idCheck);
+        }
     }
 
 }
