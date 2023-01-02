@@ -170,6 +170,7 @@ public class PokemonActivity extends AppCompatActivity {
 
 
                                     float radius = 40.0f;
+                                    ShapeDrawable colorpokemon  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
                                     ShapeDrawable colortype1  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
                                     ShapeDrawable colortype2 = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
                                     String[] types=new String[2];
@@ -179,8 +180,9 @@ public class PokemonActivity extends AppCompatActivity {
                                         types[i] = type;
                                     }
                                     //colore di sfondo del pokemon e dei suoi tipi
+                                    colorpokemon.getPaint().setColor(Color.parseColor(colorsType.get(types[0])));
                                     colortype1.getPaint().setColor(Color.parseColor(colorsType.get(types[0])));
-                                    pokemonImageView.setBackground(colortype1);
+                                    pokemonImageView.setBackground(colorpokemon);
                                     typeText1.setBackground(colortype1);
                                     typeText1.setText(types[0]);
                                     if(arrayTypes.length()==2){
