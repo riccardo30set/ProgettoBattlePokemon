@@ -32,6 +32,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 public class PokemonActivity extends AppCompatActivity {
 
     String pokemonId;
@@ -56,6 +58,7 @@ public class PokemonActivity extends AppCompatActivity {
         ProgressBar speedProgressBar=findViewById(R.id.speedProgressBar);
         TextView typeText1=findViewById(R.id.typeText);
         TextView typeText2=findViewById(R.id.typeText2);
+        TextView typeTextSingle=findViewById(R.id.typeTextSingle);
         TextView descriptionText=findViewById(R.id.descriptionText);
         TextView nomePokemon=findViewById(R.id.txtPokemonName);
 
@@ -82,6 +85,25 @@ public class PokemonActivity extends AppCompatActivity {
 
         setTitle(pokemonName);
         nomePokemon.setText(pokemonName);
+
+        HashMap<String, String> colorsType = new HashMap<String, String>();
+        colorsType.put("normal","#90A8A77A");
+        colorsType.put("fire","#90EE8130");
+        colorsType.put("water","#906390F0");
+        colorsType.put("electric","#90F7D02C");
+        colorsType.put("grass","#907AC74C");
+        colorsType.put("ice","#9096D9D6");
+        colorsType.put("fighting","#90C22E28");
+        colorsType.put("poison","#90A33EA1");
+        colorsType.put("ground","#90E2BF65");
+        colorsType.put("flying","#90A98FF3");
+        colorsType.put("bug","#90A6B91A");
+        colorsType.put("rock","#90B6A136");
+        colorsType.put("ghost","#90735797");
+        colorsType.put("dragon","#906F35FC");
+        colorsType.put("dark","#90705746");
+        colorsType.put("steel","#90B7B7CE");
+        colorsType.put("fairy","#90D685AD");
 
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest
                 (Request.Method.GET, url,null,
@@ -145,124 +167,37 @@ public class PokemonActivity extends AppCompatActivity {
 
 
                                     JSONArray arrayTypes=response.getJSONArray("types");
-                                    String types="";
 
 
                                     float radius = 40.0f;
-                                    ShapeDrawable color  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
+                                    ShapeDrawable colortype1  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
+                                    ShapeDrawable colortype2 = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
+                                    String[] types=new String[2];
 
-                                    String primoTipo=null;
-
-                                    for (int i=0;i<arrayTypes.length();i++){
-                                        String type=arrayTypes.getJSONObject(i).getJSONObject("type").getString("name");
-
-                                        types=type;
-                                        if(i==0){
-                                            primoTipo=type;
-                                        }
-                                        switch (primoTipo) {
-                                            case "normal":
-                                                color.getPaint().setColor(Color.parseColor("#90A8A77A"));
-                                                pokemonImageView.setBackground(color);
-                                                break;
-                                            case "fire":
-                                                color.getPaint().setColor(Color.parseColor("#90EE8130"));
-                                                pokemonImageView.setBackground(color);
-
-
-                                                break;
-                                            case "water":
-                                                color.getPaint().setColor(Color.parseColor("#906390F0"));
-                                                pokemonImageView.setBackground(color);
-
-
-                                                break;
-                                            case "electric":
-                                                color.getPaint().setColor(Color.parseColor("#90F7D02C"));
-                                                pokemonImageView.setBackground(color);
-
-
-                                                break;
-                                            case "grass":
-                                                color.getPaint().setColor(Color.parseColor("#907AC74C"));
-                                                typeText1.setBackground(color);
-
-                                                break;
-                                            case "ice":
-                                                color.getPaint().setColor(Color.parseColor("#9096D9D6"));
-                                                typeText1.setBackground(color);
-
-                                                break;
-                                            case "fighting":
-                                                color.getPaint().setColor(Color.parseColor("#90C22E28"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "poison":
-                                                color.getPaint().setColor(Color.parseColor("#90A33EA1"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "ground":
-                                                color.getPaint().setColor(Color.parseColor("#90E2BF65"));
-                                                pokemonImageView.setBackground(color);
-                                                ;
-                                            case "flying":
-                                                color.getPaint().setColor(Color.parseColor("#90A98FF3"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "psychic":
-                                                color.getPaint().setColor(Color.parseColor("#90F95587"));
-                                                pokemonImageView.setBackground(color);
-                                                break;
-                                            case "bug":
-                                                color.getPaint().setColor(Color.parseColor("#90A6B91A"));
-                                                pokemonImageView.setBackground(color);
-                                                break;
-                                            case "rock":
-                                                color.getPaint().setColor(Color.parseColor("#90B6A136"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "ghost":
-                                                color.getPaint().setColor(Color.parseColor("#90735797"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "dragon":
-                                                color.getPaint().setColor(Color.parseColor("#906F35FC"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "dark":
-                                                color.getPaint().setColor(Color.parseColor("#90705746"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "steel":
-                                                color.getPaint().setColor(Color.parseColor("#90B7B7CE"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            case "fairy":
-                                                color.getPaint().setColor(Color.parseColor("#90D685AD"));
-                                                pokemonImageView.setBackground(color);
-
-                                                break;
-                                            default:
-                                                break; // Invalid type
-                                        }
-
-
-
+                                    for (int i=0;i<arrayTypes.length();i++) {
+                                        String type = arrayTypes.getJSONObject(i).getJSONObject("type").getString("name");
+                                        types[i] = type;
+                                    }
+                                    //colore di sfondo del pokemon e dei suoi tipi
+                                    colortype1.getPaint().setColor(Color.parseColor(colorsType.get(types[0])));
+                                    pokemonImageView.setBackground(colortype1);
+                                    typeText1.setBackground(colortype1);
+                                    typeText1.setText(types[0]);
+                                    if(arrayTypes.length()==2){
+                                        colortype2.getPaint().setColor(Color.parseColor(colorsType.get(types[1])));
+                                        typeText2.setBackground(colortype2);
+                                        typeText2.setText(types[1]);
+                                        typeTextSingle.setVisibility(View.INVISIBLE);
+                                    }else{
+                                        typeText2.setVisibility(View.INVISIBLE);
+                                        typeText1.setVisibility(View.INVISIBLE);
+                                        typeTextSingle.setText(types[0]);
+                                        ShapeDrawable colorSingle  = new ShapeDrawable(new RoundRectShape(new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, null, null));
+                                        colorSingle.getPaint().setColor(Color.parseColor(colorsType.get(types[0])));
+                                        typeTextSingle.setBackground(colorSingle);
 
                                     }
 
-
-
-                                    typeText1.setText(primoTipo);
-                                    typeText2.setText(types);
 
 
 

@@ -136,6 +136,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/typeTextSingle"
+            android:layout_width="98dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="360dp"
+            android:autoText="true"
+            android:fontFamily="@font/pokemon_pixel_font"
+            android:text="..."
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/textView6"
             android:layout_width="195dp"
             android:layout_height="45dp"
