@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.progettopokeapi">
+    package="com.example.progettopokeapi" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,38 +11,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProgettoPokeAPI"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".partite.ListActivityCheck"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".PartitaLocaleActivity"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".partite.PartitaOnlineActivity"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".SettingActivity"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".pokedex.ListActivity"
             android:exported="false"
             android:label=" "
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-
-
         </activity>
-        <activity
-            android:name=".partite.ListPartiteActivity"
-            android:exported="false" />
         <activity
             android:name=".pokedex.PokemonActivity"
             android:exported="false"
             android:label="PokemonActivity"
-            android:parentActivityName=".pokedex.ListActivity">
+            android:parentActivityName=".pokedex.ListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".pokedex.ListActivity" />
@@ -50,7 +52,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar">
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
