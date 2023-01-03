@@ -11,13 +11,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="409dp"
-        android:layout_height="61dp">
+        android:layout_height="61dp"
+        >
 
         <ImageView
             android:id="@+id/imgPokemon"
             android:layout_width="87dp"
             android:layout_height="65dp"
-            android:scaleType="center"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="3dp"
             tools:layout_editor_absoluteY="-6dp" />
@@ -28,10 +28,11 @@
             android:layout_height="26dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imgPokemon"
+            android:fontFamily="@font/pokemon_pixel_font"
             android:maxLines="1"
             android:text="Nome Pokemon"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/black"
             android:textSize="39sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +47,9 @@
             android:id="@+id/idCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:buttonTint="@color/black"
+            android:checked="false"
+            android:fontFamily="@font/pokemon_pixel_font"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

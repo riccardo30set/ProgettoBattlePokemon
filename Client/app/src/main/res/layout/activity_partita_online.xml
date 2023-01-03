@@ -40,6 +40,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton"
         android:layout_width="141dp"
         android:layout_height="43dp"
         android:background="@navigation/background"
@@ -71,19 +72,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listView"
-        android:layout_width="291dp"
-        android:layout_height="243dp"
-        android:background="@navigation/round_corner"
-        android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtProv"
         android:layout_width="181dp"
         android:layout_height="33dp"
         android:text="Scegli la tua squadra"
@@ -92,10 +82,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintHorizontal_bias="0.234"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintVertical_bias="0.295" />
 
     <ImageView
         android:id="@+id/imgModifica"
@@ -104,12 +94,26 @@
         android:onClick="onClickList"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.696"
+        app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284"
+        app:layout_constraintVertical_bias="0.294"
         app:srcCompat="@navigation/matita"
         tools:ignore="OnClick" />
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="300dp"
+        android:layout_height="190dp"
+        android:background="@navigation/round_corner"
+        android:numColumns="2"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.46" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

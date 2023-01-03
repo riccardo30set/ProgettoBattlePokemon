@@ -1,9 +1,23 @@
 package com.example.progettopokeapi.partite;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -34,9 +48,10 @@ public class ListActivityCheck extends AppCompatActivity {
 
     ListView listaPokemon;
 
-    CustomListAdapter modelAdapter;
-    ArrayList<ModelPokemonCheck> arrayList =new ArrayList<ModelPokemonCheck>();
+    LAdapter lAdapter;
 
+    CustomListAdapter modelAdapter;
+    List<ModelPokemonCheck>  arrayList =new ArrayList<ModelPokemonCheck>();
 
 
     @Override
@@ -72,24 +87,15 @@ public class ListActivityCheck extends AppCompatActivity {
         arrayList.get(11).setName("Butterfly");
         this.RestCallPokemonNames(arrayList);
 
-        listaPokemon=(ListView)findViewById(R.id.listPokedexCheck);
-
-
-        modelAdapter=new CustomListAdapter(this,arrayList);
-
-
-        listaPokemon.setAdapter((ListAdapter) modelAdapter);
-
-        String[] itemName = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5","ITEM 6"};
-        int[] imgId = {R.raw.pokemon100, R.raw.pokemon1, R.raw.pokemon101, R.raw.pokemon102, R.raw.pokemon103,R.raw.pokemon10};
-        ListView list=(ListView) findViewById(R.id.listPokedexCheck);
+        ListView list = (ListView) findViewById(R.id.listPokedexCheck);
 
         // Crea un adapter personalizzato per la lista
-        CustomListAdapter adapter = new CustomListAdapter(this,arrayList);
+        CustomListAdapter adapter = new CustomListAdapter(this, arrayList);
         list.setAdapter(adapter);
+
     }
 
-    public void RestCallPokemonNames( ArrayList<ModelPokemonCheck> modelPokemons){
+    public void RestCallPokemonNames(List<ModelPokemonCheck> modelPokemons){
         RequestQueue queue = Volley.newRequestQueue(ListActivityCheck.this);
         String url = "https://pokeapi.co/api/v2/pokedex/1/";
 
@@ -117,6 +123,38 @@ public class ListActivityCheck extends AppCompatActivity {
                     }
                 });
         queue.add(jsonObjectRequest);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setQueryHint("Cerca il Pokemon");
+        searchView.animate();
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if(TextUtils.isEmpty(s)){
+                    lAdapter.filter("");
+                    listaPokemon.clearTextFilter();
+                }else{
+                    lAdapter.filter(s);
+                }
+                return false;
+            }
+        });
+        return true;
     }
 
 }

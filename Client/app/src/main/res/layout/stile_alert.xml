@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/prov"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
     <LinearLayout
-        android:layout_width="174dp"
+        android:id="@+id/provaaa"
+        android:layout_width="210dp"
         android:layout_height="match_parent"
-        android:background="#8D00BCD4"
+        android:background="@navigation/round_corner"
         android:orientation="horizontal">
 
         <ImageView
@@ -16,16 +17,18 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="8dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="92dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/pokemon_pixel_font"
             android:text="Abomasnow"
-            android:textSize="13dp" />
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
