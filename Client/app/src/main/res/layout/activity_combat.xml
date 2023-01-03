@@ -8,17 +8,17 @@
     android:background="@drawable/battleground">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imgEnemyBS"
+        android:layout_width="291dp"
+        android:layout_height="150dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="219dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginBottom="150dp"
         android:src="@drawable/enemybasechampion" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgPlayerBS"
         android:layout_width="514dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -26,4 +26,24 @@
         android:layout_marginStart="-19dp"
         android:layout_marginBottom="4dp"
         android:src="@drawable/playerbasechampion" />
+
+    <ImageView
+        android:id="@+id/imgEnemyPK"
+        android:layout_width="195dp"
+        android:layout_height="195dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="193dp"
+        android:src="@raw/pokemon248" />
+
+    <ImageView
+        android:id="@+id/imgPlayerPK"
+        android:layout_width="383dp"
+        android:layout_height="383dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="-112dp"
+        android:src="@raw/pokemonretro448" />
 </RelativeLayout>
