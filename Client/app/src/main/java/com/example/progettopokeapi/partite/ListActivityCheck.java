@@ -46,11 +46,11 @@ public class ListActivityCheck extends AppCompatActivity {
 
     String[] nomePokemon= new String[898];
 
-    ListView listaPokemon;
+    ListView list;
 
     LAdapter lAdapter;
 
-    CustomListAdapter modelAdapter;
+    CustomListAdapter adapter;
     List<ModelPokemonCheck>  arrayList =new ArrayList<ModelPokemonCheck>();
 
 
@@ -89,10 +89,10 @@ public class ListActivityCheck extends AppCompatActivity {
         arrayList.get(11).setName("Butterfly");
         this.RestCallPokemonNames(arrayList);
 
-        ListView list = (ListView) findViewById(R.id.listPokedexCheck);
+        list = (ListView) findViewById(R.id.listPokedexCheck);
 
         // Create a custom adapter for the list
-        CustomListAdapter adapter = new CustomListAdapter(this, arrayList);
+        adapter = new CustomListAdapter(this, arrayList);
         list.setAdapter(adapter);
 
     }
@@ -148,10 +148,10 @@ public class ListActivityCheck extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
                 if(TextUtils.isEmpty(s)){
-                    lAdapter.filter("");
-                    listaPokemon.clearTextFilter();
+                    adapter.filter("");
+                    list.clearTextFilter();
                 }else{
-                    lAdapter.filter(s);
+                    adapter.filter(s);
                 }
                 return false;
             }

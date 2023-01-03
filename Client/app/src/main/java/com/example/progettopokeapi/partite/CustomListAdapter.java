@@ -35,10 +35,11 @@ public class CustomListAdapter extends BaseAdapter {
     List<ModelPokemonCheck> selectedItems = new ArrayList<>();
     ArrayList<String> listaNomi=new ArrayList<>();
     ArrayList<Integer> imgPok=new ArrayList<>();
-
+    ArrayList<ModelPokemonCheck> backup=new ArrayList<>();
     public CustomListAdapter(Activity context, List<ModelPokemonCheck> items) {
         this.context = context;
         this.items = items;
+        backup.addAll(items);
     }
 
     public int getCount() {
@@ -167,7 +168,21 @@ public class CustomListAdapter extends BaseAdapter {
         // Return the completed view to render on screen
         return convertView;
     }
+    public void filter(String chatTxt){
+        chatTxt=chatTxt.toLowerCase(Locale.getDefault());
+        items.clear();
+        if(chatTxt.length()==0){
+            items.addAll(backup);
+        }else{
+            for(ModelPokemonCheck model : backup){
+                if(model.getName().toLowerCase(Locale.getDefault()).contains(chatTxt)){
+                    items.add(model);
+                }
+            }
+        }
+        notifyDataSetChanged();
 
+    }
 
 
 
