@@ -60,6 +60,8 @@ public class ListActivityCheck extends AppCompatActivity {
         setContentView(R.layout.activity_list_check);
         String id;
 
+
+
         for(int i=1; i<899;i++){
 
             id="pokemon"+i;
@@ -89,7 +91,7 @@ public class ListActivityCheck extends AppCompatActivity {
 
         ListView list = (ListView) findViewById(R.id.listPokedexCheck);
 
-        // Crea un adapter personalizzato per la lista
+        // Create a custom adapter for the list
         CustomListAdapter adapter = new CustomListAdapter(this, arrayList);
         list.setAdapter(adapter);
 

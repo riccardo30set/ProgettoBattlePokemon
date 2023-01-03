@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.example.progettopokeapi.partite.PartitaOnlineActivity;
 import com.example.progettopokeapi.pokedex.ListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -90,6 +91,8 @@ public class SettingActivity extends AppCompatActivity {
         EditText nameInput=findViewById(R.id.accountNameInput);
         shared_prefs=context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         editor=shared_prefs.edit();
+
+
 
         if(shared_prefs.getString("nameAccount","").equals("")){
             editor.putString("nameAccount","user");

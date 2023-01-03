@@ -2,7 +2,11 @@ package com.example.progettopokeapi.partite;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettopokeapi.R;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,20 +39,21 @@ public class PartitaOnlineActivity extends AppCompatActivity {
     ArrayList<String> stringArrayList;
 
 
-
+    //It is used to get data from the activity automatically
     ActivityResultLauncher<Intent> activityLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
             Log.d(TAG,"onActivityResult");
 
             if(result.getResultCode()==78){
-                Intent dioca=result.getData();
+                Intent inten2=result.getData();
 
 
 
-                if(dioca != null){
-                    stringArrayList = dioca.getStringArrayListExtra("nomi");
-                    intArrayList = dioca.getIntegerArrayListExtra("immagini");
+                if(inten2 != null){
+                    //I extract the data
+                    stringArrayList = inten2.getStringArrayListExtra("nomi");
+                    intArrayList = inten2.getIntegerArrayListExtra("immagini");
 
                     ArrayList<String> nomi=new ArrayList<>();
                     ArrayList<Integer> img =new ArrayList<>();
@@ -63,11 +69,6 @@ public class PartitaOnlineActivity extends AppCompatActivity {
 
                     grid.setAdapter(gridAdapter);
 
-
-
-
-
-
                 }
             }
         }
@@ -77,7 +78,38 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partita_online);
 
+        String nome="User";
+        Bitmap img;
+        int drawableResourceId = R.drawable.standard_account_image;
+        img=BitmapFactory.decodeResource(getResources(),drawableResourceId);
+
+        GridPlayerAdapter gridPlayerAdapter=new GridPlayerAdapter(PartitaOnlineActivity.this,nome,img);
+
+        GridView grid=findViewById(R.id.gridProfile);
+
+        grid.setAdapter(gridPlayerAdapter);
+
     }
+
+
+
+
+
+
+    public File cercaFileNelloStorageInterno(String nomeFileImmagineProfilo){
+        File dir=getFilesDir();
+        File[] files = dir.listFiles(); // Get the list of files in the directory
+        File immagineProfiloDaVisualizzare=null;
+        for (File file : files) {
+            Log.d("file name",file.getName());
+            if (file.getName().equals(nomeFileImmagineProfilo)) {
+                // File was found
+                return file;
+            }
+        }
+        return null;
+    }
+
 
     public void onClickList(View view){
         Intent intent = new Intent(this, ListActivityCheck.class);

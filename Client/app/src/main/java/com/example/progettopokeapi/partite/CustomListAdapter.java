@@ -36,10 +36,6 @@ public class CustomListAdapter extends BaseAdapter {
     ArrayList<String> listaNomi=new ArrayList<>();
     ArrayList<Integer> imgPok=new ArrayList<>();
 
-
-
-
-
     public CustomListAdapter(Activity context, List<ModelPokemonCheck> items) {
         this.context = context;
         this.items = items;
@@ -88,12 +84,14 @@ public class CustomListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
+
+                //To prevent the checkBoxes from being randomly selected and saved when going down the list
                 item.setCheck(!item.isCheck());
 
-                // Aggiorna lo stato di selezione della checkBox
+                // Update the selection state of the checkBox
                 checkBox.setChecked(item.isCheck());
 
-                // Incrementa o decrementa il contatore di elementi selezionati
+                // Increment or decrement the count of selected items
 
                 if (item.isCheck()) {
                     count++;
@@ -102,30 +100,31 @@ public class CustomListAdapter extends BaseAdapter {
                 }
 
                 if (checkBox.isChecked()) {
-                    // Aggiungi l'elemento alla lista degli elementi selezionati
+                    // Add the item to the list of selected items
                     selectedItems.add(new ModelPokemonCheck(txtTitle.getText().toString(), (int) imageView.getTag()));
                     listaNomi.add(txtTitle.getText().toString());
                     imgPok.add((Integer) imageView.getTag());
                 } else {
-                    // Rimuovi l'elemento dalla lista degli elementi selezionati
+                    // Remove the item from the list of selected items
                     selectedItems.remove(new ModelPokemonCheck(txtTitle.getText().toString(), (int) imageView.getTag()));
-                    listaNomi.add(txtTitle.getText().toString());
-                    imgPok.add((Integer) imageView.getTag());
+                    listaNomi.remove(txtTitle.getText().toString());
+                    imgPok.remove((Integer) imageView.getTag());
 
                 }
 
 
-                // Mostra l'alert quando l'utente ha selezionato 6 elementi
+                // Show alert when user has selected 6 items
                 if (count == 6) {
-                    // Crea l'alert
+                    //create the alert
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                    builder.setTitle("ECCO LA TUA SQUADRA");
+                    builder.setTitle("Ecco la tua squadra!");
 
 
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            //Send the data to the activity
                             Intent intent=new Intent();
                             intent.putStringArrayListExtra("nomi",listaNomi);
                             intent.putIntegerArrayListExtra("immagini",imgPok);
@@ -140,24 +139,24 @@ public class CustomListAdapter extends BaseAdapter {
                             dialog.dismiss();
                         }
                     });
-                    // Inflate il layout personalizzato come view dell'alert
-                    View alertDialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.alert_layout, null);
+                    // Inflate the custom layout as an alert view
+                 View alertDialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.alert_layout, null);
 
 
-                    // Crea l'adapter personalizzato per il RecyclerView
+                    // Create the custom adapter for the RecyclerView
                     ModelAdapter adapter = new ModelAdapter(selectedItems);
 
-                    // Imposta l'adapter personalizzato come adapter del RecyclerView
+                    // Set the custom adapter as the RecyclerView adapter
                     RecyclerView recyclerView = alertDialogView.findViewById(R.id.recycler_view);
                     GridLayoutManager layoutManager=new GridLayoutManager(context,2);
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setAdapter(adapter);
 
 
-                    // Imposta il layout personalizzato come view dell'alert
+                    // Set the custom layout as the view of the alert
                     builder.setView(alertDialogView);
 
-                    // Mostra l'alert
+                    // Show the alert
                     AlertDialog alertDialog = builder.create();
 
                     alertDialog.show();
