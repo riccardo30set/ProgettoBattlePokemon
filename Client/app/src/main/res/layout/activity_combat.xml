@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pokedex.Combat_Activity"
+    tools:context=".Combat_Activity"
     android:background="@drawable/battleground">
 
     <ImageView

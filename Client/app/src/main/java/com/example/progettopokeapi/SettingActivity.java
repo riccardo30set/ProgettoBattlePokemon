@@ -75,7 +75,8 @@ public class SettingActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.Rooms:
-                        Toast.makeText(getApplicationContext(),"Errore inesitente",Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
+                        overridePendingTransition(2,2);
                         return true;
                     case R.id.settings:
                         return true;

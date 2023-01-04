@@ -1,14 +1,16 @@
-package com.example.progettopokeapi;
+package com.example.progettopokeapi.partite;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.progettopokeapi.R;
 
 public class PartitaLocaleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_partita_locale);
+        setContentView(R.layout.activity_partite);
     }
 }

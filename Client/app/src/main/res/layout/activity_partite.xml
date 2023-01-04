@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A5A5A5"
-    tools:context=".PartitaLocaleActivity">
+    tools:context=".partite.PartitaLocaleActivity">
 
 
     <TextView
@@ -40,6 +40,7 @@
         app:layout_constraintVertical_bias="0.155" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="239dp"
         android:layout_height="57dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,42 +49,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.135"
+        android:background="@navigation/round_corner"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:background="@navigation/round_corner"
             android:layout_height="match_parent"
             android:hint="Nome partita" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/txtProv"
-        android:layout_width="181dp"
-        android:layout_height="33dp"
-        android:text="Scegli la tua squadra"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
-
-    <ImageView
-        android:id="@+id/imgModifica"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:onClick="onClickList"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218"
-        app:srcCompat="@navigation/matita"
-        tools:ignore="OnClick" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -113,7 +87,37 @@
         app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintVertical_bias="0.39" />
+
+    <TextView
+        android:id="@+id/txtProv"
+        android:layout_width="181dp"
+        android:layout_height="33dp"
+        android:text="Scegli la tua squadra"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
+
+    <ImageView
+        android:id="@+id/imgModifica"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:background="@color/purple_700"
+        android:onClick="onClickList"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255"
+        app:srcCompat="@navigation/matita"
+        tools:ignore="OnClick" />
 
     <TextView
         android:id="@+id/textView4"
@@ -126,18 +130,18 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619" />
+        app:layout_constraintVertical_bias="0.637" />
 
     <GridView
         android:id="@+id/gridProfile"
         android:layout_width="195dp"
         android:layout_height="76dp"
-        android:background="#FFFFFF"
+        android:background="@navigation/round_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.796" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

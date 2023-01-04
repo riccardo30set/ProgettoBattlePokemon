@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.progettopokeapi.Combat_Activity;
 import com.example.progettopokeapi.MainActivity;
 import com.example.progettopokeapi.R;
 import com.example.progettopokeapi.SettingActivity;
@@ -71,7 +72,8 @@ public class ListActivity extends AppCompatActivity {
                     case R.id.pokedex:
                         return true;
                     case R.id.Rooms:
-                        Toast.makeText(getApplicationContext(),"Errore inessitente",Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
+                        overridePendingTransition(2,2);
                         return true;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), SettingActivity.class));

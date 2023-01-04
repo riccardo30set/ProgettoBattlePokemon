@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.progettopokeapi.pokedex.Combat_Activity;
+import com.example.progettopokeapi.partite.PartitaLocaleActivity;
 import com.example.progettopokeapi.partite.PartitaOnlineActivity;
 import com.example.progettopokeapi.pokedex.ListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return true;
+
             }
         });
     }
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickLocale(View view){
+        startActivity(new Intent(getApplicationContext(), PartitaLocaleActivity.class));
+        overridePendingTransition(2,2);
 
     }
     public void onClickPartecipa(View view){

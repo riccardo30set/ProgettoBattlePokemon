@@ -2,32 +2,25 @@ package com.example.progettopokeapi.partite;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettopokeapi.R;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PartitaOnlineActivity extends AppCompatActivity {
 
@@ -76,7 +69,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_partita_online);
+        setContentView(R.layout.activity_partite);
 
         String nome="User";
         Bitmap img;

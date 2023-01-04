@@ -15,32 +15,44 @@
         android:theme="@style/Theme.ProgettoPokeAPI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".pokedex.Combat_Activity"
+            android:name=".Combat_Activity"
             android:exported="false"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".partite.ListActivityCheck"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="locked">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PartitaLocaleActivity"
+            android:name=".partite.PartitaLocaleActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="locked"
             android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".partite.PartitaOnlineActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="locked"
             android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".SettingActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="locked"
             android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
         <activity
             android:name=".pokedex.ListActivity"
             android:exported="false"
             android:label=" "
+            android:screenOrientation="locked"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -49,6 +61,7 @@
         <activity
             android:name=".pokedex.PokemonActivity"
             android:exported="false"
+            android:screenOrientation="locked"
             android:label="PokemonActivity"
             android:parentActivityName=".pokedex.ListActivity">
             <meta-data
@@ -58,6 +71,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:screenOrientation="locked"
             android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

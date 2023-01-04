@@ -1,4 +1,4 @@
-package com.example.progettopokeapi.pokedex;
+package com.example.progettopokeapi;
 
 import static java.util.Map.entry;
 
