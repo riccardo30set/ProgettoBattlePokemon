@@ -2,7 +2,9 @@ package com.example.progettopokeapi.partite;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -71,11 +73,17 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partite);
 
-        String nome="User";
+        Context context=this;
+        SharedPreferences shared_prefs;
+        String nome;
         Bitmap img;
         int drawableResourceId = R.drawable.standard_account_image;
+        shared_prefs=context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        nome=shared_prefs.getString("nameAccount","ThereIsNoNameInSharedPrefs");
         img=BitmapFactory.decodeResource(getResources(),drawableResourceId);
-
+        String nomeFile=shared_prefs.getString("nameImage","ThereIsNoProfileImage");
+        File immagineProfiloDaVisualizzare=cercaFileNelloStorageInterno(nomeFile);
+        Bitmap bitmap = BitmapFactory.decodeFile(immagineProfiloDaVisualizzare.getAbsolutePath());
         GridPlayerAdapter gridPlayerAdapter=new GridPlayerAdapter(PartitaOnlineActivity.this,nome,img);
 
         GridView grid=findViewById(R.id.gridProfile);

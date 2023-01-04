@@ -151,8 +151,7 @@ public class SettingActivity extends AppCompatActivity {
         }
         // salvare il file dell'immagine del profilo standard dalla drawable alla memoria interna se non esiste
         String nomeFileImmagineProfilo=shared_prefs.getString("nameImage","ThereIsNoProfileImage");
-        if(cercaFileNelloStorageInterno("standard_account_image.png")==null &&
-                nomeFileImmagineProfilo.equals("standard_account_image.png")){
+        if(nomeFileImmagineProfilo.equals("standard_account_image.png")){
             Bitmap bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.standard_account_image);
             salvaFileNelloStorageInterno(bitmap,"standard_account_image",false);
         }
@@ -161,7 +160,6 @@ public class SettingActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeFile(immagineProfiloDaVisualizzare.getAbsolutePath());
         imgAccount.setImageBitmap(bitmap);
         imgAccount.setZ(2);
-
 
     }
 

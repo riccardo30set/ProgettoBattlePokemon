@@ -61,9 +61,6 @@ public class GridPlayerAdapter extends BaseAdapter {
         ImageView imageView=view.findViewById(R.id.imgProfilo);
         TextView textView=view.findViewById(R.id.txtNomeProfilo);
 
-        name="User";
-        int drawableResourceId = R.drawable.standard_account_image;
-        img=BitmapFactory.decodeResource(context.getResources(),drawableResourceId);
 
         imageView.setImageBitmap(img);
         textView.setText(name);
