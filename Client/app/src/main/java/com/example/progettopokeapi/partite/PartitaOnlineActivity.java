@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -84,11 +86,16 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         String nomeFile=shared_prefs.getString("nameImage","ThereIsNoProfileImage");
         File immagineProfiloDaVisualizzare=cercaFileNelloStorageInterno(nomeFile);
         Bitmap bitmap = BitmapFactory.decodeFile(immagineProfiloDaVisualizzare.getAbsolutePath());
-        GridPlayerAdapter gridPlayerAdapter=new GridPlayerAdapter(PartitaOnlineActivity.this,nome,img);
 
-        GridView grid=findViewById(R.id.gridProfile);
+        System.out.println(nome);
 
-        grid.setAdapter(gridPlayerAdapter);
+        ImageView imgProf=findViewById(R.id.imgProfilo);
+        TextView txtProf=findViewById(R.id.txtProfileName);
+
+
+        imgProf.setImageBitmap(bitmap);
+        txtProf.setText(nome);
+
 
     }
 
