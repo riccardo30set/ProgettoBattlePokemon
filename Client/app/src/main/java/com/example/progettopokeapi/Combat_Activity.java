@@ -13,9 +13,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Combat_Activity extends AppCompatActivity {
     List<Map<String, Integer>> pokemonsPlayer = new ArrayList<Map<String, Integer>>();
+    final int critProb=24;
     //List<Map<String, Integer>> pokemonsEnemy = new ArrayList<Map<String, Integer>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,24 @@ public class Combat_Activity extends AppCompatActivity {
             //pokemonsEnemy.add(pokemonPlayer);
         }
     }
-    public int CalcoloHP(int base, int EV, int IV, int level){
+    public int calcoloHP(int base, int EV, int IV, int level){
         return (int) (Math.floor(0.01*(2*base+IV+Math.floor(0.25*EV))*level)+level+10);
     }
-    public int CalcoloPureStats(int base, int EV, int IV, int level){
+    public int calcoloPureStats(int base, int EV, int IV, int level){
         return  (int) (Math.floor(0.01*(2*base+IV+Math.floor(0.25*EV))*level)+5);
     }
-
+    public int moveDamage(int power, int ATK, int DEF, int level,String moveType, String[] pokemonTypes){
+        double moltiplicatore=1;
+        //STAB
+        for(int i=0;i<pokemonTypes.length;i++){
+            if(pokemonTypes[i].equals(moveType))
+                moltiplicatore*=1.5;
+        }
+        //CRIT
+        Random rand=new Random();
+        if(rand.nextInt(24)==0)
+            moltiplicatore*=1.5;
+        moltiplicatore*= (((double)rand.nextInt(15)/100.0)+0.85);
+        return (int) (((((2*level/5)+2)*power*(ATK/DEF)/50)+2)*moltiplicatore);
+    }
 }
