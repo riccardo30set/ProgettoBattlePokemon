@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Riccardo%20D'Esposito/AppData/Local/Android/Sdk/icons/material/materialicons/create/baseline_create_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/AndroidStudio/plugins/android/lib/android.jar!/images/material/icons/materialicons/menu/baseline_menu_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="matita" />
+                            <entry key="outputName" value="ic_menu" />
                             <entry key="sourceFile" value="C:\Users\Riccardo D'Esposito\Desktop\Weight_icon.svg" />
                           </map>
                         </option>

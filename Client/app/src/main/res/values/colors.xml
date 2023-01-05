@@ -23,5 +23,10 @@
     <color name="secondColorSpeed">#380036</color>
 
     <color name="buttons">#B1E9F1 </color>
-
+    <color name="colorPrimary">#673AB7 </color>
+    <color name="colorPrimaryDeck">#512DA8 </color>
+    <color name="colorAccent">#FF5252 </color>
+    <color name="colorPrimaryText">#212121 </color>
+    <color name="colorWhite">#FFFFFF </color>
+    <color name="colorGreen">#32CD32 </color>
 </resources>
