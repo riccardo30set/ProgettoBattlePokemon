@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ClipData;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.example.progettopokeapi.R;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +26,17 @@ public class Combat_Activity extends AppCompatActivity {
     List<Map<String, Integer>> pokemonsPlayer = new ArrayList<Map<String, Integer>>();
     final int critProb=24;
     DrawerLayout drawerLayout;
+    NavigationView combatView;
     //List<Map<String, Integer>> pokemonsEnemy = new ArrayList<Map<String, Integer>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
+        //colori delle icone del menu
+        combatView=findViewById(R.id.navigationView);
+        combatView.setItemIconTintList(null);
+        //calcolo delle statistiche di un pokemon
         for(int i=0;i<6;i++){
             Map<String, Integer> pokemonPlayer = new HashMap<String, Integer>() {{
                 put("HP", 0);
@@ -37,7 +46,6 @@ public class Combat_Activity extends AppCompatActivity {
                 put("SPDEF", 0);
                 put("SPEED", 0);
             }};
-            drawerLayout=findViewById(R.id.drawerLayout);
             pokemonsPlayer.add(pokemonPlayer);
             /*Map<String, Integer> pokemonEnemy = new HashMap<String, Integer>() {{
                 put("HP", 0);
@@ -46,10 +54,29 @@ public class Combat_Activity extends AppCompatActivity {
                 put("SPATK", 0);
                 put("SPDEF", 0);
                 put("SPEED", 0);
-            }};*/
-            //pokemonsEnemy.add(pokemonPlayer);
+            }};
+            pokemonsEnemy.add(pokemonPlayer);*/
         }
+            drawerLayout=findViewById(R.id.drawerLayout);
 
+
+        //inserimento nomi delle mosse
+        Menu general=combatView.getMenu();
+        MenuItem movesGeneral=  general.getItem(0);
+        Menu moves=movesGeneral.getSubMenu();
+        for(int i=0;i<4;i++){
+            MenuItem move=moves.getItem(i);
+            //qui aggiungere il codice per ottenere il nome della mossa
+            move.setTitle("mossaprova");
+        }
+        //inserimento nomi dei pokemon
+        MenuItem pokemonGeneral=  general.getItem(1);
+        Menu pokemon=pokemonGeneral.getSubMenu();
+        for(int i=0;i<6;i++){
+            MenuItem poke=pokemon.getItem(i);
+            //qui aggiungere il codice per ottenere il nome del pokemon
+            poke.setTitle("pokemonprova");
+        }
 
     }
     public int calcoloHP(int base, int EV, int IV, int level){

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Moves">
+        <menu >
+            <item
+                android:title="move1"
+                android:icon="@drawable/typefight"
+                android:id="@+id/move1" />
+            <item
+                android:id="@+id/move2"
+                android:icon="@drawable/typesteel"
+                android:title="move2" />
+            <item
+                android:id="@+id/move3"
+                android:icon="@drawable/typenormal"
+                android:title="move3" />
+            <item
+                android:id="@+id/move4"
+                android:icon="@drawable/typedragon"
+                android:title="move4" />
+        </menu>
+    </item>
+    <item android:title="Pokemon">
+        <menu>
+            <item
+                android:title="pokemon1"
+                android:icon="@drawable/iconpokeball"
+                android:id="@+id/pokemon1" />
+            <item
+                android:id="@+id/pokemon2"
+                android:icon="@drawable/iconpokeball"
+                android:title="pokemon2" />
+            <item
+                android:id="@+id/pokemon3"
+                android:icon="@drawable/iconpokeball"
+                android:title="pokemon3" />
+            <item
+                android:id="@+id/pokemon4"
+                android:icon="@drawable/iconpokeball"
+                android:title="pokemon4" />
+            <item
+                android:id="@+id/pokemon5"
+                android:icon="@drawable/iconpokeball"
+                android:title="pokemon5" />
+            <item
+                android:id="@+id/pokemon6"
+                android:icon="@drawable/iconpokeball"
+                android:title="pokemon6" />
+        </menu>
+    </item>
+
+
+</menu>
