@@ -33,6 +33,10 @@ public class Combat_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
+        //apertura del menu
+        drawerLayout=findViewById(R.id.drawerLayout);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        drawerLayout.openDrawer(GravityCompat.START);
         //colori delle icone del menu
         combatView=findViewById(R.id.navigationView);
         combatView.setItemIconTintList(null);
@@ -57,7 +61,6 @@ public class Combat_Activity extends AppCompatActivity {
             }};
             pokemonsEnemy.add(pokemonPlayer);*/
         }
-            drawerLayout=findViewById(R.id.drawerLayout);
 
 
         //inserimento nomi delle mosse
@@ -100,6 +103,6 @@ public class Combat_Activity extends AppCompatActivity {
         return (int) (((((2*level/5)+2)*power*(ATK/DEF)/50)+2)*moltiplicatore);
     }
     public void onClick(View view){
-        drawerLayout.openDrawer(GravityCompat.START);
+
     }
 }

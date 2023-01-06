@@ -10,7 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/colorPrimary"
@@ -18,6 +20,7 @@
             android:orientation="horizontal"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:visibility="invisible"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -30,11 +33,53 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imgBaseEnemy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/enemybasechampion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <ImageView
+            android:id="@+id/imgPokeEnemy"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="60dp"
+            android:src="@raw/pokemon248"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgBasePlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/playerbasechampion"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgPokePlayer"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="96dp"
+            android:layout_marginBottom="-60dp"
+            android:src="@raw/pokemonretro448"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:headerLayout="@layout/layout_pokemon"
         app:menu="@menu/battle_menu"
         android:layout_gravity="start"/>
 
