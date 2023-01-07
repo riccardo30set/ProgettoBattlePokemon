@@ -107,10 +107,15 @@ public class CustomListAdapter extends BaseAdapter {
                     imgPok.add((Integer) imageView.getTag());
                 } else {
                     // Remove the item from the list of selected items
-                    selectedItems.remove(new ModelPokemonCheck(txtTitle.getText().toString(), (int) imageView.getTag()));
+                    for(int i=0;i<selectedItems.size();i++){
+                        if(item.getName().equals(selectedItems.get(i).getName())){
+                            selectedItems.remove(i);
+                        }
+                        //selectedItems.remove(new ModelPokemonCheck(txtTitle.getText().toString(), (int) imageView.getTag()));
+                    }
+
                     listaNomi.remove(txtTitle.getText().toString());
                     imgPok.remove((Integer) imageView.getTag());
-
                 }
 
 
