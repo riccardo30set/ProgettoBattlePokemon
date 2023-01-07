@@ -139,12 +139,7 @@ public class CustomListAdapter extends BaseAdapter {
                         }
                     });
 
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int i) {
-                            dialog.dismiss();
-                        }
-                    });
+
                     // Inflate the custom layout as an alert view
                  View alertDialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.alert_layout, null);
 
