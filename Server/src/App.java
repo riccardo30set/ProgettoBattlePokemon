@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class App {
     private static int playerID = 0;
     public static HashMap<Integer, PlayerHandler> players = new HashMap<Integer, PlayerHandler>();
+    public static HashMap<String, Match> games = new HashMap<String, Match>();
     public static void main(String[] args) throws Exception {
         ServerSocket mainSocket = new ServerSocket(1500);
         System.out.println("Main socket listening on port 1500");
