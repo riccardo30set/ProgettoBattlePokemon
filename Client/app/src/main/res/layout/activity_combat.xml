@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/battleground"
-    tools:context=".Combat_Activity">
+    tools:context=".partite.Combat_Activity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,6 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="128dp"
             android:layout_marginEnd="28dp"
+            android:scaleType="fitXY"
+            android:scaleX="1.1"
+            android:scaleY="1.4"
             android:src="@drawable/enemybasechampion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +42,7 @@
             android:layout_height="180dp"
             android:layout_marginTop="44dp"
             android:layout_marginEnd="60dp"
-            android:src="@raw/pokemon248"
+            android:src="@raw/pokemon717"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/playerbasechampion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -59,7 +62,7 @@
             android:layout_height="300dp"
             android:layout_marginStart="96dp"
             android:layout_marginBottom="-60dp"
-            android:src="@raw/pokemonretro448"
+            android:src="@raw/pokemonretro9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

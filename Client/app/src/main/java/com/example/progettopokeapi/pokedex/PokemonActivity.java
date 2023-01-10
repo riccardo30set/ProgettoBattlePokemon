@@ -227,9 +227,6 @@ public class PokemonActivity extends AppCompatActivity {
                                 try {
                                     //['flavor_text_entries'][variabile]['version']['name'] versione gioco "sword"
                                     //['flavor_text_entries'][variabile]['language']['name'] lingua "en"
-
-
-
                                     boolean correctDescription=false;
                                     int i=0;
                                     String secondDescription="";
@@ -290,8 +287,6 @@ public class PokemonActivity extends AppCompatActivity {
                 currentImageViewID=frontResID;
             }
         }
-
-
     }
 
 }

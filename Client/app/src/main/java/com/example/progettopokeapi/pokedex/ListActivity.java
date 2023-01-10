@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.progettopokeapi.Combat_Activity;
+import com.example.progettopokeapi.partite.Combat_Activity;
 import com.example.progettopokeapi.MainActivity;
 import com.example.progettopokeapi.R;
 import com.example.progettopokeapi.SettingActivity;

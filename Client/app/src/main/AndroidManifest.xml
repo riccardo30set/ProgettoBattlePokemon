@@ -15,7 +15,7 @@
         android:theme="@style/Theme.ProgettoPokeAPI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Combat_Activity"
+            android:name=".partite.Combat_Activity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />

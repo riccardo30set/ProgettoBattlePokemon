@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.progettopokeapi.partite.Combat_Activity;
 import com.example.progettopokeapi.pokedex.ListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

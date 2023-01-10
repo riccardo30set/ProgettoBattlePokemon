@@ -58,13 +58,12 @@ public class PartitaOnlineActivity extends AppCompatActivity {
                     nomi.addAll(stringArrayList);
                     img.addAll(intArrayList);
 
-
-
                     GridAdapter gridAdapter=new GridAdapter(PartitaOnlineActivity.this,img,nomi);
 
                     GridView grid=findViewById(R.id.gridView);
 
                     grid.setAdapter(gridAdapter);
+                    //Intent intentCombat=
 
                 }
             }

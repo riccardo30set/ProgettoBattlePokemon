@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.progettopokeapi.partite.Combat_Activity;
 import com.example.progettopokeapi.partite.PartitaLocaleActivity;
 import com.example.progettopokeapi.partite.PartitaOnlineActivity;
 import com.example.progettopokeapi.pokedex.ListActivity;
