@@ -13,6 +13,7 @@ public class App {
             Socket newClient = getNextClient(mainSocket);
             if(newClient!=null){
                 players.put(playerID, new PlayerHandler(newClient, playerID));
+                players.get(playerID).start();
                 playerID++;
             }
         }

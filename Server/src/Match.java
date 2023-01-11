@@ -4,6 +4,7 @@ public class Match{
 
 
     public Match(String name){
+        System.out.println("Creata partita "+name);
         this.name = name;
     }
 
@@ -14,6 +15,7 @@ public class Match{
      * @param player
      */
     public void addPlayer(int playerNumber, PlayerHandler player){
+        System.out.println(player.getPlayer().getName()+" partecipa alla partita "+name);
         players[playerNumber] = player;
     }
 
