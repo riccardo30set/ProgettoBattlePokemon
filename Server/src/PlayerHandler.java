@@ -44,27 +44,28 @@ public class PlayerHandler extends Thread {
      */
     private void setPlayerInfo(){
         if(socketIn.nextInt()==MessageType.SEND_PLAYER_IDENTITY){
-            this.player = new Player(socketIn.nextLine(), socketIn.nextLine(), this.playerID);
-            System.out.println("Giocatore: "+this.playerName+" connesso");
+            this.player = new Player(socketIn.next(), socketIn.next(), this.playerID);
+            System.out.println("Giocatore: "+player.getName()+" connesso");
         }else{
             System.out.println("Protocol error: user did not send name and description.");
         }
     }
 
     public void run(){
+        System.out.println("wwwwwwwwwwwwwwwwwwww");
         while(true){
             switch(socketIn.nextInt()){
                 case MessageType.CREATE_GAME:
-                    createGame(socketIn.nextLine());
+                    createGame(socketIn.next());
                     break;
                 case MessageType.JOIN_GAME:
-                    joinGame(socketIn.nextLine());
+                    joinGame(socketIn.next());
                     break;
                 case MessageType.GET_OPPONENT_IDENTITY:
                     sendOpponentIdentity();
                     break;
                 case MessageType.SET_POKEMON:
-                    setPokemon(socketIn.nextInt(),socketIn.nextLine());
+                    setPokemon(socketIn.nextInt(),socketIn.next());
                     break;
                 case MessageType.SET_READY:
                     setReady(socketIn.nextBoolean());
@@ -82,7 +83,7 @@ public class PlayerHandler extends Thread {
      */
     public void createGame(String name){
         game = new Match(name);
-        game.addPlayer(0, player);
+        game.addPlayer(0, this);
         App.games.put(name, game);
     }
 
@@ -103,6 +104,7 @@ public class PlayerHandler extends Thread {
      * @param pokemon
      */
     public void setPokemon(int slot, String pokemon){
+        System.out.println(player.getName()+" imposta pokemon "+pokemon+" in slot "+slot);
         this.player.setPokemon(slot, pokemon);
         PlayerHandler opponent = getOpponent();
         opponent.socketOut.println(MessageType.GET_OPPONENT_POKEMON);
@@ -116,6 +118,7 @@ public class PlayerHandler extends Thread {
     }
 
     public void sendOpponentIdentity(){
+        System.out.println(player.getName()+" richiede il profilo avversario");
         PlayerHandler opponent =getOpponent();
         socketOut.println(opponent.getPlayer().getName());
         socketOut.println(opponent.getPlayer().getDescription());
@@ -123,8 +126,14 @@ public class PlayerHandler extends Thread {
     }
 
     public void setReady(boolean state){
+        if(state){
+            System.out.println(player.getName()+" è pronto");
+        }else {
+            System.out.println(player.getName()+" NON è pronto");
+        }
         this.isReady = state;
         if(getOpponent().isReady()&&isReady){
+            System.out.println("La partita inizia");
             socketOut.println(MessageType.GAME_STARTED);
             getOpponent().socketOut.println(MessageType.GAME_STARTED);
         }
