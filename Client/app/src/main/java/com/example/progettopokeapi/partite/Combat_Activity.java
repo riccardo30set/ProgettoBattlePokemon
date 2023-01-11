@@ -27,17 +27,11 @@ public class Combat_Activity extends AppCompatActivity {
     final int critProb=24;
     DrawerLayout drawerLayout;
     NavigationView combatView;
-    //List<Map<String, Integer>> pokemonsEnemy = new ArrayList<Map<String, Integer>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
-        //apertura del menu
-        drawerLayout=findViewById(R.id.drawerLayout);
-        //colori delle icone del menu
-        combatView=findViewById(R.id.navigationView);
-        combatView.setItemIconTintList(null);
         //calcolo delle statistiche di un pokemon
         for(int i=0;i<6;i++){
             Map<String, Integer> pokemonPlayer = new HashMap<String, Integer>() {{
@@ -49,16 +43,13 @@ public class Combat_Activity extends AppCompatActivity {
                 put("SPEED", 0);
             }};
             pokemonsPlayer.add(pokemonPlayer);
-            /*Map<String, Integer> pokemonEnemy = new HashMap<String, Integer>() {{
-                put("HP", 0);
-                put("ATK", 0);
-                put("DEF", 0);
-                put("SPATK", 0);
-                put("SPDEF", 0);
-                put("SPEED", 0);
-            }};
-            pokemonsEnemy.add(pokemonPlayer);*/
         }
+        //apertura del menu
+        drawerLayout=findViewById(R.id.drawerLayout);
+        //colori delle icone del menu
+        combatView=findViewById(R.id.navigationView);
+        combatView.setItemIconTintList(null);
+
 
 
         //inserimento nomi delle mosse

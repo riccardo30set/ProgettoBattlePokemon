@@ -23,8 +23,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettopokeapi.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class PartitaOnlineActivity extends AppCompatActivity {
 
@@ -41,11 +50,8 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         @Override
         public void onActivityResult(ActivityResult result) {
             Log.d(TAG,"onActivityResult");
-
             if(result.getResultCode()==78){
                 Intent inten2=result.getData();
-
-
 
                 if(inten2 != null){
                     //I extract the data
@@ -63,8 +69,40 @@ public class PartitaOnlineActivity extends AppCompatActivity {
                     GridView grid=findViewById(R.id.gridView);
 
                     grid.setAdapter(gridAdapter);
-                    //Intent intentCombat=
+                    //getting data for combat activity (moves,Pokemon name,stats)
+                    Pokemon[] team=new Pokemon[6];
+                    for(int i=0;i<nomi.size();i++){
+                        //name of the pokemon
+                        String pokemonName= nomi.get(i).toLowerCase();
+                        //moves of the pokemon (getting data from json file)
+                        HashMap<String,String> moves=new HashMap<String,String>();
+                        String json;
+                        try {
+                            InputStream is=getAssets().open("moves.json");
+                            int size = is.available();
+                            byte[] buffer =new byte[size];
+                            is.read(buffer);
+                            is.close();
+                            json=new String(buffer,"UTF-8");
+                            JSONObject pokemon=new JSONObject(json);
+                            JSONArray arrayMoves=pokemon.getJSONArray(pokemonName);
+                            //moves name and type
+                            for(int t=0;t<arrayMoves.length();t++){
+                                String moveName=arrayMoves.getJSONObject(t).getString("move_name");
+                                String moveType=arrayMoves.getJSONObject(t).getString("type");
+                                moves.put(moveName,moveType);
+                            }
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                        team[i]=new Pokemon(pokemonName,moves);
+                    }
 
+
+                    //Intent intentCombat=
+                    Intent intentCombat=new Intent();
                 }
             }
         }
