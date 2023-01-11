@@ -44,7 +44,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
     ArrayList<Integer> intArrayList;
     ArrayList<String> stringArrayList;
 
-
+    Intent intentCombat;
     //It is used to get data from the activity automatically
     ActivityResultLauncher<Intent> activityLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -69,8 +69,6 @@ public class PartitaOnlineActivity extends AppCompatActivity {
                     GridView grid=findViewById(R.id.gridView);
 
                     grid.setAdapter(gridAdapter);
-                    //getting data for combat activity (moves,Pokemon name,stats)
-                    Pokemon[] team=new Pokemon[6];
                     for(int i=0;i<nomi.size();i++){
                         //name of the pokemon
                         String pokemonName= nomi.get(i).toLowerCase();
@@ -97,12 +95,9 @@ public class PartitaOnlineActivity extends AppCompatActivity {
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
-                        team[i]=new Pokemon(pokemonName,moves);
+                        //adding data for combat activity (moves,Pokemon name,stats)
+                        intentCombat.putExtra("pokemon"+(i+1),new Pokemon(pokemonName,moves));
                     }
-
-
-                    //Intent intentCombat=
-                    Intent intentCombat=new Intent();
                 }
             }
         }
@@ -111,7 +106,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partite);
-
+        intentCombat=new Intent(this,Combat_Activity.class);
         Context context=this;
         SharedPreferences shared_prefs;
         String nome;
@@ -161,7 +156,9 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         activityLauncher.launch(intent);
     }
 
-
+    public void onClickBattle(View view){
+        startActivity(intentCombat);
+    }
 
 
 

@@ -16,7 +16,7 @@
         android:src="@raw/pokemon448" />
 
     <TextView
-        android:id="@+id/txtNamePokemon"
+        android:id="@+id/txtPokemonInBattle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/hpPokemonInBattle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
@@ -37,5 +37,5 @@
         android:textColor="#4CAF50"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNamePokemon" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPokemonInBattle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

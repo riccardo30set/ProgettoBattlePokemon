@@ -14,4 +14,37 @@ public class Pokemon implements Serializable {
         this.name = name;
         this.moves=moves;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getMoveByIndex(int index){
+        String name="";
+        int count=0;
+        for (String temp: moves.keySet()) {
+            if(count==index){
+                name=temp;
+            }
+            count++;
+        }
+        return name;
+    }
+    public String getTypeByIndex(int index){
+        String name="";
+        int count=0;
+        for (String temp: moves.values()) {
+            if(count==index){
+                name=temp;
+            }
+            count++;
+        }
+        return name;
+    }
+    public String getTypeByName(String move){
+        return moves.get(move);
+    }
 }
