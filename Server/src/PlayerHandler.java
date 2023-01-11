@@ -1,7 +1,5 @@
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class PlayerHandler extends Thread {
@@ -12,7 +10,6 @@ public class PlayerHandler extends Thread {
     private boolean isReady = false;
     public PrintWriter socketOut;
     private Scanner socketIn;
-    private HashMap<Integer, String> pokemons;
     private Match game;
 
     /**
@@ -52,7 +49,6 @@ public class PlayerHandler extends Thread {
     }
 
     public void run(){
-        System.out.println("wwwwwwwwwwwwwwwwwwww");
         while(true){
             switch(socketIn.nextInt()){
                 case MessageType.CREATE_GAME:
