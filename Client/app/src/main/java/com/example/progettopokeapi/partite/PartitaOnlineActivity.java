@@ -69,22 +69,31 @@ public class PartitaOnlineActivity extends AppCompatActivity {
                     GridView grid=findViewById(R.id.gridView);
 
                     grid.setAdapter(gridAdapter);
+                    //preparazione intent contenente dati dei pokemon  per la combat activity
                     for(int i=0;i<nomi.size();i++){
-                        //name of the pokemon
                         String pokemonName= nomi.get(i).toLowerCase();
-                        //moves of the pokemon (getting data from json file)
+                        int PokedexId=1;
                         HashMap<String,String> moves=new HashMap<String,String>();
+                        int hp=0;
                         String json;
                         try {
+                            //lettura del file json
                             InputStream is=getAssets().open("moves.json");
                             int size = is.available();
                             byte[] buffer =new byte[size];
                             is.read(buffer);
                             is.close();
                             json=new String(buffer,"UTF-8");
-                            JSONObject pokemon=new JSONObject(json);
-                            JSONArray arrayMoves=pokemon.getJSONArray(pokemonName);
-                            //moves name and type
+                            JSONObject general=new JSONObject(json);
+                            JSONObject pokemon=general.getJSONObject(pokemonName);
+                            // id del pokemon
+                            PokedexId=pokemon.getInt("pokedex_number");
+                            //HP del pokemon
+                            JSONObject stats=pokemon.getJSONObject("base_stats");
+                            int hpBase=stats.getInt("hp");
+                            hp=(int) (Math.floor(0.01*(2*hpBase+31+Math.floor(0.25*85))*100)+110);
+                            JSONArray arrayMoves=pokemon.getJSONArray("moves");
+                            //nomi delle mosse e i relativi tipi
                             for(int t=0;t<arrayMoves.length();t++){
                                 String moveName=arrayMoves.getJSONObject(t).getString("move_name");
                                 String moveType=arrayMoves.getJSONObject(t).getString("type");
@@ -96,7 +105,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         //adding data for combat activity (moves,Pokemon name,stats)
-                        intentCombat.putExtra("pokemon"+(i+1),new Pokemon(pokemonName,moves));
+                        intentCombat.putExtra("pokemon"+(i+1),new Pokemon(pokemonName,moves,PokedexId,hp));
                     }
                 }
             }

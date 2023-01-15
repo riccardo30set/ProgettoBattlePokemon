@@ -4,7 +4,7 @@
         <menu >
             <item
                 android:title="move1"
-                android:icon="@drawable/typefighting"
+                android:icon="@drawable/typefight"
                 android:id="@+id/move1" />
             <item
                 android:id="@+id/move2"
@@ -48,6 +48,4 @@
                 android:title="pokemon6" />
         </menu>
     </item>
-
-
 </menu>
