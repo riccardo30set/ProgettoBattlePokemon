@@ -45,6 +45,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
     ArrayList<String> stringArrayList;
 
     Intent intentCombat;
+
     //It is used to get data from the activity automatically
     ActivityResultLauncher<Intent> activityLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
