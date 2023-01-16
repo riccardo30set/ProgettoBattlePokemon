@@ -40,8 +40,8 @@ public class PlayerHandler extends Thread {
      * Only call this method in the PlayerHandler object construction
      */
     private void setPlayerInfo(){
-        if(socketIn.nextInt()==MessageType.SEND_PLAYER_IDENTITY){
-            this.player = new Player(socketIn.next(), socketIn.next(), this.playerID);
+        if(Integer.parseInt(socketIn.nextLine())==MessageType.SEND_PLAYER_IDENTITY){
+            this.player = new Player(socketIn.nextLine(), socketIn.nextLine(), this.playerID);
             System.out.println("Giocatore: "+player.getName()+" connesso");
         }else{
             System.out.println("Protocol error: user did not send name and description.");
@@ -50,18 +50,18 @@ public class PlayerHandler extends Thread {
 
     public void run(){
         while(true){
-            switch(socketIn.nextInt()){
+            switch(Integer.parseInt(socketIn.nextLine())){
                 case MessageType.CREATE_GAME:
-                    createGame(socketIn.next());
+                    createGame(socketIn.nextLine());
                     break;
                 case MessageType.JOIN_GAME:
-                    joinGame(socketIn.next());
+                    joinGame(socketIn.nextLine());
                     break;
                 case MessageType.GET_OPPONENT_IDENTITY:
                     sendOpponentIdentity();
                     break;
                 case MessageType.SET_POKEMON:
-                    setPokemon(socketIn.nextInt(),socketIn.next());
+                    setPokemon(Integer.parseInt(socketIn.nextLine()),socketIn.nextLine());
                     break;
                 case MessageType.SET_READY:
                     setReady(socketIn.nextBoolean());
