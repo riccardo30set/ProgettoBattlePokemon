@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,8 +61,8 @@ public class Combat_Activity extends AppCompatActivity {
         hpPokemoInBattle=HeaderMenu.findViewById(R.id.hpPokemonInBattle);
         
         //immagini pokemon in campo
-        imgPokemonBattlePlayer=findViewById(R.id.imgPokePlayer);
-        imgPokemonBattleEnemy=findViewById(R.id.imgPokeEnemy);
+        imgPokemonBattlePlayer=(ImageView) findViewById(R.id.imgPokePlayer);
+        imgPokemonBattleEnemy=(ImageView)findViewById(R.id.imgPokeEnemy);
         
         //sottomenu mosse
         MenuItem pokemonGeneral=  general.getItem(1);
@@ -127,8 +128,11 @@ public class Combat_Activity extends AppCompatActivity {
         //alert con il nome della mossa usata
         Toast toast=Toast.makeText(this, "hai usato "+team[mainPokemon].getMoveByIndex(numMove), Toast.LENGTH_SHORT);
         toast.show();
-        //aggiungere codice per l'animazione
-        //aggiugere codice per inviare al server
+        // aggiugere codice per inviare al server
+        //movimento della mossa
+        TranslateAnimation animation = new TranslateAnimation(0, 680, 0, -200);
+        animation.setDuration(1500);
+        imgPokemonBattlePlayer.startAnimation(animation);
     }
     
     
