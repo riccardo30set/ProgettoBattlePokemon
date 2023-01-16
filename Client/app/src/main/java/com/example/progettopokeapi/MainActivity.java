@@ -34,14 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
                 switch(item.getItemId()){
                     case R.id.home:
-
                         break;
                     case R.id.pokedex:
                         startActivity(new Intent(getApplicationContext(), ListActivity.class));
-                        overridePendingTransition(2,2);
-                        break;
-                    case R.id.Rooms:
-                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
                         overridePendingTransition(2,2);
                         break;
                     case R.id.settings:

@@ -124,6 +124,19 @@
                 android:progress="100" />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imgStatoPartita"
+            android:layout_width="681dp"
+            android:layout_height="189dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.434"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            app:srcCompat="@drawable/defeat" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView

@@ -14,10 +14,6 @@
         android:icon="@navigation/lista"
         android:title="Pokedex" />
     <item
-        android:id="@+id/Rooms"
-        android:icon="@navigation/persone"
-        android:title="Rooms" />
-    <item
         android:id="@+id/settings"
         android:icon="@navigation/settings"
         android:title="Settings" />

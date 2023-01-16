@@ -1,5 +1,6 @@
 package com.example.progettopokeapi;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 
 public class SettingActivity extends AppCompatActivity {
     Context context=this;
@@ -60,10 +62,6 @@ public class SettingActivity extends AppCompatActivity {
                     case R.id.pokedex:
                         startActivity(new Intent(getApplicationContext(), ListActivity.class));
                         overridePendingTransition(0,0);
-                        return true;
-                    case R.id.Rooms:
-                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
-                        overridePendingTransition(2,2);
                         return true;
                     case R.id.settings:
                         return true;
@@ -103,29 +101,6 @@ public class SettingActivity extends AppCompatActivity {
                 }
             }
         });
-
-        imgAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, PICK_IMAGE);
-            }
-        });
-
-        FrameLayout layout = (FrameLayout) findViewById(R.id.frameLayout);
-        layout.setZ(1);
-        nameInput.setZ(2);
-        imgAccount.setZ(2);
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nameInput.clearFocus();
-            }
-        });
-
-
-
         // inserimento dell'immmagine entrati nella schermata
         // si controlla nelle prefences se esiste il nome dell'immagine del profilo
         // se esiste si procede con l'inserimento dell'immagine dallo storage interno
@@ -149,6 +124,14 @@ public class SettingActivity extends AppCompatActivity {
         imgAccount.setZ(2);
 
     }
+
+    public void onClickIMG(View v){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE);
+    }
+
+
 
 
     public File cercaFileNelloStorageInterno(String nomeFileImmagineProfilo){
