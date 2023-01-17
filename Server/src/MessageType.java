@@ -19,5 +19,12 @@ public class MessageType{
     //Respond to this with CONNECTIVITY_CHECK_OK
     public final static int CONNECTIVITY_CHECK_REQ = 8;
     public final static int CONNECTIVITY_CHECK_OK = 9;
-
+    public final static int INCOMBAT = 10;
+    public final static int WIN = 11;
+    public final static int LOSE = 12;
+    public final static int FIRST = 13;
+    public final static int SECOND = 14;
+    public final static int USED_MOVE = 15;
+    public final static int CHANGE_POKEMON = 16;
+    public final static int ACTION = 17;
 }
