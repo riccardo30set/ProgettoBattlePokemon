@@ -16,7 +16,7 @@
             android:layout_width="301dp"
             android:layout_height="72dp"
             android:layout_marginStart="12dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/rounded_box_player"
             android:orientation="vertical"
             android:padding="16dp"
