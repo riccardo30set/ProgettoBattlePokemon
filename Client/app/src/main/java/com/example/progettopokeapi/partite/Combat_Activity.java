@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,10 +46,6 @@ public class Combat_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
-
-
-
-
         team=new Pokemon[6];
         //apertura del menu
         drawerLayout=findViewById(R.id.drawerLayout);
@@ -193,9 +188,6 @@ public class Combat_Activity extends AppCompatActivity {
     }
     public void onClick(View view){
         drawerLayout.openDrawer(GravityCompat.START);
-        //ImageView imgStatoPartita=findViewById(R.id.imgStatoPartita);
-        //imgStatoPartita.setImageResource(R.drawable.victory);
-        //imgStatoPartita.setVisibility(View.VISIBLE);
     }
 
 

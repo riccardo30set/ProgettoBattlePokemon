@@ -70,6 +70,10 @@ public class ListActivity extends AppCompatActivity {
                         return true;
                     case R.id.pokedex:
                         return true;
+                    case R.id.Rooms:
+                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
+                        overridePendingTransition(2,2);
+                        return true;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), SettingActivity.class));
                         overridePendingTransition(0,0);
