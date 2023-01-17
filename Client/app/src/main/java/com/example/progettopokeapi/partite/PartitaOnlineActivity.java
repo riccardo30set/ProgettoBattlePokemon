@@ -1,24 +1,28 @@
 package com.example.progettopokeapi.partite;
 
 import static android.content.ContentValues.TAG;
-
+import com.example.progettopokeapi.Client;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettopokeapi.R;
@@ -26,6 +30,7 @@ import com.example.progettopokeapi.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -133,7 +138,9 @@ public class PartitaOnlineActivity extends AppCompatActivity {
 
         ImageView imgProf=findViewById(R.id.imgProfilo);
         TextView txtProf=findViewById(R.id.txtProfileName);
-
+        TextView gameName = (TextView)findViewById(R.id.txtNomePartita
+        );
+        gameName.setText(getIntent().getExtras().getString("gameName"));
 
         imgProf.setImageBitmap(bitmap);
         txtProf.setText(nome);
@@ -167,7 +174,12 @@ public class PartitaOnlineActivity extends AppCompatActivity {
     }
 
     public void onClickBattle(View view){
-        startActivity(intentCombat);
+        AppCompatButton button = (AppCompatButton)findViewById(R.id.battleButton);
+        button.setEnabled(false);
+        button.setBackgroundColor(Color.GRAY);
+        Client.setReady(true);
+        Toast.makeText(this,"Sei pronto, in attesa dell'altro giocatore",Toast.LENGTH_LONG).show();
+        //startActivity(intentCombat);
     }
 
 
