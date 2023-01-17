@@ -15,6 +15,20 @@
         android:theme="@style/Theme.ProgettoPokeAPI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".partite.ScannerLocalConnection"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Client$LocalConnection"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".partite.Combat_Activity"
             android:exported="false"
             android:screenOrientation="landscape"
@@ -29,31 +43,31 @@
         </activity>
         <activity
             android:name=".partite.PartitaLocaleActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="locked"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".partite.PartitaOnlineActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="locked"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SettingActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="locked"
-            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar" />
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".pokedex.ListActivity"
             android:exported="false"
             android:label=" "
-            android:screenOrientation="locked"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="locked">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -61,9 +75,9 @@
         <activity
             android:name=".pokedex.PokemonActivity"
             android:exported="false"
-            android:screenOrientation="locked"
             android:label="PokemonActivity"
-            android:parentActivityName=".pokedex.ListActivity">
+            android:parentActivityName=".pokedex.ListActivity"
+            android:screenOrientation="locked">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".pokedex.ListActivity" />
