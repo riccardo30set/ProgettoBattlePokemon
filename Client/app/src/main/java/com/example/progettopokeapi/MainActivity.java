@@ -2,6 +2,7 @@ package com.example.progettopokeapi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -58,7 +62,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOnline(View view){
-        startActivity(new Intent(getApplicationContext(), PartitaOnlineActivity.class));
+        Client.connect(this,"10.10.10.191",1500);
+        String gameName = "Partita di "+Client.shared_prefs.getString("nameAccount","Giocatore");
+        Client.createGame(gameName);
+        Intent online = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
+        online.putExtra("gameName",gameName);
+        startActivity(online);
         overridePendingTransition(2,2);
     }
 
@@ -70,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickPartecipa(View view){
 
     }
+
 }
 
 
