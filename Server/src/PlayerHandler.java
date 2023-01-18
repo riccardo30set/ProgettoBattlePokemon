@@ -9,9 +9,9 @@ public class PlayerHandler extends Thread {
     private Socket socket;
     private boolean isReady = false;
     public PrintWriter socketOut;
-    private Scanner socketIn;
+    public Scanner socketIn;
     private Match game;
-
+    private Action action;
     /**
      * 
      * @param socket the player's socket
@@ -66,8 +66,10 @@ public class PlayerHandler extends Thread {
                 case MessageType.SET_READY:
                     setReady(socketIn.nextBoolean());
                     break;
-                    
-
+                case MessageType.ACTION:
+                    this.writeAction(socketIn.nextLine());
+                    this.game.playerMove(playerID);
+                    break;
             }
         }
     }
@@ -108,11 +110,10 @@ public class PlayerHandler extends Thread {
         opponent.socketOut.println(pokemon);
 
     }
-    
+
     private PlayerHandler getOpponent(){
         return game.getOpponent(this);
     }
-
 
     public void sendOpponentIdentity(){
         System.out.println(player.getName()+" richiede il profilo avversario");
@@ -129,16 +130,11 @@ public class PlayerHandler extends Thread {
             System.out.println(player.getName()+" NON è pronto");
         }
         this.isReady = state;
-        if(getOpponent()==null){
-            System.out.println(player.getName()+"è pronto, manca il secondo giocatore");
-        }else{
-            if(getOpponent().isReady()&&isReady){
-                System.out.println("La partita inizia");
-                socketOut.println(MessageType.GAME_STARTED);
-                getOpponent().socketOut.println(MessageType.GAME_STARTED);
-            }
+        if(getOpponent().isReady()&&isReady){
+            System.out.println("La partita inizia");
+            socketOut.println(MessageType.GAME_STARTED);
+            getOpponent().socketOut.println(MessageType.GAME_STARTED);
         }
-        
     }
 
 
@@ -147,8 +143,23 @@ public class PlayerHandler extends Thread {
         return this.player;
     }
 
+    public int getPlayerId(){
+        return this.playerID;
+    }
+    public Action getPlayerAction(){
+        return this.action;
+    }
     public boolean isReady(){
         return this.isReady;
+    }
+    // USED_MOVE|CHANGED_PK:PKNAME:HP:[MV_NAME]
+    public void writeAction(String act){
+        String[] actElements = act.split(":");
+        if(actElements.length==4){
+            this.action=new Action(Integer.parseInt(actElements[0]),actElements[1],actElements[2],actElements[3]);
+        }else{
+            this.action=new Action(Integer.parseInt(actElements[0]),actElements[1],actElements[2]);
+        }
     }
 
 
