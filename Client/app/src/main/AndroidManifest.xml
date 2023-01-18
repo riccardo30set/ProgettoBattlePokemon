@@ -15,6 +15,13 @@
         android:theme="@style/Theme.ProgettoPokeAPI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".partite.Partecipa"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".partite.ScannerLocalConnection"
             android:exported="false">
             <meta-data
