@@ -108,10 +108,11 @@ public class PlayerHandler extends Thread {
         opponent.socketOut.println(pokemon);
 
     }
-
+    
     private PlayerHandler getOpponent(){
         return game.getOpponent(this);
     }
+
 
     public void sendOpponentIdentity(){
         System.out.println(player.getName()+" richiede il profilo avversario");
@@ -128,11 +129,16 @@ public class PlayerHandler extends Thread {
             System.out.println(player.getName()+" NON è pronto");
         }
         this.isReady = state;
-        if(getOpponent().isReady()&&isReady){
-            System.out.println("La partita inizia");
-            socketOut.println(MessageType.GAME_STARTED);
-            getOpponent().socketOut.println(MessageType.GAME_STARTED);
+        if(getOpponent()==null){
+            System.out.println(player.getName()+"è pronto, manca il secondo giocatore");
+        }else{
+            if(getOpponent().isReady()&&isReady){
+                System.out.println("La partita inizia");
+                socketOut.println(MessageType.GAME_STARTED);
+                getOpponent().socketOut.println(MessageType.GAME_STARTED);
+            }
         }
+        
     }
 
 
