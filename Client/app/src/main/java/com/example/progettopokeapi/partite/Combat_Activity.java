@@ -1,6 +1,7 @@
 package com.example.progettopokeapi.partite;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.progettopokeapi.Client;
 import com.example.progettopokeapi.MessageType;
 import com.example.progettopokeapi.R;
+import com.example.progettopokeapi.WIN_activity;
+import com.example.progettopokeapi.lose_activity;
 import com.google.android.material.navigation.NavigationView;
 
 public class Combat_Activity extends AppCompatActivity {
@@ -243,10 +246,10 @@ public class Combat_Activity extends AppCompatActivity {
                 imgMenu.setVisibility(View.VISIBLE);
                 break;
             case MessageType.WIN:
-                //TODO Caso vittoria
+                startActivity(new Intent(this, WIN_activity.class));
                 break;
             case MessageType.LOSE:
-                //TODO Caso sconfitta
+                startActivity(new Intent(this, lose_activity.class));
                 break;
         }
 
@@ -268,7 +271,7 @@ public class Combat_Activity extends AppCompatActivity {
                     }
                     break;
                 case MessageType.LOSE:
-                    //TODO Caso sconfitta
+                    startActivity(new Intent(this, lose_activity.class));
                     break;
             }
         }
