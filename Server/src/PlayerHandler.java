@@ -93,6 +93,8 @@ public class PlayerHandler extends Thread {
         if(App.games.containsKey(name)){
             game = App.games.get(name);
             game.addPlayer(1, this);
+            getOpponent().socketOut.println(MessageType.GUEST_JOINED);
+            getOpponent().socketOut.println(player.getName());
         }
     }
 
@@ -132,8 +134,7 @@ public class PlayerHandler extends Thread {
         this.isReady = state;
         if(getOpponent().isReady()&&isReady){
             System.out.println("La partita inizia");
-            socketOut.println(MessageType.GAME_STARTED);
-            getOpponent().socketOut.println(MessageType.GAME_STARTED);
+            game.start();
         }
     }
 

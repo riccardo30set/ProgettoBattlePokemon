@@ -27,4 +27,5 @@ public class MessageType{
     public final static int USED_MOVE = 15;
     public final static int CHANGE_POKEMON = 16;
     public final static int ACTION = 17;
+    public final static int GUEST_JOINED = 18;
 }
