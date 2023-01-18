@@ -134,16 +134,11 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         File immagineProfiloDaVisualizzare=cercaFileNelloStorageInterno(nomeFile);
         Bitmap bitmap = BitmapFactory.decodeFile(immagineProfiloDaVisualizzare.getAbsolutePath());
 
-        System.out.println(nome);
-
-        ImageView imgProf=findViewById(R.id.imgProfilo);
-        TextView txtProf=findViewById(R.id.txtProfileName);
         TextView gameName = (TextView)findViewById(R.id.txtNomePartita
         );
         gameName.setText(getIntent().getExtras().getString("gameName"));
-
-        imgProf.setImageBitmap(bitmap);
-        txtProf.setText(nome);
+        TextView opponent = (TextView) findViewById(R.id.opponentName);
+        opponent.setText(getIntent().getExtras().getString("opponent"));
 
 
     }
@@ -177,7 +172,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         AppCompatButton button = (AppCompatButton)findViewById(R.id.battleButton);
         button.setEnabled(false);
         button.setBackgroundColor(Color.GRAY);
-        Client.setReady(true);
+        Client.setReady(true,intentCombat,this);
         Toast.makeText(this,"Sei pronto, in attesa dell'altro giocatore",Toast.LENGTH_LONG).show();
         //startActivity(intentCombat);
     }
