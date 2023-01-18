@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.progettopokeapi.partite.Combat_Activity;
+import com.example.progettopokeapi.partite.Partecipa;
 import com.example.progettopokeapi.partite.PartitaLocaleActivity;
 import com.example.progettopokeapi.partite.PartitaOnlineActivity;
 import com.example.progettopokeapi.pokedex.ListActivity;
@@ -62,11 +63,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOnline(View view){
-        Client.connect(this,"10.10.10.191",1500);
+        Client.connect(this,"10.10.10.189",1500);
         String gameName = "Partita di "+Client.shared_prefs.getString("nameAccount","Giocatore");
-        Client.createGame(gameName);
+        Client.createGame(gameName,findViewById(R.id.opponentName));
         Intent online = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
         online.putExtra("gameName",gameName);
+        online.putExtra("opponent","In attesa di un giocatore");
+        Client c = new Client();
+        c.start();
         startActivity(online);
         overridePendingTransition(2,2);
     }
@@ -77,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onClickPartecipa(View view){
-
+        Client.connect(this,"10.10.10.189",1500);
+        startActivity(new Intent(this, Partecipa.class));
     }
 
 }
