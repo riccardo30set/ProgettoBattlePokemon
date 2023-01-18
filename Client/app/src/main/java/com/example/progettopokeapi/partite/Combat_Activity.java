@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.progettopokeapi.Client;
 import com.example.progettopokeapi.MessageType;
 import com.example.progettopokeapi.R;
 import com.google.android.material.navigation.NavigationView;
@@ -96,7 +97,7 @@ public class Combat_Activity extends AppCompatActivity {
             team[i]=(Pokemon) getIntent().getSerializableExtra("pokemon"+(i+1));
             poke.setTitle(team[i].getNameUpperCase());
         }
-        updatePlayerPokemon(0);
+        changePokemon(0);
 
         //alert con avvisi di blocco azione
         Toast blocco=Toast.makeText(this, "", Toast.LENGTH_SHORT);
@@ -104,7 +105,7 @@ public class Combat_Activity extends AppCompatActivity {
         combatView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                imgMenu.setVisibility(View.INVISIBLE);
+                //imgMenu.setVisibility(View.INVISIBLE);
                 switch (item.getItemId()) {
                     case R.id.move1:
                         if(!isMainPokemonKO()){
@@ -199,11 +200,11 @@ public class Combat_Activity extends AppCompatActivity {
         //alert con il nome della mossa usata
         Toast toast=Toast.makeText(this, "hai usato "+team[mainPokemon].getMoveByIndex(numMove), Toast.LENGTH_SHORT);
         toast.show();
-        // aggiugere codice per inviare al server
+        //codice per inviare al server
+        Client.makeMove(team[mainPokemon].getName(),team[mainPokemon].getHpBattle(),team[mainPokemon].getMoveByIndex(numMove));
         //aggiungere codice per ricevere dal server
         //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-        String event="10:15:14:19:19:150:56:sky-attack";
-        this.decondingDataFromServer(event);
+        this.decondingDataFromServer(Client.nextLine());
         switch (dataFromServer[0]) {
             case MessageType.INCOMBAT:
                 if(HasEnemyUsedMove() && hasEnemyAttackFirst()){
@@ -242,22 +243,22 @@ public class Combat_Activity extends AppCompatActivity {
                 imgMenu.setVisibility(View.VISIBLE);
                 break;
             case MessageType.WIN:
-
+                //TODO Caso vittoria
                 break;
             case MessageType.LOSE:
-
+                //TODO Caso sconfitta
                 break;
         }
 
     }
     public void changePokemon(int numPokemon){
+        //Comunico al server il nuovo pokemon
+        Client.changePokemon(team[numPokemon].getName(),team[numPokemon].getHpBattle());
         updatePlayerPokemon(numPokemon);
-        //aggiungere codice per mandare dati al server
         if(!mandaperKO){
             //aggiungere codice per ricevere dal server
             //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-            String event="10:15:14:19:19:150:56:sky-attack";
-            decondingDataFromServer(event);
+            decondingDataFromServer(Client.nextLine());
             switch (dataFromServer[0]) {
                 case MessageType.INCOMBAT:
                     if(HasEnemyUsedMove()){
@@ -267,7 +268,7 @@ public class Combat_Activity extends AppCompatActivity {
                     }
                     break;
                 case MessageType.LOSE:
-
+                    //TODO Caso sconfitta
                     break;
             }
         }
@@ -304,6 +305,7 @@ public class Combat_Activity extends AppCompatActivity {
         animationPlayer();
         updateHpEnemy(hpEnemy);
     }
+    //TODO Caso in cui l'avversario uccide il pokemon appena messo in campo
     public void enemyPokemonAttacca(){
         animationEnemy();
         team[mainPokemon].setHpBattle(myHpPostAction());
