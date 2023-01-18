@@ -219,6 +219,7 @@ public class Combat_Activity extends AppCompatActivity {
                         playerPokemonAttacca(enemyHpPostAction());
                         if(isMainEnemyPokemonKO()){
                             //aggiungere codice per attendere il nome del nuovo pokemon avversario
+                            this.decondingDataFromServer(Client.nextLine());
                             updateEnemyPokemon(55,"");
                         }
                     }
@@ -227,6 +228,7 @@ public class Combat_Activity extends AppCompatActivity {
                     playerPokemonAttacca(enemyHpPostAction());
                     if(isMainEnemyPokemonKO()){
                         //aggiungere codice per attendere il nome del nuovo pokemon avversario
+                        this.decondingDataFromServer(Client.nextLine());
                         updateEnemyPokemon(55,"");
                     }else{
                         enemyPokemonAttacca();
@@ -240,6 +242,7 @@ public class Combat_Activity extends AppCompatActivity {
                     playerPokemonAttacca(enemyHpPostAction());
                     if(isMainEnemyPokemonKO()){
                         //aggiungere codice per attendere il nome del nuovo pokemon avversario
+                        this.decondingDataFromServer(Client.nextLine());
                         updateEnemyPokemon(55,"");
                     }
                 }
@@ -259,7 +262,6 @@ public class Combat_Activity extends AppCompatActivity {
         Client.changePokemon(team[numPokemon].getName(),team[numPokemon].getHpBattle());
         updatePlayerPokemon(numPokemon);
         if(!mandaperKO){
-            //aggiungere codice per ricevere dal server
             //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
             decondingDataFromServer(Client.nextLine());
             switch (dataFromServer[0]) {
@@ -308,7 +310,7 @@ public class Combat_Activity extends AppCompatActivity {
         animationPlayer();
         updateHpEnemy(hpEnemy);
     }
-    //TODO Caso in cui l'avversario uccide il pokemon appena messo in campo
+
     public void enemyPokemonAttacca(){
         animationEnemy();
         team[mainPokemon].setHpBattle(myHpPostAction());
