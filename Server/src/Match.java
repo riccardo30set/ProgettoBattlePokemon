@@ -81,9 +81,9 @@ public class Match{
             System.out.println("impossibile aprire il json");
         }
         createMessageData();
+        players[two].socketOut.println(player2Data);
+        players[one].socketOut.println(player1Data);
         if(pokemon[one].getHpPost()==0 && player2Kill!=6){
-            players[two].socketOut.println(player2Data);
-            players[one].socketOut.println(player1Data);
             String rispostaK0=players[one].socketIn.nextLine();
             players[one].writeAction(rispostaK0);
             try {
@@ -91,10 +91,24 @@ public class Match{
             } catch (Exception e) {
                 System.out.println("impossibile aprire il json");
             }
-            String newPokemon=MessageType.INCOMBAT+":"+MessageType.CHANGE_POKEMON+":"+player1WhenAttack()+":"+pokemon[one].getHpPre()+":"+pokemon[one].getHpPost()+":"+pokemon[one].getPokedexId()+":"+pokemon[one].getPokemonName();
+            String newPokemon=MessageType.INCOMBAT+":"+MessageType.CHANGE_POKEMON+":"+player1WhenAttack()+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+pokemon[one].getPokemonName();
+            players[two].socketOut.println(newPokemon);
+        }
+        if(pokemon[two].getHpPost()==0 && player1Kill!=6){
+            String rispostaK0=players[two].socketIn.nextLine();
+            players[two].writeAction(rispostaK0);
+            try {
+                assignValueFromResponse(one);
+            } catch (Exception e) {
+                System.out.println("impossibile aprire il json");
+            }
+            String newPokemon=MessageType.INCOMBAT+":"+MessageType.CHANGE_POKEMON+":"+player2WhenAttack()+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+pokemon[one].getPokemonName();
             players[two].socketOut.println(newPokemon);
         }
     }
+
+
+
     public void assignValueFromResponse(int i )throws Exception{
             FileReader reader = new FileReader("moves.json");
             Action act=players[i].getPlayerAction();
@@ -203,8 +217,8 @@ public class Match{
         int typeAction1=players[1].getPlayerAction().getTypeAction();
         int typeAction2=players[0].getPlayerAction().getTypeAction();
         //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-        player1Data+=":"+typeAction1+":"+player2WhenAttack()+":"+pokemon[two].getHpPre()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getPokedexId()+":"+moveOrPk1;
-        player2Data+=":"+typeAction2+":"+player1WhenAttack()+":"+pokemon[one].getHpPre()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+moveOrPk2;
+        player1Data+=":"+typeAction1+":"+player2WhenAttack()+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getPokedexId()+":"+moveOrPk1;
+        player2Data+=":"+typeAction2+":"+player1WhenAttack()+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+moveOrPk2;
     }
     
 
@@ -222,7 +236,7 @@ public class Match{
         if(damage>pokemon[defender].getHpPre()){
             return 0;
         }else{
-            return damage-pokemon[defender].getHpPre();
+            return pokemon[defender].getHpPre()-damage;
         }
     }
 

@@ -38,6 +38,12 @@ class Pokemon {
     public int getHpPost() {
         return hpPost;
     }
+    public int getHpPre100() {
+        return (this.hpPre*100)/((int)(Math.floor(0.01*(2*this.getBaseStat("hp")+31+Math.floor(0.25*85))*100)+100+10));
+    }
+    public int getHpPost100() {
+        return (this.hpPost*100)/((int)(Math.floor(0.01*(2*this.getBaseStat("hp")+31+Math.floor(0.25*85))*100)+100+10));
+    }
     public HashMap<String, Integer> getBaseStats() {
         return baseStats;
     }
