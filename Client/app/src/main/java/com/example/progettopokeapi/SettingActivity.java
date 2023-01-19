@@ -61,10 +61,6 @@ public class SettingActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), ListActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.Rooms:
-                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
-                        overridePendingTransition(2,2);
-                        return true;
                     case R.id.settings:
                         return true;
                 }
@@ -126,6 +122,8 @@ public class SettingActivity extends AppCompatActivity {
 
 
 
+
+
         // inserimento dell'immmagine entrati nella schermata
         // si controlla nelle prefences se esiste il nome dell'immagine del profilo
         // se esiste si procede con l'inserimento dell'immagine dallo storage interno
@@ -148,6 +146,12 @@ public class SettingActivity extends AppCompatActivity {
         imgAccount.setImageBitmap(bitmap);
         imgAccount.setZ(2);
 
+    }
+
+    public void onClickIMG(View v){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE);
     }
 
 

@@ -27,6 +27,7 @@
         android:layout_width="141dp"
         android:layout_height="43dp"
         android:background="@navigation/background"
+        android:onClick="onClickBattle"
         android:text="Battaglia"
         android:textColor="#545CE3"
         android:textSize="16sp"
@@ -35,8 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
-        android:onClick="onClickBattle"/>
+        app:layout_constraintVertical_bias="0.857" />
 
     <GridView
         android:id="@+id/gridView"
@@ -47,13 +47,28 @@
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" >
+        app:layout_constraintVertical_bias="0.28">
 
 
     </GridView>
+
+    <ImageView
+        android:id="@+id/imgModifica"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:background="@color/purple_700"
+        android:onClick="onClickList"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17"
+        app:srcCompat="@navigation/matita"
+        tools:ignore="OnClick" />
 
     <TextView
         android:id="@+id/txtProv"
@@ -65,25 +80,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
-
-    <ImageView
-        android:id="@+id/imgModifica"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:background="@color/purple_700"
-        android:onClick="onClickList"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255"
-        app:srcCompat="@navigation/matita"
-        tools:ignore="OnClick" />
+        app:layout_constraintVertical_bias="0.17" />
 
     <TextView
         android:id="@+id/opponentName"
@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
+        app:layout_constraintVertical_bias="0.569" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

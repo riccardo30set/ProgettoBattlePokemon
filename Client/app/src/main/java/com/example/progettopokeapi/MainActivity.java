@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), ListActivity.class));
                         overridePendingTransition(2,2);
                         break;
-                    case R.id.Rooms:
-                        startActivity(new Intent(getApplicationContext(), Combat_Activity.class));
-                        overridePendingTransition(2,2);
-                        break;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), SettingActivity.class));
                         overridePendingTransition(2,2);
