@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +29,6 @@ import com.example.progettopokeapi.lose_activity;
 import com.google.android.material.navigation.NavigationView;
 
 public class Combat_Activity extends AppCompatActivity {
-    final int critProb=24;
     DrawerLayout drawerLayout;
     NavigationView combatView;
     ImageView imgMenu;
@@ -55,11 +55,16 @@ public class Combat_Activity extends AppCompatActivity {
     ProgressBar barEnemy;
     TextView boxPlayer;
     TextView boxEnemy;
+
+    //thread
+    ActionThread actionThread;
+    Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
+
         team=new Pokemon[6];
         imgMenu=findViewById(R.id.imageMenu);
         mandaperKO=false;
@@ -78,8 +83,8 @@ public class Combat_Activity extends AppCompatActivity {
         hpPokemoInBattle=HeaderMenu.findViewById(R.id.hpPokemonInBattle);
 
         //immagini pokemon in campo
-        imgPokemonBattlePlayer=(ImageView) findViewById(R.id.imgPokePlayer);
-        imgPokemonBattleEnemy=(ImageView)findViewById(R.id.imgPokeEnemy);
+        imgPokemonBattlePlayer= findViewById(R.id.imgPokePlayer);
+        imgPokemonBattleEnemy=findViewById(R.id.imgPokeEnemy);
 
         //sottomenu mosse
         MenuItem pokemonGeneral=  general.getItem(1);
@@ -93,7 +98,9 @@ public class Combat_Activity extends AppCompatActivity {
         barEnemy=findViewById(R.id.hpBarEnemy);
         boxPlayer =findViewById(R.id.boxPlayerName);
         boxEnemy =findViewById(R.id.boxEnemyName);
-        //
+        //thread e handler
+        handler=new Handler();
+
         for(int i=0;i<6;i++){
             MenuItem poke=pokemon.getItem(i);
             //recupero dati dall'intent
@@ -112,7 +119,9 @@ public class Combat_Activity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.move1:
                         if(!isMainPokemonKO()){
-                            useMove(0);
+                            //useMove(0);
+                            actionThread=new ActionThread(MessageType.USED_MOVE,0);
+                            new Thread(actionThread).start();
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -120,7 +129,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.move2:
                         if(!isMainPokemonKO()){
-                            useMove(1);
+                            //useMove(1);
+                            actionThread=new ActionThread(MessageType.USED_MOVE,1);
+                            new Thread(actionThread).start();
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -128,7 +139,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.move3:
                         if(!isMainPokemonKO()){
-                            useMove(2);
+                            //useMove(2);
+                            actionThread=new ActionThread(MessageType.USED_MOVE,2);
+                            new Thread(actionThread).start();
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -136,7 +149,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.move4:
                         if(!isMainPokemonKO()){
-                            useMove(3);
+                            //useMove(3);
+                            actionThread=new ActionThread(MessageType.USED_MOVE,3);
+                            new Thread(actionThread).start();
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -144,7 +159,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon1:
                         if(team[0].getHpBattle()!=0) {
-                            changePokemon(0);
+                            //changePokemon(0);
+                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,0);
+                            new Thread(actionThread).start();
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -152,7 +169,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon2:
                         if(team[1].getHpBattle()!=0) {
-                            changePokemon(1);
+                            //changePokemon(1);
+                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,1);
+                            new Thread(actionThread).start();
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -160,7 +179,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon3:
                         if(team[2].getHpBattle()!=0) {
-                            changePokemon(2);
+                            //changePokemon(2);
+                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,2);
+                            new Thread(actionThread).start();
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -168,7 +189,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon4:
                         if(team[3].getHpBattle()!=0) {
-                            changePokemon(3);
+                            //changePokemon(3);
+                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,3);
+                            new Thread(actionThread).start();
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -176,7 +199,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon5:
                         if(team[4].getHpBattle()!=0) {
-                            changePokemon(4);
+                            //changePokemon(4);
+                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,4);
+                            new Thread(actionThread).start();
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -184,7 +209,9 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon6:
                         if(team[5].getHpBattle()!=0) {
-                            changePokemon(5);
+                            //changePokemon(5);
+                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,5);
+                            new Thread(actionThread).start();
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -437,7 +464,27 @@ public class Combat_Activity extends AppCompatActivity {
     }
 
 
-
+    class ActionThread implements Runnable{
+        private int numAction;
+        private int typeAction;
+        ActionThread(int typeAction,int numAction){
+            this.typeAction=typeAction;
+            this.numAction=numAction;
+        }
+        @Override
+        public void run(){
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if(MessageType.CHANGE_POKEMON==typeAction){
+                        changePokemon(numAction);
+                    }else{
+                        useMove(numAction);
+                    }
+                }
+            });
+        }
+    }
     /*
     public int calcoloHP(int base, int EV, int IV, int level){
         return (int) (Math.floor(0.01*(2*base+IV+Math.floor(0.25*EV))*level)+level+10);
