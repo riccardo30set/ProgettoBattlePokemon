@@ -54,12 +54,8 @@ public class Match{
         }
     }
 
-    public void playerMove(int id){
-        for (PlayerHandler player : players) {
-            if(id==player.getPlayerId()){
-                clash++;
-            }
-        }
+    public void playerMove(){
+        clash++;
         if(clash==2){
             try {
                 startEvent();
@@ -78,18 +74,23 @@ public class Match{
                 assignValueFromResponse(i);
             }
         }catch(Exception e){
-            System.out.println("impossibile aprire il json");
+            e.printStackTrace();
         }
         createMessageData();
-        players[two].socketOut.println(player2Data);
+        System.out.println(player1Data);
+        System.out.println(player2Data);
+        players[one].socketOut.println(MessageType.ACTION);
+        players[two].socketOut.println(MessageType.ACTION);
         players[one].socketOut.println(player1Data);
+        players[two].socketOut.println(player2Data);
+        /* 
         if(pokemon[one].getHpPost()==0 && player2Kill!=6){
             String rispostaK0=players[one].socketIn.nextLine();
             players[one].writeAction(rispostaK0);
             try {
                 assignValueFromResponse(one);
             } catch (Exception e) {
-                System.out.println("impossibile aprire il json");
+                e.printStackTrace();
             }
             String newPokemon=MessageType.INCOMBAT+":"+MessageType.CHANGE_POKEMON+":"+player1WhenAttack()+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+pokemon[one].getPokemonName();
             players[two].socketOut.println(newPokemon);
@@ -100,35 +101,37 @@ public class Match{
             try {
                 assignValueFromResponse(one);
             } catch (Exception e) {
-                System.out.println("impossibile aprire il json");
+                e.printStackTrace();
             }
             String newPokemon=MessageType.INCOMBAT+":"+MessageType.CHANGE_POKEMON+":"+player2WhenAttack()+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+pokemon[one].getPokemonName();
             players[two].socketOut.println(newPokemon);
         }
+        */
     }
 
 
 
     public void assignValueFromResponse(int i )throws Exception{
-            FileReader reader = new FileReader("moves.json");
+            FileReader reader = new FileReader("src/moves.json");
             Action act=players[i].getPlayerAction();
             JSONObject all = new JSONObject(new JSONTokener(reader));
             JSONObject general=all.getJSONObject(act.getPokemonName());
             ArrayList<String> types=findTypes(general);
             HashMap<String,Integer> baseStats=getBaseStats(general);
             PokemonMove[] moves=findPokemonMoves(general);
+            System.out.println(findPokemonMoves(general));
             pokemon[i]=new Pokemon(act.getPokemonName(),general.getInt("pokedex_number"),types,baseStats,moves,act.getHp());
     }
 
 
 
-     //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
+     //     WIN|LOSE|INCOMBAT : 2_CHANGEPK|2_U_MOVE : 1_CHANGEPK|1_U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
     public void createMessageData(){
         player1Data=""+MessageType.INCOMBAT;
         player2Data=""+MessageType.INCOMBAT;
         String moveOrPk1=(getPlayer2TypeAction()==MessageType.USED_MOVE)? players[two].getPlayerAction().getMoveName() : players[two].getPlayerAction().getPokemonName();
         String moveOrPk2=(getPlayer1TypeAction()==MessageType.USED_MOVE)? players[one].getPlayerAction().getMoveName() : players[one].getPlayerAction().getPokemonName();
-        if(whoActFirst()==one){
+        /*if(whoActFirst()==one){
             //player 1 primo
             if(getPlayer1TypeAction()==MessageType.USED_MOVE){
                 //player usa mossa
@@ -213,12 +216,12 @@ public class Match{
                     }
                 }
             }
-        }
-        int typeAction1=players[1].getPlayerAction().getTypeAction();
-        int typeAction2=players[0].getPlayerAction().getTypeAction();
+        }*/
+        int typeAction2=players[1].getPlayerAction().getTypeAction();
+        int typeAction1=players[0].getPlayerAction().getTypeAction();
         //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-        player1Data+=":"+typeAction1+":"+player2WhenAttack()+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getPokedexId()+":"+moveOrPk1;
-        player2Data+=":"+typeAction2+":"+player1WhenAttack()+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+moveOrPk2;
+        player1Data+=":"+typeAction2+":"+typeAction1+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getPokedexId()+":"+moveOrPk1;
+        player2Data+=":"+typeAction1+":"+typeAction2+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+moveOrPk2;
     }
     
 
@@ -295,6 +298,7 @@ public class Match{
         baseStats.put("special-attack", stats.getInt("special-attack"));
         baseStats.put("special-defense", stats.getInt("special-defense"));
         baseStats.put("speed", stats.getInt("speed"));
+        System.out.println("hp      "+stats.getInt("hp"));
         return baseStats;
     }
 
@@ -309,6 +313,7 @@ public class Match{
                 String type = move.getString("type");
                 String classification = move.getString("classification");
                 String moveName = move.getString("move_name");
+                System.out.println(power+type+classification+moveName);
                 moves[i]=new PokemonMove(power,type,classification,moveName);
             }
             return moves;

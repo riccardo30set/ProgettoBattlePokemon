@@ -46,9 +46,6 @@ public class Combat_Activity extends AppCompatActivity {
     TextView hpPokemoInBattle;
     Menu moves;
 
-    //variabili contenenti i dati mandati dal server
-    int[] dataFromServer;
-    String moveOrPokemon;
 
     //box con nome e hpBar
     ProgressBar barPlayer;
@@ -105,8 +102,9 @@ public class Combat_Activity extends AppCompatActivity {
             //recupero dati dall'intent
             team[i]=(Pokemon) getIntent().getSerializableExtra("pokemon"+(i+1));
             poke.setTitle(team[i].getNameUpperCase());
+            Toast.makeText(this,"vita "+team[i].getName()+" hp "+team[i].getHpBattle(),Toast.LENGTH_LONG);
         }
-        updatePlayerPokemon(0);
+        Client.changePokemon(0, team);
         //alert con avvisi di blocco azione
         Toast blocco=Toast.makeText(this, "", Toast.LENGTH_SHORT);
         //gestione delle funzioni per ogni opzione nel menu
@@ -155,6 +153,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.pokemon1:
                         if(team[0].getHpBattle()!=0) {
                             Client.changePokemon(0, team);
+                            imgMenu.setVisibility(View.INVISIBLE);
 
                         }else {
                             blocco.setText("Questo Pokemon è KO");
@@ -164,6 +163,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.pokemon2:
                         if(team[1].getHpBattle()!=0) {
                             Client.changePokemon(1, team);
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -172,6 +172,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.pokemon3:
                         if(team[2].getHpBattle()!=0) {
                             Client.changePokemon(2, team);
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -180,6 +181,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.pokemon4:
                         if(team[3].getHpBattle()!=0) {
                             Client.changePokemon(3, team);
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -188,6 +190,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.pokemon5:
                         if(team[4].getHpBattle()!=0) {
                             Client.changePokemon(4, team);
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -196,6 +199,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.pokemon6:
                         if(team[5].getHpBattle()!=0) {
                             Client.changePokemon(5, team);
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -231,12 +235,11 @@ public class Combat_Activity extends AppCompatActivity {
         updateHpPlayer();
     }
     //caricamento dati (immagine nome e hp) riguardanti il pokemon in battaglia
-    public void updatePlayerPokemon(int numPokemon){
+    public void updatePlayerPokemon(int numPokemon, int hp){
         //alert con il nome del pokemon che entra in campo
         mainPokemon=numPokemon;
-        Toast toast=Toast.makeText(this, "è entrato in campo "+team[mainPokemon].getNameUpperCase(), Toast.LENGTH_SHORT);
-        toast.show();
         //aggiorna gli hp
+        team[numPokemon].setHpBattle(hp);
         updateHpPlayer();
         //aggiorna le mosse
         loadMoves();
@@ -254,11 +257,11 @@ public class Combat_Activity extends AppCompatActivity {
     }
 
     //caricamento dati (immagine nome e hp) riguardanti il pokemon in battaglia del nemico
-    public void updateEnemyPokemon(int eId, String name){
+    public void updateEnemyPokemon(int eId, String name,int hp){
         int enemyId=getResources().getIdentifier("pokemon"+eId, "raw", getPackageName());
         imgPokemonBattleEnemy.setImageResource(enemyId);
-        updateHpEnemy(enemyHpPreAction());
-        boxEnemy.setText(name);
+        updateHpEnemy(hp);
+        boxEnemy.setText((name.charAt(0)+"").toUpperCase()+name.substring(1));
     }
 
     //apertura del menu
@@ -315,39 +318,11 @@ public class Combat_Activity extends AppCompatActivity {
     public boolean isMainPokemonKO(){
         return team[mainPokemon].getHpBattle()==0;
     }
-    //controllo se il pokemon dell'avversario è ko
-    public boolean isMainEnemyPokemonKO(){
-        return dataFromServer[3]==0;
+    public int getMainPokemon(){
+        return mainPokemon;
     }
-    //controllo se il nemico ha attaccato per primo
-    public boolean hasEnemyAttackFirst(){
-        return dataFromServer[2]==MessageType.FIRST;
-    }
-    //controllo sel il nemico ha usato una mossa
-    public boolean hasEnemyAttackSecond(){
-        return dataFromServer[2]==MessageType.SECOND;
-    }
-    //controllo sel il nemico ha usato una mossa
-    public boolean HasEnemyUsedMove(){
-        return dataFromServer[1]==MessageType.USED_MOVE;
-    }
-    //controllo sel il nemico ha cambiato pokemon
-    public boolean hasEnemyChangedPokemon(){return dataFromServer[1]==MessageType.CHANGE_POKEMON;}
-    //hp del nemico pre attacco
-    public int enemyHpPreAction(){
-        return dataFromServer[3];
-    }
-    //hp del nemico post attacco
-    public int enemyHpPostAction(){
-        return dataFromServer[4];
-    }
-    //hp del pokemon in campo dopo aver subito un attacco
-    public int myHpPostAction(){
-        return dataFromServer[5];
-    }
-    //id del pokemon nemico
-    public int enemyPokemonId(){
-        return dataFromServer[6];
+    public void menuVisible(){
+        imgMenu.setVisibility(View.VISIBLE);
     }
 
 

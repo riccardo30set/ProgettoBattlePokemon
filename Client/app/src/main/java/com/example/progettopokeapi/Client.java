@@ -3,6 +3,7 @@ package com.example.progettopokeapi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.progettopokeapi.partite.Combat_Activity;
@@ -26,6 +27,8 @@ public class Client extends Thread {
     static Context gameContext;
     static Intent gameIntent;
     public static Combat_Activity gameplay;
+    int [] responseInt;
+    String responseWord;
     /**
      *Creates a tcp socket to the given address and port and
      * creates a PrintWriter and Scanner object to handle the I/O streams
@@ -96,14 +99,21 @@ public class Client extends Thread {
                     gameContext.startActivity(gameIntent);
                     break;
                 case MessageType.ACTION:
-                    socketIn.nextLine();
+                    String response=socketIn.nextLine();
+                    splitResponse(response);
+                    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
                     gameplay.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //gameplay.updatePlayerPokemon(3);
+                            if(responseInt[1]==MessageType.USED_MOVE)
+                                gameplay.animationPlayer();
+                            if(responseInt[2]==MessageType.USED_MOVE)
+                                gameplay.animationEnemy();
+                            gameplay.updateEnemyPokemon(responseInt[6],responseWord,responseInt[4]);
+                            gameplay.updatePlayerPokemon(gameplay.getMainPokemon(),responseInt[5]);
+                            gameplay.menuVisible();
                         }
                     });
-                    //decodeAction(socketIn.nextLine());
                     break;
             }
     }
@@ -118,14 +128,6 @@ public class Client extends Thread {
         socketOut.println(MessageType.USED_MOVE+":"+pokemonName+":"+hp+":"+move);
     }
 
-    public void decodeAction(String action){
-        String[] evento = action.split(":");
-        switch(Integer.parseInt(evento[0])){
-            case MessageType.WIN:
-
-
-        }
-    }
 
     public static void useMove(String pokemon,String mossa,int currentHP){
         socketOut.println(MessageType.ACTION);
@@ -134,12 +136,24 @@ public class Client extends Thread {
 
     public static void changePokemon(int pokemon, Pokemon[] team){
         socketOut.println(MessageType.ACTION);
-        socketOut.println(MessageType.USED_MOVE+":"+team[pokemon].getName()+":"+team[pokemon].getHpBattle());
+        socketOut.println(MessageType.CHANGE_POKEMON+":"+team[pokemon].getName()+":"+team[pokemon].getHpBattle());
         gameplay.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                gameplay.updatePlayerPokemon(pokemon);
+                gameplay.updatePlayerPokemon(pokemon,team[pokemon].getHpBattle());
             }
         });
+    }
+
+    //inserice i dati ricevuti dal client in un array di interi e una variabile stringa, questi dati vengono poi utilizzati
+    //per capire se un giocatore ha vinto, perso o è ancora in combattimento, chi attacca per primo ecc...
+    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
+    public void splitResponse(String event){
+        String[] eventElements = event.split(":");
+        responseInt = new int[eventElements.length - 1];
+        responseWord = eventElements[eventElements.length-1];
+        for (int i = 0; i < eventElements.length-1; i++) {
+            responseInt[i] = Integer.parseInt(eventElements[i]);
+        }
     }
 }

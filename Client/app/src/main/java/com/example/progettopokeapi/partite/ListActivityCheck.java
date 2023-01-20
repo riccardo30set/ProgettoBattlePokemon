@@ -82,7 +82,7 @@ public class ListActivityCheck extends AppCompatActivity {
         arrayList.get(4).setName("Charmeleon");
         arrayList.get(5).setName("Charizard");
         arrayList.get(6).setName("Squirtle");
-        arrayList.get(7).setName("Wartortole");
+        arrayList.get(7).setName("Wartortle");
         arrayList.get(8).setName("Blastoise");
         arrayList.get(9).setName("Caterpie");
         arrayList.get(10).setName("Metapod");
