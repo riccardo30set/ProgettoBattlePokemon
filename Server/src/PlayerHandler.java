@@ -70,8 +70,6 @@ public class PlayerHandler extends Thread {
                     System.out.println("action ricevuta");
                     String temp = socketIn.nextLine();
                     System.out.println(temp);
-                    socketOut.println(MessageType.ACTION);
-                    socketOut.println("ripetuta "+temp);
                     //this.writeAction(temp);
                     //this.game.playerMove(playerID);
                     break;
