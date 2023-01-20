@@ -3,12 +3,11 @@ package com.example.progettopokeapi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Looper;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.progettopokeapi.partite.Combat_Activity;
 import com.example.progettopokeapi.partite.PartitaOnlineActivity;
+import com.example.progettopokeapi.partite.Pokemon;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +25,7 @@ public class Client extends Thread {
     static TextView opponent;
     static Context gameContext;
     static Intent gameIntent;
+    public static Combat_Activity gameplay;
     /**
      *Creates a tcp socket to the given address and port and
      * creates a PrintWriter and Scanner object to handle the I/O streams
@@ -96,8 +96,13 @@ public class Client extends Thread {
                     gameContext.startActivity(gameIntent);
                     break;
                 case MessageType.ACTION:
-                    Looper.prepare();
-                    Toast.makeText(gameContext, socketIn.nextLine(), Toast.LENGTH_LONG).show();
+                    socketIn.nextLine();
+                    gameplay.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //gameplay.updatePlayerPokemon(3);
+                        }
+                    });
                     //decodeAction(socketIn.nextLine());
                     break;
             }
@@ -127,8 +132,14 @@ public class Client extends Thread {
         socketOut.println(MessageType.USED_MOVE+":"+pokemon+":"+currentHP+":"+mossa);
     }
 
-    public static void changePokemon(String pokemon,int currentHP){
+    public static void changePokemon(int pokemon, Pokemon[] team){
         socketOut.println(MessageType.ACTION);
-        socketOut.println(MessageType.USED_MOVE+":"+pokemon+":"+currentHP);
+        socketOut.println(MessageType.USED_MOVE+":"+team[pokemon].getName()+":"+team[pokemon].getHpBattle());
+        gameplay.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                gameplay.updatePlayerPokemon(pokemon);
+            }
+        });
     }
 }

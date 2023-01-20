@@ -59,7 +59,9 @@ public class Combat_Activity extends AppCompatActivity {
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        Client.gameplay = this;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
         team=new Pokemon[6];
@@ -104,7 +106,7 @@ public class Combat_Activity extends AppCompatActivity {
             team[i]=(Pokemon) getIntent().getSerializableExtra("pokemon"+(i+1));
             poke.setTitle(team[i].getNameUpperCase());
         }
-        //changePokemon(0);
+        updatePlayerPokemon(0);
         //alert con avvisi di blocco azione
         Toast blocco=Toast.makeText(this, "", Toast.LENGTH_SHORT);
         //gestione delle funzioni per ogni opzione nel menu
@@ -152,7 +154,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon1:
                         if(team[0].getHpBattle()!=0) {
-                            Client.changePokemon(team[0].getName(),team[0].getHpBattle());
+                            Client.changePokemon(0, team);
 
                         }else {
                             blocco.setText("Questo Pokemon è KO");
@@ -161,8 +163,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon2:
                         if(team[1].getHpBattle()!=0) {
-                            Client.changePokemon(team[1].getName(),team[1].getHpBattle());
-
+                            Client.changePokemon(1, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -170,7 +171,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon3:
                         if(team[2].getHpBattle()!=0) {
-                            Client.changePokemon(team[2].getName(),team[2].getHpBattle());
+                            Client.changePokemon(2, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -178,7 +179,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon4:
                         if(team[3].getHpBattle()!=0) {
-                            Client.changePokemon(team[3].getName(),team[3].getHpBattle());
+                            Client.changePokemon(3, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -186,7 +187,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon5:
                         if(team[4].getHpBattle()!=0) {
-                            Client.changePokemon(team[4].getName(),team[4].getHpBattle());
+                            Client.changePokemon(4, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -194,7 +195,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon6:
                         if(team[5].getHpBattle()!=0) {
-                            Client.changePokemon(team[5].getName(),team[5].getHpBattle());
+                            Client.changePokemon(5, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
