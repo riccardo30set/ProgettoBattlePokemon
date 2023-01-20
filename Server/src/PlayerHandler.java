@@ -64,11 +64,16 @@ public class PlayerHandler extends Thread {
                     setPokemon(Integer.parseInt(socketIn.nextLine()),socketIn.nextLine());
                     break;
                 case MessageType.SET_READY:
-                    setReady(socketIn.nextBoolean());
+                    setReady(Boolean.parseBoolean(socketIn.nextLine()));
                     break;
                 case MessageType.ACTION:
-                    this.writeAction(socketIn.nextLine());
-                    this.game.playerMove(playerID);
+                    System.out.println("action ricevuta");
+                    String temp = socketIn.nextLine();
+                    System.out.println(temp);
+                    socketOut.println(MessageType.ACTION);
+                    socketOut.println("ripetuta "+temp);
+                    //this.writeAction(temp);
+                    //this.game.playerMove(playerID);
                     break;
             }
         }
@@ -119,7 +124,7 @@ public class PlayerHandler extends Thread {
 
     public void sendOpponentIdentity(){
         System.out.println(player.getName()+" richiede il profilo avversario");
-        PlayerHandler opponent =getOpponent();
+        PlayerHandler opponent = getOpponent();
         socketOut.println(opponent.getPlayer().getName());
         socketOut.println(opponent.getPlayer().getDescription());
 
