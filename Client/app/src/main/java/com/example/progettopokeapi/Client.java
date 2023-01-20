@@ -3,9 +3,11 @@ package com.example.progettopokeapi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Looper;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.progettopokeapi.partite.Combat_Activity;
 import com.example.progettopokeapi.partite.PartitaOnlineActivity;
 
 import org.w3c.dom.Text;
@@ -84,7 +86,7 @@ public class Client extends Thread {
     }
 
     public void run(){
-        while(true){
+        while(true)
             switch(Integer.parseInt(socketIn.nextLine())){
                 case MessageType.GUEST_JOINED:
                     //setOpponentName(socketIn.nextLine());
@@ -93,14 +95,14 @@ public class Client extends Thread {
                 case MessageType.GAME_STARTED:
                     gameContext.startActivity(gameIntent);
                     break;
+                case MessageType.ACTION:
+                    Looper.prepare();
+                    Toast.makeText(gameContext, socketIn.nextLine(), Toast.LENGTH_LONG).show();
+                    //decodeAction(socketIn.nextLine());
+                    break;
             }
-        }
     }
 
-    public static void changePokemon(String name, int hp){
-        socketOut.println(MessageType.ACTION);
-        socketOut.println(MessageType.CHANGE_POKEMON+":"+name+":"+hp);
-    }
 
     private void setOpponentName(String name){
         opponent.setText(name);
@@ -111,9 +113,22 @@ public class Client extends Thread {
         socketOut.println(MessageType.USED_MOVE+":"+pokemonName+":"+hp+":"+move);
     }
 
-    public static String nextLine(){
-        return socketIn.nextLine();
+    public void decodeAction(String action){
+        String[] evento = action.split(":");
+        switch(Integer.parseInt(evento[0])){
+            case MessageType.WIN:
+
+
+        }
     }
 
+    public static void useMove(String pokemon,String mossa,int currentHP){
+        socketOut.println(MessageType.ACTION);
+        socketOut.println(MessageType.USED_MOVE+":"+pokemon+":"+currentHP+":"+mossa);
+    }
 
+    public static void changePokemon(String pokemon,int currentHP){
+        socketOut.println(MessageType.ACTION);
+        socketOut.println(MessageType.USED_MOVE+":"+pokemon+":"+currentHP);
+    }
 }

@@ -56,15 +56,12 @@ public class Combat_Activity extends AppCompatActivity {
     TextView boxPlayer;
     TextView boxEnemy;
 
-    //thread
-    ActionThread actionThread;
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
-
         team=new Pokemon[6];
         imgMenu=findViewById(R.id.imageMenu);
         mandaperKO=false;
@@ -107,8 +104,7 @@ public class Combat_Activity extends AppCompatActivity {
             team[i]=(Pokemon) getIntent().getSerializableExtra("pokemon"+(i+1));
             poke.setTitle(team[i].getNameUpperCase());
         }
-        changePokemon(0);
-
+        //changePokemon(0);
         //alert con avvisi di blocco azione
         Toast blocco=Toast.makeText(this, "", Toast.LENGTH_SHORT);
         //gestione delle funzioni per ogni opzione nel menu
@@ -119,9 +115,9 @@ public class Combat_Activity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.move1:
                         if(!isMainPokemonKO()){
-                            //useMove(0);
-                            actionThread=new ActionThread(MessageType.USED_MOVE,0);
-                            new Thread(actionThread).start();
+                            Toast.makeText(Combat_Activity.this, "Mossa eseguita", Toast.LENGTH_SHORT).show();
+                            Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(0),team[mainPokemon].getHpBattle());
+
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -129,9 +125,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.move2:
                         if(!isMainPokemonKO()){
-                            //useMove(1);
-                            actionThread=new ActionThread(MessageType.USED_MOVE,1);
-                            new Thread(actionThread).start();
+                            Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(1),team[mainPokemon].getHpBattle());
+
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -139,9 +134,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.move3:
                         if(!isMainPokemonKO()){
-                            //useMove(2);
-                            actionThread=new ActionThread(MessageType.USED_MOVE,2);
-                            new Thread(actionThread).start();
+                            Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(2),team[mainPokemon].getHpBattle());
+
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -149,9 +143,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.move4:
                         if(!isMainPokemonKO()){
-                            //useMove(3);
-                            actionThread=new ActionThread(MessageType.USED_MOVE,3);
-                            new Thread(actionThread).start();
+                            Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(3),team[mainPokemon].getHpBattle());
+
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -159,9 +152,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon1:
                         if(team[0].getHpBattle()!=0) {
-                            //changePokemon(0);
-                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,0);
-                            new Thread(actionThread).start();
+                            Client.changePokemon(team[0].getName(),team[0].getHpBattle());
+
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -169,9 +161,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon2:
                         if(team[1].getHpBattle()!=0) {
-                            //changePokemon(1);
-                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,1);
-                            new Thread(actionThread).start();
+                            Client.changePokemon(team[1].getName(),team[1].getHpBattle());
+
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -179,9 +170,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon3:
                         if(team[2].getHpBattle()!=0) {
-                            //changePokemon(2);
-                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,2);
-                            new Thread(actionThread).start();
+                            Client.changePokemon(team[2].getName(),team[2].getHpBattle());
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -189,9 +178,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon4:
                         if(team[3].getHpBattle()!=0) {
-                            //changePokemon(3);
-                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,3);
-                            new Thread(actionThread).start();
+                            Client.changePokemon(team[3].getName(),team[3].getHpBattle());
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -199,9 +186,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon5:
                         if(team[4].getHpBattle()!=0) {
-                            //changePokemon(4);
-                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,4);
-                            new Thread(actionThread).start();
+                            Client.changePokemon(team[4].getName(),team[4].getHpBattle());
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -209,9 +194,7 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon6:
                         if(team[5].getHpBattle()!=0) {
-                            //changePokemon(5);
-                            actionThread=new ActionThread(MessageType.CHANGE_POKEMON,5);
-                            new Thread(actionThread).start();
+                            Client.changePokemon(team[5].getName(),team[5].getHpBattle());
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -225,103 +208,6 @@ public class Combat_Activity extends AppCompatActivity {
     }
 
 
-    //selezione della mossa
-    public void useMove(int numMove){
-        //alert con il nome della mossa usata
-        Toast toast=Toast.makeText(this, "hai usato "+team[mainPokemon].getMoveByIndex(numMove), Toast.LENGTH_SHORT);
-        toast.show();
-        //codice per inviare al server
-        Client.makeMove(team[mainPokemon].getName(),team[mainPokemon].getHpBattle(),team[mainPokemon].getMoveByIndex(numMove));
-        //aggiungere codice per ricevere dal server
-        //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-        this.decondingDataFromServer(Client.nextLine());
-        switch (dataFromServer[0]) {
-            case MessageType.INCOMBAT:
-                if(HasEnemyUsedMove() && hasEnemyAttackFirst()){
-                    //pokemon nemico ha usato una mossa
-                    enemyPokemonAttacca();
-                    if(isMainPokemonKO()){
-                        mandaperKO=true;
-                    }else{
-                        playerPokemonAttacca(enemyHpPostAction());
-                        if(isMainEnemyPokemonKO()){
-                            //aggiungere codice per attendere il nome del nuovo pokemon avversario
-                            this.decondingDataFromServer(Client.nextLine());
-                            updateEnemyPokemon(55,"");
-                        }
-                    }
-                }else if(HasEnemyUsedMove() && hasEnemyAttackSecond()){
-                    //pokemon nemico usa una mossa e attacca per secondo
-                    playerPokemonAttacca(enemyHpPostAction());
-                    if(isMainEnemyPokemonKO()){
-                        //aggiungere codice per attendere il nome del nuovo pokemon avversario
-                        this.decondingDataFromServer(Client.nextLine());
-                        updateEnemyPokemon(55,"");
-                    }else{
-                        enemyPokemonAttacca();
-                        if(isMainPokemonKO()){
-                            mandaperKO=true;
-                        }
-                    }
-                }else if (hasEnemyChangedPokemon()){
-                    //il nemico ha cambiato pokemon
-                    updateEnemyPokemon(enemyPokemonId(), moveOrPokemon);
-                    playerPokemonAttacca(enemyHpPostAction());
-                    if(isMainEnemyPokemonKO()){
-                        //aggiungere codice per attendere il nome del nuovo pokemon avversario
-                        this.decondingDataFromServer(Client.nextLine());
-                        updateEnemyPokemon(55,"");
-                    }
-                }
-                imgMenu.setVisibility(View.VISIBLE);
-                break;
-            case MessageType.WIN:
-                startActivity(new Intent(this, WIN_activity.class));
-                break;
-            case MessageType.LOSE:
-                startActivity(new Intent(this, lose_activity.class));
-                break;
-        }
-
-    }
-    public void changePokemon(int numPokemon){
-        //Comunico al server il nuovo pokemon
-        Client.changePokemon(team[numPokemon].getName(),team[numPokemon].getHpBattle());
-        updatePlayerPokemon(numPokemon);
-        if(!mandaperKO){
-            //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-            decondingDataFromServer(Client.nextLine());
-            switch (dataFromServer[0]) {
-                case MessageType.INCOMBAT:
-                    if(HasEnemyUsedMove()){
-                        enemyPokemonAttacca();
-                    }else if(hasEnemyChangedPokemon()){
-                        updateEnemyPokemon(enemyPokemonId(),moveOrPokemon);
-                    }
-                    break;
-                case MessageType.LOSE:
-                    startActivity(new Intent(this, lose_activity.class));
-                    break;
-            }
-        }
-        mandaperKO=false;
-    }
-
-    //inserice i dati ricevuti dal client in un array di interi e una variabile stringa, questi dati vengono poi utilizzati
-    //per capire se un giocatore ha vinto, perso o è ancora in combattimento, chi attacca per primo ecc...
-    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-    public void decondingDataFromServer(String event){
-        String[] eventElements = event.split(":");
-        if(eventElements.length>1){
-            dataFromServer = new int[eventElements.length - 1];
-            moveOrPokemon = eventElements[eventElements.length-1];
-        }else{
-            dataFromServer=new int[2];
-        }
-        for (int i = 0; i < eventElements.length-1; i++) {
-            dataFromServer[i] = Integer.parseInt(eventElements[i]);
-        }
-    }
 
     public void loadMoves(){
         //cambio delle mosse
@@ -338,9 +224,9 @@ public class Combat_Activity extends AppCompatActivity {
         updateHpEnemy(hpEnemy);
     }
 
-    public void enemyPokemonAttacca(){
+    public void enemyPokemonAttacca(int myHP){
         animationEnemy();
-        team[mainPokemon].setHpBattle(myHpPostAction());
+        team[mainPokemon].setHpBattle(myHP);
         updateHpPlayer();
     }
     //caricamento dati (immagine nome e hp) riguardanti il pokemon in battaglia
@@ -464,27 +350,6 @@ public class Combat_Activity extends AppCompatActivity {
     }
 
 
-    class ActionThread implements Runnable{
-        private int numAction;
-        private int typeAction;
-        ActionThread(int typeAction,int numAction){
-            this.typeAction=typeAction;
-            this.numAction=numAction;
-        }
-        @Override
-        public void run(){
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if(MessageType.CHANGE_POKEMON==typeAction){
-                        changePokemon(numAction);
-                    }else{
-                        useMove(numAction);
-                    }
-                }
-            });
-        }
-    }
     /*
     public int calcoloHP(int base, int EV, int IV, int level){
         return (int) (Math.floor(0.01*(2*base+IV+Math.floor(0.25*EV))*level)+level+10);
