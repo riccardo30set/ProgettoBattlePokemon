@@ -415,6 +415,20 @@
         "classification": "physical",
         "move_name": "tackle",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -431,7 +445,36 @@
   },
   "metapod": {
     "pokedex_number": 11,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 50,
       "attack": 20,
@@ -505,6 +548,20 @@
         "classification": "physical",
         "move_name": "poison-sting",
         "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -522,7 +579,36 @@
   },
   "kakuna": {
     "pokedex_number": 14,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 45,
       "attack": 25,
@@ -5617,6 +5703,20 @@
         "classification": "special",
         "move_name": "hydro-pump",
         "accuracy": 80
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -5723,7 +5823,36 @@
   },
   "ditto": {
     "pokedex_number": 132,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 48,
       "attack": 48,
@@ -8338,6 +8467,12 @@
         "classification": "special",
         "move_name": "sludge-bomb",
         "accuracy": 100
+      },{
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -8374,6 +8509,13 @@
         "type": "poison",
         "classification": "special",
         "move_name": "sludge-bomb",
+        "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
         "accuracy": 100
       }
     ],
@@ -8755,6 +8897,27 @@
         "classification": "special",
         "move_name": "hidden-power",
         "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -8771,7 +8934,36 @@
   },
   "wobbuffet": {
     "pokedex_number": 202,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 190,
       "attack": 33,
@@ -10213,7 +10405,36 @@
   },
   "smeargle": {
     "pokedex_number": 235,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 55,
       "attack": 20,
@@ -11536,6 +11757,13 @@
         "classification": "physical",
         "move_name": "tackle",
         "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -11552,7 +11780,36 @@
   },
   "silcoon": {
     "pokedex_number": 266,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 50,
       "attack": 35,
@@ -11612,7 +11869,36 @@
   },
   "cascoon": {
     "pokedex_number": 268,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 50,
       "attack": 35,
@@ -13523,6 +13809,13 @@
         "classification": "physical",
         "move_name": "iron-tail",
         "accuracy": 75
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -13560,6 +13853,13 @@
         "classification": "physical",
         "move_name": "iron-tail",
         "accuracy": 75
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -15666,7 +15966,36 @@
   },
   "wynaut": {
     "pokedex_number": 360,
-    "moves": [],
+    "moves": [
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 95,
       "attack": 23,
@@ -15924,6 +16253,13 @@
         "type": "normal",
         "classification": "special",
         "move_name": "hidden-power",
+        "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
         "accuracy": 100
       }
     ],
@@ -16252,6 +16588,27 @@
   "beldum": {
     "pokedex_number": 374,
     "moves": [
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
       {
         "power": 40,
         "type": "normal",
@@ -17440,6 +17797,27 @@
         "classification": "physical",
         "move_name": "bug-bite",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -17914,6 +18292,20 @@
         "classification": "physical",
         "move_name": "bug-bite",
         "accuracy": 100
+      },
+      {
+        "power": 60,
+        "type": "bug",
+        "classification": "physical",
+        "move_name": "bug-bite",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -18033,6 +18425,20 @@
         "type": "flying",
         "classification": "special",
         "move_name": "gust",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
         "accuracy": 100
       }
     ],
@@ -21624,6 +22030,13 @@
         "classification": "physical",
         "move_name": "aerial-ace",
         "accuracy": null
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -22630,6 +23043,13 @@
         "type": "bug",
         "classification": "physical",
         "move_name": "u-turn",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
         "accuracy": 100
       }
     ],
@@ -26311,6 +26731,20 @@
         "classification": "physical",
         "move_name": "spark",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -29061,6 +29495,20 @@
         "classification": "physical",
         "move_name": "tackle",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -29090,6 +29538,20 @@
         "type": "normal",
         "classification": "special",
         "move_name": "tera-blast",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
         "accuracy": 100
       }
     ],
@@ -33366,6 +33828,13 @@
         "classification": "special",
         "move_name": "draining-kiss",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -33783,7 +34252,36 @@
   },
   "pyukumuku": {
     "pokedex_number": 771,
-    "moves": [],
+    "moves": [
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 55,
       "attack": 60,
@@ -34559,7 +35057,36 @@
   },
   "cosmog": {
     "pokedex_number": 789,
-    "moves": [],
+    "moves": [
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 43,
       "attack": 29,
@@ -34574,7 +35101,36 @@
   },
   "cosmoem": {
     "pokedex_number": 790,
-    "moves": [],
+    "moves": [
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      }
+    ],
     "base_stats": {
       "hp": 43,
       "attack": 29,
@@ -35371,6 +35927,13 @@
         "classification": "physical",
         "move_name": "headbutt",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -36055,6 +36618,27 @@
         "classification": "special",
         "move_name": "struggle-bug",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -36270,6 +36854,13 @@
         "classification": "special",
         "move_name": "pollen-puff",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -36306,6 +36897,13 @@
         "type": "bug",
         "classification": "special",
         "move_name": "pollen-puff",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
         "accuracy": 100
       }
     ],
@@ -36743,6 +37341,13 @@
         "classification": "physical",
         "move_name": "pounce",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -37091,6 +37696,13 @@
         "type": "normal",
         "classification": "special",
         "move_name": "snore",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
         "accuracy": 100
       }
     ],
@@ -37976,6 +38588,13 @@
         "classification": "special",
         "move_name": "stored-power",
         "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
+        "accuracy": 100
       }
     ],
     "base_stats": {
@@ -38144,6 +38763,13 @@
         "type": "normal",
         "classification": "special",
         "move_name": "snore",
+        "accuracy": 100
+      },
+      {
+        "power": 40,
+        "type": "normal",
+        "classification": "physical",
+        "move_name": "tackle",
         "accuracy": 100
       }
     ],
