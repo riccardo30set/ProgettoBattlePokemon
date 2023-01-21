@@ -68,10 +68,15 @@ public class PlayerHandler extends Thread {
                     break;
                 case MessageType.ACTION:
                     System.out.println("action ricevuta");
-                    String temp = socketIn.nextLine();
-                    System.out.println(temp);
-                    this.writeAction(temp);
+                    String act = socketIn.nextLine();
+                    this.writeAction(act);
                     this.game.playerMove();
+                    break;
+                case MessageType.ONLY_ONE_ACT:
+                    System.out.println("action singola ricevuta");
+                    String actOne = socketIn.nextLine();
+                    this.writeAction(actOne);
+                    this.game.pokemonFromKO(playerID);
                     break;
             }
         }

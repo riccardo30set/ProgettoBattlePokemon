@@ -14,6 +14,7 @@ class Pokemon {
         this.pokedexId = id;
         this.types = types;
         this.baseStats = baseStats;
+        this.moves=moves;
         this.hpPre=hpPre;
         this.hpPost=hpPre;
     }
@@ -33,7 +34,7 @@ class Pokemon {
         return hpPre;
     }
     public void setHpPost(int hp) {
-        this.hpPre=hp;
+        this.hpPost=hp;
     }
     public int getHpPost() {
         return hpPost;

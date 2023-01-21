@@ -28,7 +28,7 @@ public class Client extends Thread {
     static Intent gameIntent;
     public static Combat_Activity gameplay;
     int [] responseInt;
-    String responseWord;
+    String [] responseWords;
     /**
      *Creates a tcp socket to the given address and port and
      * creates a PrintWriter and Scanner object to handle the I/O streams
@@ -100,31 +100,39 @@ public class Client extends Thread {
                 case MessageType.ACTION:
                     String response=socketIn.nextLine();
                     splitResponse(response);
-                    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
+                    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : MV_NAME : PK_NAME
                     gameplay.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if(responseInt[1]==MessageType.USED_MOVE)
-                                gameplay.animationPlayer();
                             if(responseInt[2]==MessageType.USED_MOVE)
+                                gameplay.animationPlayer();
+                            if(responseInt[1]==MessageType.USED_MOVE)
                                 gameplay.animationEnemy();
-                            gameplay.updateEnemyPokemon(responseInt[6],responseWord,responseInt[4]);
+                            gameplay.updateEnemyPokemon(responseInt[6],responseWords[1],responseInt[4]);
                             gameplay.updatePlayerPokemon(gameplay.getMainPokemon(),responseInt[5]);
+                            if(responseInt[5]==0 || (responseInt[5]!=0 && responseInt[4]!=0)){
+                                gameplay.menuVisible();
+                            }
+                        }
+                    });
+
+                    break;
+                case MessageType.ONLY_ONE_ACT:
+                    String responseOnly=socketIn.nextLine();
+                    splitResponse(responseOnly);
+                    gameplay.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            gameplay.updateEnemyPokemon(responseInt[6],responseWords[1],responseInt[4]);
                             gameplay.menuVisible();
                         }
                     });
-                    break;
             }
     }
 
 
     private void setOpponentName(String name){
         opponent.setText(name);
-    }
-
-    public static void makeMove(String pokemonName,int hp, String move){
-        socketOut.println(MessageType.ACTION);
-        socketOut.println(MessageType.USED_MOVE+":"+pokemonName+":"+hp+":"+move);
     }
 
 
@@ -134,25 +142,38 @@ public class Client extends Thread {
     }
 
     public static void changePokemon(int pokemon, Pokemon[] team){
-        socketOut.println(MessageType.ACTION);
+        if(team[gameplay.getMainPokemon()].getHpBattle()==0){
+            socketOut.println(MessageType.ONLY_ONE_ACT);
+        }else{
+            socketOut.println(MessageType.ACTION);
+        }
         socketOut.println(MessageType.CHANGE_POKEMON+":"+team[pokemon].getName()+":"+team[pokemon].getHpBattle());
         gameplay.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                if(team[gameplay.getMainPokemon()].getHpBattle()==0){
+                    gameplay.menuVisible();
+                }
                 gameplay.updatePlayerPokemon(pokemon,team[pokemon].getHpBattle());
+
             }
         });
     }
 
     //inserice i dati ricevuti dal client in un array di interi e una variabile stringa, questi dati vengono poi utilizzati
     //per capire se un giocatore ha vinto, perso o è ancora in combattimento, chi attacca per primo ecc...
-    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
+    //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : MV_NAME : PK_NAME
     public void splitResponse(String event){
         String[] eventElements = event.split(":");
-        responseInt = new int[eventElements.length - 1];
-        responseWord = eventElements[eventElements.length-1];
-        for (int i = 0; i < eventElements.length-1; i++) {
-            responseInt[i] = Integer.parseInt(eventElements[i]);
+        responseInt = new int[eventElements.length - 2];
+        responseWords = new String[2];
+        for (int i = 0; i < eventElements.length; i++) {
+            if(i<eventElements.length-2){
+                responseInt[i] = Integer.parseInt(eventElements[i]);
+            }else{
+                responseWords[i-(eventElements.length-2)]=eventElements[i];
+            }
         }
+
     }
 }

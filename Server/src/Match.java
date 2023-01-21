@@ -79,8 +79,16 @@ public class Match{
         createMessageData();
         System.out.println(player1Data);
         System.out.println(player2Data);
-        players[one].socketOut.println(MessageType.ACTION);
-        players[two].socketOut.println(MessageType.ACTION);
+        if(player1Kill==6){
+            players[one].socketOut.println(MessageType.WIN);
+            players[two].socketOut.println(MessageType.LOSE);
+        }else if(player2Kill==6){
+            players[two].socketOut.println(MessageType.WIN);
+            players[one].socketOut.println(MessageType.LOSE);
+        }else{
+            players[one].socketOut.println(MessageType.ACTION);
+            players[two].socketOut.println(MessageType.ACTION);
+        }
         players[one].socketOut.println(player1Data);
         players[two].socketOut.println(player2Data);
         /* 
@@ -109,7 +117,26 @@ public class Match{
         */
     }
 
-
+    public void pokemonFromKO(int playerID){
+        for(int i=0;i<players.length;i++){
+            if(players[i].getPlayerId()==playerID){
+                try {
+                    assignValueFromResponse(i);
+                } catch (Exception e) {
+                    System.out.println("impossibile leggere dal json");
+                }
+                int enemy=one;
+                if(players[i]==players[enemy]){
+                    enemy=two;
+                }
+                String pk=players[i].getPlayerAction().getPokemonName();
+                String mes=MessageType.INCOMBAT+":"+MessageType.CHANGE_POKEMON+":"+MessageType.CHANGE_POKEMON+":"+pokemon[i].getHpPre100()+":"+pokemon[i].getHpPost100()+":"+pokemon[enemy].getHpPost()+":"+pokemon[i].getPokedexId()+":"+"nothing"+":"+pk;
+                players[enemy].socketOut.println(MessageType.ONLY_ONE_ACT);
+                System.out.println(mes);
+                players[enemy].socketOut.println(mes);
+            }
+        }
+    }
 
     public void assignValueFromResponse(int i )throws Exception{
             FileReader reader = new FileReader("src/moves.json");
@@ -119,109 +146,64 @@ public class Match{
             ArrayList<String> types=findTypes(general);
             HashMap<String,Integer> baseStats=getBaseStats(general);
             PokemonMove[] moves=findPokemonMoves(general);
-            System.out.println(findPokemonMoves(general));
             pokemon[i]=new Pokemon(act.getPokemonName(),general.getInt("pokedex_number"),types,baseStats,moves,act.getHp());
     }
 
 
 
-     //     WIN|LOSE|INCOMBAT : 2_CHANGEPK|2_U_MOVE : 1_CHANGEPK|1_U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
+     //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : MV_NAME : PK_NAME
     public void createMessageData(){
         player1Data=""+MessageType.INCOMBAT;
         player2Data=""+MessageType.INCOMBAT;
-        String moveOrPk1=(getPlayer2TypeAction()==MessageType.USED_MOVE)? players[two].getPlayerAction().getMoveName() : players[two].getPlayerAction().getPokemonName();
-        String moveOrPk2=(getPlayer1TypeAction()==MessageType.USED_MOVE)? players[one].getPlayerAction().getMoveName() : players[one].getPlayerAction().getPokemonName();
-        /*if(whoActFirst()==one){
-            //player 1 primo
+        //mosse (se usate)
+        String move1=(getPlayer2TypeAction()==MessageType.USED_MOVE)? players[two].getPlayerAction().getMoveName() : "nothing";
+        String move2=(getPlayer1TypeAction()==MessageType.USED_MOVE)? players[one].getPlayerAction().getMoveName() : "nothing";
+        //pokemon in campo
+        String pk1=players[two].getPlayerAction().getPokemonName();
+        String pk2=players[one].getPlayerAction().getPokemonName();
+        //ordine eventi
+        if(whoActFirst()==one){
             if(getPlayer1TypeAction()==MessageType.USED_MOVE){
-                //player usa mossa
                 pokemon[two].setHpPost(defenderHp(one,two));
-                if(pokemon[two].getHpPost()==0){
-                    //aumento pokemon messi ko da playe1 
-                    player1Kill++;
-                    if(player1Kill==6){
-                        player1Data=""+MessageType.WIN;
-                        player2Data=""+MessageType.LOSE;
-                    }
-                }else{
-                    //player 1 non mette ko player2 pokemon
-                    if(getPlayer2TypeAction()==MessageType.USED_MOVE){
-                        //player 2 usa mossa
-                        pokemon[one].setHpPost(defenderHp(two,one));
-                        if(pokemon[one].getHpPost()==0){
-                            //aumento pokemon messi ko da player2
-                            player2Kill++;
-                            if(player2Kill==6){
-                                player2Data=""+MessageType.WIN;
-                                player1Data=""+MessageType.LOSE;
-                            }
-                        }
-                    }
-                    //player 2 cambia pokemon
-                }
-            }else{
-                //player 1 cambia pokemon
-                if(getPlayer2TypeAction()==MessageType.USED_MOVE){
-                    //player attacca per secondo
-                    pokemon[one].setHpPost(defenderHp(two,one));
-                    if(pokemon[one].getHpPost()==0){
-                        //aumento pokemon messi ko da player2
-                        player2Kill++;
-                        if(player2Kill==6){
-                            player2Data=""+MessageType.WIN;
-                            player1Data=""+MessageType.LOSE;
-                        }
-                    }
-                }
-                //player 2 cambia pokemon
+            }
+            if(getPlayer2TypeAction()==MessageType.USED_MOVE && pokemon[two].getHpPost()!=0){
+                pokemon[one].setHpPost(defenderHp(two,one));
             }
         }else{
-            //player 2 primo
             if(getPlayer2TypeAction()==MessageType.USED_MOVE){
-                //player 2 usa mossa
                 pokemon[one].setHpPost(defenderHp(two,one));
-                if(pokemon[one].getHpPost()==0){
-                    //aumento pokemon messi ko da playe1
-                    player2Kill++;
-                    if(player2Kill==6){
-                        player2Data=""+MessageType.WIN;
-                        player1Data=""+MessageType.LOSE;
-                    }
-                }else{
-                    //player 1 sopravvive
-                    if(getPlayer1TypeAction()==MessageType.USED_MOVE){
-                        //player 1 usa mossa
-                        pokemon[two].setHpPost(defenderHp(one,two));
-                        if(pokemon[two].getHpPost()==0){
-                            //aumento pokemon messi ko da player1 
-                            player1Kill++;
-                            if(player1Kill==6){
-                                player1Data=""+MessageType.WIN;
-                                player2Data=""+MessageType.LOSE;
-                            }
-                        }
-                    }
-                }
-            }else{
-                if(getPlayer1TypeAction()==MessageType.USED_MOVE){
-                    //player usa mossa
-                    pokemon[two].setHpPost(defenderHp(one,two));
-                    if(pokemon[two].getHpPost()==0){
-                        //aumento pokemon messi ko da playe1 
-                        player1Kill++;
-                        if(player1Kill==6){
-                            player1Data=""+MessageType.WIN;
-                            player2Data=""+MessageType.LOSE;
-                        }
-                    }
-                }
             }
-        }*/
+            if(getPlayer1TypeAction()==MessageType.USED_MOVE && pokemon[one].getHpPost()!=0){
+                pokemon[two].setHpPost(defenderHp(one,two));
+            }
+        }
+
+        //conteggio KO
+        if(pokemon[two].getHpPost()==0){
+            player1Kill++;
+        }
+        if(pokemon[one].getHpPost()==0){
+            player2Kill++;
+        }
+
+        //controllo vittoria e perdita
+
+        if(player1Kill==6){
+            player1Data=""+MessageType.WIN;
+            player2Data=""+MessageType.LOSE;
+        }
+        if(player2Kill==6){
+            player2Data=""+MessageType.WIN;
+            player1Data=""+MessageType.LOSE;
+        }
+        //creazione del messaggio in base ai dati appena raccolti
         int typeAction2=players[1].getPlayerAction().getTypeAction();
         int typeAction1=players[0].getPlayerAction().getTypeAction();
-        //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : FIRST|SECOND : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : PK_NAME|MV_NAME
-        player1Data+=":"+typeAction2+":"+typeAction1+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getPokedexId()+":"+moveOrPk1;
-        player2Data+=":"+typeAction1+":"+typeAction2+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+moveOrPk2;
+        //     WIN|LOSE|INCOMBAT : E_CHANGEPK|E_U_MOVE : CHANGEPK|U_MOVE : E_HP_PREACTION% : E_HP_POSTACTION% : MY_HP : E_PK_ID : MV_NAME : PK_NAME
+        player1Data+=":"+typeAction2+":"+typeAction1+":"+pokemon[two].getHpPre100()+":"+pokemon[two].getHpPost100()+":"+pokemon[one].getHpPost()+":"+pokemon[two].getPokedexId()+":"+move1+":"+pk1;
+        player2Data+=":"+typeAction1+":"+typeAction2+":"+pokemon[one].getHpPre100()+":"+pokemon[one].getHpPost100()+":"+pokemon[two].getHpPost()+":"+pokemon[one].getPokedexId()+":"+move2+":"+pk2;
+        System.out.println(player1Data);
+        System.out.println(player2Data);
     }
     
 
@@ -257,7 +239,8 @@ public class Match{
         if(rand.nextInt(24)==0)
             otherEffects*=1.5;
         otherEffects*= (((double)rand.nextInt(15)/100.0)+0.85);
-        return (int) ((((42)*power*(ATK/DEF)/50)+2)*otherEffects);
+        return (int)(((((28.57*ATK*power)/DEF)/50)+2)*otherEffects);
+        //return (int) ((((42)*power*(ATK/DEF)/50)+2)*otherEffects);
     }
 
 
@@ -287,7 +270,6 @@ public class Match{
 
 
 
-
     //trova le statisitiche di un pokemon tramite il json
     public  HashMap<String, Integer> getBaseStats(JSONObject general)throws Exception{
         HashMap<String, Integer> baseStats= new HashMap<String,Integer>();
@@ -298,7 +280,6 @@ public class Match{
         baseStats.put("special-attack", stats.getInt("special-attack"));
         baseStats.put("special-defense", stats.getInt("special-defense"));
         baseStats.put("speed", stats.getInt("speed"));
-        System.out.println("hp      "+stats.getInt("hp"));
         return baseStats;
     }
 
@@ -313,7 +294,6 @@ public class Match{
                 String type = move.getString("type");
                 String classification = move.getString("classification");
                 String moveName = move.getString("move_name");
-                System.out.println(power+type+classification+moveName);
                 moves[i]=new PokemonMove(power,type,classification,moveName);
             }
             return moves;

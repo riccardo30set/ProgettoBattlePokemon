@@ -119,8 +119,8 @@ public class Combat_Activity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.move1:
                         if(!isMainPokemonKO()){
-                            Toast.makeText(Combat_Activity.this, "Mossa eseguita", Toast.LENGTH_SHORT).show();
                             Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(0),team[mainPokemon].getHpBattle());
+                            imgMenu.setVisibility(View.INVISIBLE);
 
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
@@ -130,7 +130,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.move2:
                         if(!isMainPokemonKO()){
                             Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(1),team[mainPokemon].getHpBattle());
-
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -139,7 +139,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.move3:
                         if(!isMainPokemonKO()){
                             Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(2),team[mainPokemon].getHpBattle());
-
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -148,7 +148,7 @@ public class Combat_Activity extends AppCompatActivity {
                     case R.id.move4:
                         if(!isMainPokemonKO()){
                             Client.useMove(team[mainPokemon].getName(),team[mainPokemon].getMoveByIndex(3),team[mainPokemon].getHpBattle());
-
+                            imgMenu.setVisibility(View.INVISIBLE);
                         }else{
                             blocco.setText("il tuo Pokemon è KO");
                             blocco.show();
@@ -156,9 +156,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon1:
                         if(team[0].getHpBattle()!=0) {
-                            Client.changePokemon(0, team);
                             imgMenu.setVisibility(View.INVISIBLE);
-
+                            Client.changePokemon(0, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -166,8 +165,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon2:
                         if(team[1].getHpBattle()!=0) {
-                            Client.changePokemon(1, team);
                             imgMenu.setVisibility(View.INVISIBLE);
+                            Client.changePokemon(1, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -175,8 +174,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon3:
                         if(team[2].getHpBattle()!=0) {
-                            Client.changePokemon(2, team);
                             imgMenu.setVisibility(View.INVISIBLE);
+                            Client.changePokemon(2, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -184,8 +183,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon4:
                         if(team[3].getHpBattle()!=0) {
-                            Client.changePokemon(3, team);
                             imgMenu.setVisibility(View.INVISIBLE);
+                            Client.changePokemon(3, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -193,8 +192,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon5:
                         if(team[4].getHpBattle()!=0) {
-                            Client.changePokemon(4, team);
                             imgMenu.setVisibility(View.INVISIBLE);
+                            Client.changePokemon(4, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -202,8 +201,8 @@ public class Combat_Activity extends AppCompatActivity {
                         break;
                     case R.id.pokemon6:
                         if(team[5].getHpBattle()!=0) {
-                            Client.changePokemon(5, team);
                             imgMenu.setVisibility(View.INVISIBLE);
+                            Client.changePokemon(5, team);
                         }else {
                             blocco.setText("Questo Pokemon è KO");
                             blocco.show();
@@ -327,6 +326,9 @@ public class Combat_Activity extends AppCompatActivity {
     }
     public void menuVisible(){
         imgMenu.setVisibility(View.VISIBLE);
+    }
+    public void menuInvisible(){
+        imgMenu.setVisibility(View.INVISIBLE);
     }
 
 
