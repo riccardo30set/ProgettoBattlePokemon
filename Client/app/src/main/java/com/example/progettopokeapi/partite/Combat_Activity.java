@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -59,6 +60,9 @@ public class Combat_Activity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         Client.gameplay = this;
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bg);
+
+        mediaPlayer.start();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combat);
         team=new Pokemon[6];

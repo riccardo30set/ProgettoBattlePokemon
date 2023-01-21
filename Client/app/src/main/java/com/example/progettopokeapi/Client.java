@@ -59,7 +59,7 @@ public class Client extends Thread {
         }
     }
 
-    public static void createGame(String name,TextView opponent){
+    public static void createGame(String name){
         socketOut.println(MessageType.CREATE_GAME);
         socketOut.println(name);
 
@@ -70,12 +70,11 @@ public class Client extends Thread {
      * @param name
      * @return the opponent's name
      */
-    public static String joinGame(String name,TextView opponentName){
+    public static String joinGame(String name){
         socketOut.println(MessageType.JOIN_GAME);
         socketOut.println(name);
         socketOut.println(MessageType.GET_OPPONENT_IDENTITY);
         String nome = socketIn.nextLine();
-        opponent = opponentName;
         socketIn.nextLine();
         return nome;
     }

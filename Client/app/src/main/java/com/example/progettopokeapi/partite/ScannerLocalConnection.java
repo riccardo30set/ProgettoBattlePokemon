@@ -4,12 +4,15 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.progettopokeapi.Client;
 import com.example.progettopokeapi.R;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -28,9 +31,14 @@ public class ScannerLocalConnection extends AppCompatActivity {
                 if(result.getContents() == null) {
                     Toast.makeText(ScannerLocalConnection.this, "Cancelled", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(ScannerLocalConnection.this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    Intent play = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
+                    play.putExtra("gameName",result.getContents());
+                    play.putExtra("opponent", Client.joinGame(result.getContents()));
+                    Client c = new Client();
+                    c.start();
+                    startActivity(play);
 
-                    try {
+                    /*try {
                         String wifiString = result.getContents();
                         String[] wifiData = wifiString.split(";");
                         String ssid = wifiData[0].substring(7);
@@ -52,7 +60,7 @@ public class ScannerLocalConnection extends AppCompatActivity {
                         wifiManager.reconnect();
                     }catch(Exception e) {
 
-                    }
+                    }*/
                 }
             });
 }

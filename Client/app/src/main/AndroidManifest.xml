@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.progettopokeapi">
+    package="com.example.progettopokeapi"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,6 +16,10 @@
         android:theme="@style/Theme.ProgettoPokeAPI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+        <activity
             android:name=".lose_activity"
             android:exported="false">
             <meta-data
@@ -25,13 +30,6 @@
             android:name=".WIN_activity"
             android:exported="false"
             android:screenOrientation="landscape">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".partite.Partecipa"
-            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

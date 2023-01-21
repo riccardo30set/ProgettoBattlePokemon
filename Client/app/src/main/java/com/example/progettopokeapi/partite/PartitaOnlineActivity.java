@@ -26,6 +26,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettopokeapi.R;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -137,8 +139,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         TextView gameName = (TextView)findViewById(R.id.txtNomePartita
         );
         gameName.setText(getIntent().getExtras().getString("gameName"));
-        TextView opponent = (TextView) findViewById(R.id.opponentName);
-        opponent.setText(getIntent().getExtras().getString("opponent"));
+        setQR(getIntent().getExtras().getString("gameName"));
 
 
     }
@@ -160,6 +161,16 @@ public class PartitaOnlineActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    public void setQR(String gameName){
+        ImageView qr = (ImageView) findViewById(R.id.imgQR);
+        BarcodeEncoder encoder = new BarcodeEncoder();
+        try{
+            qr.setImageBitmap(encoder.encodeBitmap(gameName, BarcodeFormat.QR_CODE,250,250));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
