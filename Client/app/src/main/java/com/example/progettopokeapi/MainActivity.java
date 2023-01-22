@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOnline(View view){
-        Client.connect(this,"192.168.1.90",1500);
+        Client.connect(this,"10.13.13.2",1500);
         String gameName = "Partita di "+Client.shared_prefs.getString("nameAccount","Giocatore");
         Client.createGame(gameName);
         Intent online = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onClickPartecipa(View view){
-        Client.connect(this,"192.168.1.90",1500);
+        Client.connect(this,"10.13.13.2",1500);
         startActivity(new Intent(this, ScannerLocalConnection.class));
     }
 
