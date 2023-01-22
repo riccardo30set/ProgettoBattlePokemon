@@ -113,6 +113,11 @@ public class Client extends Thread {
                             if(responseInt[5]==0 || (responseInt[5]!=0 && responseInt[4]!=0)){
                                 gameplay.menuVisible();
                             }
+                            if(responseInt[0]==MessageType.WIN){
+                                gameplay.startActivity(new Intent(gameContext,WIN_activity.class));
+                            }else if (responseInt[0]==MessageType.LOSE){
+                                gameplay.startActivity(new Intent(gameContext,lose_activity.class));
+                            }
                         }
                     });
 
