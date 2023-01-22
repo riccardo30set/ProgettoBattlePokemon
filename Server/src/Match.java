@@ -79,16 +79,9 @@ public class Match{
         createMessageData();
         System.out.println(player1Data);
         System.out.println(player2Data);
-        if(player1Kill==6){
-            players[one].socketOut.println(MessageType.WIN);
-            players[two].socketOut.println(MessageType.LOSE);
-        }else if(player2Kill==6){
-            players[two].socketOut.println(MessageType.WIN);
-            players[one].socketOut.println(MessageType.LOSE);
-        }else{
-            players[one].socketOut.println(MessageType.ACTION);
-            players[two].socketOut.println(MessageType.ACTION);
-        }
+        players[one].socketOut.println(MessageType.ACTION);
+        players[two].socketOut.println(MessageType.ACTION);
+        
         players[one].socketOut.println(player1Data);
         players[two].socketOut.println(player2Data);
         /* 
