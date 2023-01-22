@@ -58,25 +58,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOnline(View view){
-        Client.connect(this,"10.13.13.2",1500);
+        Client.address = "pokeproject.tk";
+        Client.connect(this,1500);
+
         String gameName = "Partita di "+Client.shared_prefs.getString("nameAccount","Giocatore");
         Client.createGame(gameName);
+
         Intent online = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
         online.putExtra("gameName",gameName);
         online.putExtra("opponent","In attesa di un giocatore");
+
         Client c = new Client();
         c.start();
         startActivity(online);
+
+        overridePendingTransition(2,2);
         overridePendingTransition(2,2);
     }
 
     public void onClickLocale(View view){
-        startActivity(new Intent(getApplicationContext(), PartitaLocaleActivity.class));
+        Client.address = "10.10.10.191";
+        Client.connect(this,1500);
+
+        String gameName = "Partita di "+Client.shared_prefs.getString("nameAccount","Giocatore");
+        Client.createGame(gameName);
+
+        Intent online = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
+        online.putExtra("gameName",gameName);
+        online.putExtra("opponent","In attesa di un giocatore");
+        Client c = new Client();
+
+        c.start();
+        startActivity(online);
+
+        overridePendingTransition(2,2);
         overridePendingTransition(2,2);
 
     }
     public void onClickPartecipa(View view){
-        Client.connect(this,"10.13.13.2",1500);
         startActivity(new Intent(this, ScannerLocalConnection.class));
     }
 

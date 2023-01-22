@@ -17,6 +17,8 @@ import com.example.progettopokeapi.R;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.util.regex.Pattern;
+
 public class ScannerLocalConnection extends AppCompatActivity {
 
     @Override
@@ -31,13 +33,18 @@ public class ScannerLocalConnection extends AppCompatActivity {
                 if(result.getContents() == null) {
                     Toast.makeText(ScannerLocalConnection.this, "Cancelled", Toast.LENGTH_LONG).show();
                 } else {
+
+                    String letto = result.getContents();
+                    String[] dati = letto.split(":");
                     Intent play = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
-                    play.putExtra("gameName",result.getContents());
-                    play.putExtra("opponent", Client.joinGame(result.getContents()));
+                    Toast.makeText(this,dati[0],Toast.LENGTH_LONG);
+                    Client.address = dati[0];
+                    Client.connect(this,1500);
+                    play.putExtra("gameName",dati[1]);
+                    Client.joinGame(dati[1]);
                     Client c = new Client();
                     c.start();
                     startActivity(play);
-
                     /*try {
                         String wifiString = result.getContents();
                         String[] wifiData = wifiString.split(";");

@@ -139,7 +139,7 @@ public class PartitaOnlineActivity extends AppCompatActivity {
         TextView gameName = (TextView)findViewById(R.id.txtNomePartita
         );
         gameName.setText(getIntent().getExtras().getString("gameName"));
-        setQR(getIntent().getExtras().getString("gameName"));
+        setQR(Client.address+":"+getIntent().getExtras().getString("gameName"));
 
 
     }

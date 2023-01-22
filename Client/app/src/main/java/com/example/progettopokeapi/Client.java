@@ -29,11 +29,12 @@ public class Client extends Thread {
     public static Combat_Activity gameplay;
     int [] responseInt;
     String [] responseWords;
+    public static String address;
     /**
      *Creates a tcp socket to the given address and port and
      * creates a PrintWriter and Scanner object to handle the I/O streams
      */
-    public static void connect(Context context, String address, int port){
+    public static void connect(Context context, int port){
         try{
             server = new Socket(InetAddress.getByName(address), port);
             socketOut = new PrintWriter(server.getOutputStream(), true);
