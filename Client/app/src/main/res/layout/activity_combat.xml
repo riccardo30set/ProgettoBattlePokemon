@@ -124,6 +124,48 @@
                 android:progress="100" />
         </LinearLayout>
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/musicNext"
+            android:layout_width="34dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="#FF0000"
+            android:buttonTint="#D63A3A"
+            android:checkable="false"
+            android:onClick="musicControl"
+            app:chipIcon="@android:drawable/ic_media_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/musicPrevious"
+            android:layout_width="34dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:background="#FF0000"
+            android:buttonTint="#D63A3A"
+            android:checkable="false"
+            android:onClick="musicControl"
+            app:chipIcon="@android:drawable/ic_media_previous"
+            app:layout_constraintEnd_toStartOf="@+id/musicPause"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/musicPause"
+            android:layout_width="34dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="20dp"
+            android:background="#FF0000"
+            android:buttonTint="#D63A3A"
+            android:checkable="false"
+            android:onClick="onPause"
+            app:chipIcon="@drawable/pause"
+            app:layout_constraintEnd_toStartOf="@+id/musicNext"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView

@@ -27,6 +27,7 @@ import com.example.progettopokeapi.MessageType;
 import com.example.progettopokeapi.R;
 import com.example.progettopokeapi.WIN_activity;
 import com.example.progettopokeapi.lose_activity;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.navigation.NavigationView;
 
 public class Combat_Activity extends AppCompatActivity {
@@ -46,6 +47,10 @@ public class Combat_Activity extends AppCompatActivity {
     TextView txtPokemoInBattle;
     TextView hpPokemoInBattle;
     Menu moves;
+    MediaPlayer mediaPlayer;
+
+    int songs[] = {R.raw.bg,R.raw.wild,R.raw.teamplasma};
+    int currentSong = 0;
 
 
     //box con nome e hpBar
@@ -60,7 +65,7 @@ public class Combat_Activity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         Client.gameplay = this;
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bg);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bg);
 
         mediaPlayer.start();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -215,7 +220,37 @@ public class Combat_Activity extends AppCompatActivity {
         });
     }
 
+    public void musicControl(View view){
+        if(view.getId()==R.id.musicNext){
+            if(currentSong+1>=songs.length){
+                currentSong = 0;
+            }else{
+                currentSong++;
+            }
 
+        }
+        else{
+            if (currentSong-1<0){
+                currentSong = songs.length-1;
+            }else{
+                currentSong--;
+            }
+        }
+        mediaPlayer.stop();
+        mediaPlayer = MediaPlayer.create(getApplicationContext(),songs[currentSong]);
+        mediaPlayer.start();
+    }
+
+    public void onPause(View view){
+        Chip c = (Chip)view;
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.pause();
+            c.setChipIcon(getDrawable(R.drawable.play));
+        }else{
+            mediaPlayer.start();
+            c.setChipIcon(getDrawable(R.drawable.pause));
+        }
+    }
 
     public void loadMoves(){
         //cambio delle mosse
