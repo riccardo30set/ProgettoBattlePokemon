@@ -6,14 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".lose_activity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="547dp"
-        android:layout_height="147dp"
-        android:text="HAI PERSO!"
-        android:textSize="96sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<ImageView
+android:id="@+id/imageView3"
+android:layout_width="660dp"
+android:layout_height="275dp"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:srcCompat="@drawable/gameover" />
+
+<nl.dionsegijn.konfetti.xml.KonfettiView
+android:id="@+id/konfettiviewlos"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintLeft_toLeftOf="parent"
+app:layout_constraintRight_toRightOf="parent"
+app:layout_constraintTop_toTopOf="parent">
+</nl.dionsegijn.konfetti.xml.KonfettiView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

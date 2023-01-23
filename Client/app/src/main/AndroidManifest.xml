@@ -22,6 +22,7 @@
         <activity
             android:name=".lose_activity"
             android:exported="false"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
             android:screenOrientation="landscape">>
             <meta-data
                 android:name="android.app.lib_name"
@@ -30,6 +31,7 @@
         <activity
             android:name=".WIN_activity"
             android:exported="false"
+            android:theme="@style/Theme.ProgettoPokeAPI.NoActionBar"
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.app.lib_name"

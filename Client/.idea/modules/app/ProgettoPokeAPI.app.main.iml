@@ -120,6 +120,8 @@
     <orderEntry type="library" name="Gradle: androidx.exifinterface:exifinterface:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.volley:volley:1.2.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: de.hdodenhof:circleimageview:3.1.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: nl.dionsegijn:konfetti-xml:2.0.2@aar" level="project" />
+    <orderEntry type="library" name="Gradle: nl.dionsegijn:konfetti-core:2.0.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.makeramen:roundedimageview:2.3.0@aar" level="project" />
   </component>
 </module>

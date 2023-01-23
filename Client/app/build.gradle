@@ -41,6 +41,8 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'nl.dionsegijn:konfetti-xml:2.0.2'
+
 
 
     // material design
