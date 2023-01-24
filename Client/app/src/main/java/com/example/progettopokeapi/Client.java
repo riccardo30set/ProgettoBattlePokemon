@@ -182,4 +182,8 @@ public class Client extends Thread {
         }
 
     }
+
+    public static void disconnect(){
+        System.out.println("si");
+    }
 }

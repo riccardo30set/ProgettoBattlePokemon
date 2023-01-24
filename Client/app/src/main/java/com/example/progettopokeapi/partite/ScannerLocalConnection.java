@@ -37,7 +37,6 @@ public class ScannerLocalConnection extends AppCompatActivity {
                     String letto = result.getContents();
                     String[] dati = letto.split(":");
                     Intent play = new Intent(getApplicationContext(), PartitaOnlineActivity.class);
-                    Toast.makeText(this,dati[0],Toast.LENGTH_LONG);
                     Client.address = dati[0];
                     Client.connect(this,1500);
                     play.putExtra("gameName",dati[1]);
@@ -45,29 +44,6 @@ public class ScannerLocalConnection extends AppCompatActivity {
                     Client c = new Client();
                     c.start();
                     startActivity(play);
-                    /*try {
-                        String wifiString = result.getContents();
-                        String[] wifiData = wifiString.split(";");
-                        String ssid = wifiData[0].substring(7);
-                        String password = wifiData[2].substring(2);
-                        Log.d("--ssid",ssid);
-                        Log.d("--password",password);
-                        //verificare se è un qrcode wifi
-                        //richiesta di connessione a internet
-
-                        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                        WifiConfiguration wifiConfig = new WifiConfiguration();
-                        wifiConfig.SSID =String.format("\"%s\"", ssid);//ssid;
-                        wifiConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-                        wifiConfig.preSharedKey = String.format("\"%s\"",password);//password;
-                        int netId = wifiManager.addNetwork(wifiConfig);
-                        Log.d("--netId", String.valueOf(netId));
-
-                        wifiManager.enableNetwork(netId, true);
-                        wifiManager.reconnect();
-                    }catch(Exception e) {
-
-                    }*/
                 }
             });
 }

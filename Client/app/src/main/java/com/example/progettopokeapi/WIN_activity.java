@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 
 
 import java.util.Arrays;
@@ -45,8 +47,8 @@ public class WIN_activity extends AppCompatActivity {
                         .position(new Position.Relative(0.5, 0.3))
                         .build()
         );
-
-
-
+    }
+    public void onHome(View view){
+        startActivity(new Intent(this,MainActivity.class));
     }
 }
